@@ -5,15 +5,19 @@
 
 <template>
   <div class="radioExample">
-    <radio>DEMO</radio>
+    <radio v-model="demo">DEMO</radio>
 
-    <radio-group>
+    <radio-group v-model="city" @change="change">
       <radio label="beijing" name="city">北京</radio>
       <radio label="shanghai" name="city">上海</radio>
       <radio label="guangzhou" name="city">广州</radio>
       <radio label="hangzhou" name="city">杭州</radio>
       <radio label="shenzhen" name="city">深圳</radio>
     </radio-group>
+
+    <button type="button" @click="changeValue">change</button>
+
+    <div>city: {{city}}, demo: {{demo}}</div>
   </div>
 </template>
 
@@ -22,8 +26,18 @@
     name: 'RadioExample',
     props: {},
     data () {
-      return {}
+      return {
+        city: 'beijing',
+        demo: false
+      }
     },
-    methods: {}
+    methods: {
+      change (value) {
+        console.log(value);
+      },
+      changeValue () {
+        this.city = 'shanghai';
+      }
+    }
   }
 </script>
