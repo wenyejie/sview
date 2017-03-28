@@ -5,10 +5,12 @@
 
 import Radio from './radio';
 import RadioGroup from './radioGroup';
+import Breadcrumb from './breadcrumb';
 
 const sview = {
   Radio,
   RadioGroup,
+  Breadcrumb
 };
 
 const install = Vue => {

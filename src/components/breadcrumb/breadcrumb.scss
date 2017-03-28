@@ -1,0 +1,32 @@
+@charset "utf-8";
+/**
+ * author: Storm
+ * date: 2017/03/28
+ */
+
+.s-breadcrumb {
+  display: inline-block;
+  color: #97a8be;
+
+  &-item {
+    display: inline-block;
+
+    & + &:before {
+      content: '/';
+      padding: 0 8px;
+      color: #d7dde4;
+    }
+
+    a {
+      color: #657180;
+      transition: color .3s ease-in-out;
+
+      &:hover {
+        color: #20a0ff;
+      }
+
+    }
+
+  }
+
+}

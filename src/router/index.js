@@ -32,6 +32,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/radio'], resolve);
       }
+    },
+
+    {
+      path: '/breadcrumb',
+      name: 'BreadcrumbExample',
+      component: resolve => {
+        require(['@/view/breadcrumb'], resolve);
+      }
     }
 
   ]
