@@ -17,12 +17,22 @@ export default new Router({
   },
 
   routes: [
+
     {
       path: '/',
       name: 'Hello',
       component: resolve => {
         require(['@/view'], resolve);
       }
+    },
+
+    {
+      path: '/radio',
+      name: 'RadioExample',
+      component: resolve => {
+        require(['@/view/radio'], resolve);
+      }
     }
+
   ]
 })
