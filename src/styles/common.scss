@@ -5,3 +5,12 @@
  */
 
 
+a {
+  color: #1976d2;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
