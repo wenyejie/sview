@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import './radio.scss';
+
   export default {
     name: 'Radio',
     props: {

@@ -4,5 +4,6 @@
  */
 
 import Breadcrumb from './breadcrumb.vue';
+import './breadcrumb.scss';
 
 export default Breadcrumb;

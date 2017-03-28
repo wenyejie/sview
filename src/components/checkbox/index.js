@@ -4,5 +4,6 @@
  */
 
 import Checkbox from './checkbox.vue';
+import './checkbox.scss';
 
 export default Checkbox;

@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import './breadcrumb.scss';
   export default {
     name: 'Breadcrumb',
     props: {

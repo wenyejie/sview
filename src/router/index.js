@@ -48,6 +48,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/checkbox'], resolve);
       }
+    },
+
+    {
+      path: '/icon',
+      name: 'IconExample',
+      component: resolve => {
+        require(['@/view/icon'], resolve);
+      }
     }
 
   ]

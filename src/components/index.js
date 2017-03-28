@@ -8,13 +8,15 @@ import RadioGroup from './radioGroup';
 import Checkbox from './checkbox';
 import CheckboxGroup from './checkGroup';
 import Breadcrumb from './breadcrumb';
+import Icon from './icon';
 
 const sview = {
   Radio,
   RadioGroup,
   Breadcrumb,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Icon
 };
 
 const install = Vue => {
