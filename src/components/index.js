@@ -4,10 +4,11 @@
  */
 
 import Radio from './radio';
+import RadioGroup from './radioGroup';
 
 const sview = {
-  Radio: Radio.Radio,
-  RadioGroup: Radio.RadioGroup
+  Radio,
+  RadioGroup,
 };
 
 const install = Vue => {
