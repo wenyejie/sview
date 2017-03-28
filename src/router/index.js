@@ -40,6 +40,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/breadcrumb'], resolve);
       }
+    },
+
+    {
+      path: '/checkbox',
+      name: 'CheckboxExample',
+      component: resolve => {
+        require(['@/view/checkbox'], resolve);
+      }
     }
 
   ]
