@@ -64,6 +64,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/button'], resolve);
       }
+    },
+
+    {
+      path: '/dialog',
+      name: 'DialogExample',
+      component: resolve => {
+        require(['@/view/dialog/index'], resolve);
+      }
     }
 
   ]

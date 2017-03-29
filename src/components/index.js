@@ -10,6 +10,7 @@ import CheckboxGroup from './checkGroup';
 import Breadcrumb from './breadcrumb';
 import Icon from './icon';
 import Button from './button';
+import Dialog from './dialog';
 
 const sview = {
   Radio,
@@ -18,13 +19,16 @@ const sview = {
   Checkbox,
   CheckboxGroup,
   Icon,
-  sButton: Button
+  sButton: Button,
+  sDialog: Dialog
 };
 
 const install = Vue => {
   Object.keys(sview).forEach(key => {
     Vue.component(key, sview[key]);
   });
+
+  Vue.prototype.$Dialog = Dialog;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

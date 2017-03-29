@@ -7,6 +7,7 @@
   <button
     :type="native"
     :class="classes"
+    @click="handleClick"
   >
     <template v-if="icon"><icon :type="icon"></icon></template>
     <slot></slot>
@@ -57,7 +58,11 @@
     data () {
       return {}
     },
-    methods: {},
+    methods: {
+      handleClick (event) {
+        this.$emit('click', event);
+      }
+    },
     computed: {
       classes () {
         return [
