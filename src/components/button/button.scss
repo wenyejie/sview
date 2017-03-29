@@ -1,0 +1,111 @@
+@charset "utf-8";
+/**
+ * author: Storm
+ * date: 2017/03/28
+ */
+
+.s-button {
+  display: inline-block;
+  vertical-align: middle;
+  color: #657180;
+  background-color: #f7f7f7;
+  border: 1px solid #d7dde4;
+  border-radius: .25em;
+  padding: 10px 20px;
+  line-height: 1;
+  transition: all .3s ease;
+
+  &-lg {
+    padding: 13px 36px;
+    font-size: 20px;
+  }
+
+  &-sm {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #20a0ff;
+    border-color: #20a0ff;
+  }
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus {
+    color: #bfcbd9;
+    background-color: #eef1f6;
+    border-color: #d1dbe5;
+  }
+
+  &-block {
+    width: 100%;
+    display: block;
+  }
+
+  &-primary {
+    color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+
+    &:hover, &:focus {
+      background: #4db3ff;
+      border-color: #4db3ff;
+      color: #fff;
+    }
+
+  }
+
+  &-success {
+    color: #fff;
+    background-color: #13ce66;
+    border-color: #13ce66;
+
+    &:hover, &:focus {
+      color: #fff;
+      background: #42d885;
+      border-color: #42d885;
+    }
+
+  }
+
+  &-warning {
+    color: #fff;
+    background-color: #f7ba2a;
+    border-color: #f7ba2a;
+
+    &:hover, &:focus {
+      background: #f9c855;
+      border-color: #f9c855;
+      color: #fff;
+    }
+
+  }
+
+  &-danger {
+    color: #fff;
+    background-color: #ff4949;
+    border-color: #ff4949;
+
+    &:hover, &:focus {
+      background: #ff6d6d;
+      border-color: #ff6d6d;
+      color: #fff;
+    }
+  }
+
+  &-info {
+    color: #fff;
+    background-color: #50bfff;
+    border-color: #50bfff;
+
+    &:hover, &:focus {
+      background: #73ccff;
+      border-color: #73ccff;
+      color: #fff;
+    }
+
+  }
+
+}

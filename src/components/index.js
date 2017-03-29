@@ -9,6 +9,7 @@ import Checkbox from './checkbox';
 import CheckboxGroup from './checkGroup';
 import Breadcrumb from './breadcrumb';
 import Icon from './icon';
+import Button from './button';
 
 const sview = {
   Radio,
@@ -16,7 +17,8 @@ const sview = {
   Breadcrumb,
   Checkbox,
   CheckboxGroup,
-  Icon
+  Icon,
+  sButton: Button
 };
 
 const install = Vue => {

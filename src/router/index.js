@@ -56,6 +56,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/icon'], resolve);
       }
+    },
+
+    {
+      path: '/button',
+      name: 'ButtonExample',
+      component: resolve => {
+        require(['@/view/button'], resolve);
+      }
     }
 
   ]

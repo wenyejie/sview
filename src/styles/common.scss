@@ -4,6 +4,14 @@
  * date: 2017/03/28
  */
 
+bdoy {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  line-height: 1.5;
+  color: #657180;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
 
 a {
   color: #1976d2;
@@ -13,4 +21,23 @@ a {
     text-decoration: underline;
   }
 
+}
+
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 0 150px;
+
+  & h1 {
+    font-size: 48px;
+    border-bottom: 1px solid #d7dde4;
+    margin-bottom: 30px;
+    text-align: center;
+  }
 }
