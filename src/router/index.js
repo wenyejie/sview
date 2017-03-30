@@ -70,7 +70,15 @@ export default new Router({
       path: '/dialog',
       name: 'DialogExample',
       component: resolve => {
-        require(['@/view/dialog/index'], resolve);
+        require(['@/view/dialog'], resolve);
+      }
+    },
+
+    {
+      path: '/table',
+      name: 'TableExample',
+      component: resolve => {
+        require(['@/view/table'], resolve);
       }
     }
 

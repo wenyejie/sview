@@ -53,7 +53,7 @@
 
         // 如果是group则向上传递事件
         if (this.isGroup) {
-          this.$parent.change(this.label);
+          this.$parent[checked ? 'add' : 'delete'](this.label);
         }
 
       }
@@ -61,7 +61,7 @@
     mounted () {
 
       // one of radio group?
-      if (this.$parent.$options.name === 'CheckGroup') {
+      if (this.$parent.$options.name === 'CheckboxGroup') {
         this.isGroup = true;
       }
 

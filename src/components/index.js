@@ -11,6 +11,7 @@ import Breadcrumb from './breadcrumb';
 import Icon from './icon';
 import Button from './button';
 import Dialog from './dialog';
+import Table from './table';
 
 const sview = {
   Radio,
@@ -20,7 +21,8 @@ const sview = {
   CheckboxGroup,
   Icon,
   sButton: Button,
-  sDialog: Dialog
+  sDialog: Dialog,
+  sTable: Table
 };
 
 const install = Vue => {

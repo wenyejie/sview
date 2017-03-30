@@ -26,34 +26,35 @@
     },
     data () {
       return {
-        array: this.value
+        groups: this.value,
+        oldVal: null
       }
     },
     methods: {
-      add (val) {
-        this.array.push(val);
-      },
-      delete (val) {
-        this.array.splice(this.array.indexOf(val), 1);
-      },
       update () {
-        const length = this.$children.length;
-        this.array.forEach(item => {
-          for (let i = 0; i < length; i++) {
-            if (item === this.$children[i].label) {
-              this.$children[i].val = true;
-              break;
-            }
-            if (i + 1 === length) {
-              this.$children[i].val = false;
-            }
-          }
+        const value = this.value;
+
+        // 遍历所有子元素，给予选中/不选中
+        this.groups.forEach(item => {
+          this.$children.forEach(child => {
+            child.val = child.label === value;
+          });
         });
-        this.emit();
       },
-      emit () {
-        this.$emit('input', this.array);
-        this.$emit('change', this.array);
+      change (value) {
+        if (this.oldVal === value) return false;
+        this.oldVal = value;
+        this.updateGroups(value);
+      },
+      updateGroups (val) {
+
+        if (this.groups.includes(val)) {
+          this.groups.splice(this.groups.indexOf(val), 1);
+        } else {
+          this.groups.push(val);
+        }
+        this.$emit('input', this.groups);
+        this.$emit('change', this.groups);
       }
     },
     computed: {
@@ -67,12 +68,15 @@
     },
     mounted () {
       this.update();
+      this.change(this.value);
 
     },
     watch: {
-      value (val) {
-        this.array = val;
-        this.update();
+      value (val, oldVal) {
+        if (val !== oldVal) {
+          this.update();
+          this.change(val);
+        }
       }
     }
   }
