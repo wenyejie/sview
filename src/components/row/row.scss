@@ -1,0 +1,36 @@
+@charset "utf-8";
+/**
+ * author: Storm
+ * date: 2017/03/31
+ */
+.s-row {
+  display: flex;
+
+  &-justify-left {
+    justify-content: flex-start;
+  }
+  &-justify-right {
+    justify-content: flex-end;
+  }
+  &-justify-center {
+    justify-content: center;
+  }
+  &-justify-between {
+    justify-content: space-between;
+  }
+  &-justify-around {
+    justify-content: space-around;
+  }
+  &-align-top {
+    align-items: flex-start;
+  }
+  &-align-bottom {
+    align-items: flex-end;
+  }
+  &-align-center {
+    align-items: center;
+  }
+  &-align-stretch {
+    align-items: stretch;
+  }
+}

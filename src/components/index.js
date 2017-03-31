@@ -12,6 +12,7 @@ import Icon from './icon';
 import Button from './button';
 import Dialog from './dialog';
 import Table from './table';
+import Row from './row';
 
 const sview = {
   Radio,
@@ -22,7 +23,8 @@ const sview = {
   Icon,
   sButton: Button,
   sDialog: Dialog,
-  sTable: Table
+  sTable: Table,
+  sRow: Row
 };
 
 const install = Vue => {

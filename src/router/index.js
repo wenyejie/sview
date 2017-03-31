@@ -80,6 +80,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/table'], resolve);
       }
+    },
+
+    {
+      path: '/row',
+      name: 'RowExample',
+      component: resolve => {
+        require(['@/view/row'], resolve);
+      }
     }
 
   ]
