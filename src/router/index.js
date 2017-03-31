@@ -88,6 +88,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/row'], resolve);
       }
+    },
+
+    {
+      path: '/col',
+      name: 'ColExample',
+      component: resolve => {
+        require(['@/view/col'], resolve);
+      }
     }
 
   ]

@@ -15,7 +15,7 @@
     props: {
       gutter: {
         type: [Number, String],
-        default: 10
+        default: 0
       },
       align: {
         type: String,

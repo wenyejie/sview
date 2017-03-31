@@ -1,0 +1,14 @@
+@charset "utf-8";
+/**
+ * author: Storm
+ * date: 2017/03/31
+ */
+
+.s-col {
+
+  @for $i from 1 through 24 {
+    &-#{$i} { width: $i / 24 * 100%; }
+    &-offset-#{$i} { margin-left: $i / 24 * 100% }
+  }
+
+}
