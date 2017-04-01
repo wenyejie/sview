@@ -14,6 +14,7 @@ import Dialog from './dialog';
 import Table from './table';
 import Row from './row';
 import Col from './col';
+import Switch from './switch';
 
 const sview = {
   Radio,
@@ -26,7 +27,8 @@ const sview = {
   sDialog: Dialog,
   sTable: Table,
   sRow: Row,
-  sCol: Col
+  sCol: Col,
+  sSwitch: Switch
 };
 
 const install = Vue => {

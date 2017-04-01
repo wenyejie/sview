@@ -11,4 +11,51 @@
     &-offset-#{$i} { margin-left: $i / 24 * 100% }
   }
 
+  @media (max-width: 768px) {
+    @for $i from 1 through 24 {
+      &-xs-#{$i} { width: $i / 24 * 100%; }
+      &-xs-offset-#{$i} { margin-left: $i / 24 * 100% }
+    }
+  }
+
+  @media (min-width: 768px) {
+    @for $i from 1 through 24 {
+      &-sm-#{$i} { width: $i / 24 * 100%; }
+      &-sm-offset-#{$i} { margin-left: $i / 24 * 100% }
+    }
+  }
+
+  @media (min-width: 992px) {
+    @for $i from 1 through 24 {
+      &-md-#{$i} { width: $i / 24 * 100%; }
+      &-md-offset-#{$i} { margin-left: $i / 24 * 100% }
+    }
+  }
+
+  @media (min-width: 1200px) {
+    @for $i from 1 through 24 {
+      &-lg-#{$i} { width: $i / 24 * 100%; }
+      &-lg-offset-#{$i} { margin-left: $i / 24 * 100% }
+    }
+  }
+
+  &-align {
+
+    &-top {
+      align-self: flex-start;
+    }
+
+    &-bottom {
+      align-self: flex-end;
+    }
+
+    &-center {
+      align-self: center;
+    }
+
+    &-stretch {
+      align-self: stretch;
+    }
+  }
+
 }

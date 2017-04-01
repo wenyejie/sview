@@ -96,6 +96,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/col'], resolve);
       }
+    },
+
+    {
+      path: '/switch',
+      name: 'SwitchExample',
+      component: resolve => {
+        require(['@/view/switch'], resolve);
+      }
     }
 
   ]
