@@ -54,7 +54,7 @@
       styles () {
         let ret = {};
         if(this.gutter) {
-          ret.paddingLeft = this.gutter + (/^\d+$/.test(this.gutter) ? '' : 'px');
+          ret.paddingLeft = this.gutter + (/^\d+$/.test(this.gutter) ? 'px' : '');
           ret.paddingRight = ret.paddingLeft;
         }
         return ret;

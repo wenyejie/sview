@@ -37,7 +37,7 @@
       styles () {
         let ret = {};
         if(this.gutter) {
-          ret.marginLeft = -this.gutter + (/^\d+$/.test(this.gutter) ? '' : 'px');
+          ret.marginLeft = -this.gutter + (/^\d+$/.test(this.gutter) ? 'px' : '');
           ret.marginRight = ret.marginLeft;
         }
         return ret;

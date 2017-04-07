@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
 
   // 开启 HTML5 History 模式
-  mode: 'history',
+  // mode: 'history',
 
   // 路由变更之后的滚动行为
   scrollBehavior (to, form, savedPosition) {
@@ -103,6 +103,14 @@ export default new Router({
       name: 'SwitchExample',
       component: resolve => {
         require(['@/view/switch'], resolve);
+      }
+    },
+
+    {
+      path: '/tool',
+      name: 'Tool',
+      component: resolve => {
+        require(['@/view/tool'], resolve);
       }
     }
 
