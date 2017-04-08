@@ -51,7 +51,7 @@
         ret = ret.replace(/\sid="[^"]+"/g, '');
         ret = ret.replace(/[\s]{2,}/g, ' ');
         ret = ret.replace(/%3E %3C/g, '%3E%3C');
-        //ret = ret.replace(/" \w/g, '" \w');
+        //ret = ret.replace(/"\s(\w)/g, '"$1');
         ret = 'data:image/svg+xml;charset=utf8,' + ret;
         this.textarea = ret;
       },

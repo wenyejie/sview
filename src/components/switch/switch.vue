@@ -4,13 +4,15 @@
  -->
 
 <template>
-  <label class="s-switch">
-    <input type="checkbox" class="s-switch-input">
-    <span class="s-switch-inner">
-      <span class="s-switch-on">ON</span>
-      <span class="s-switch-off">OFF</span>
-    </span>
-  </label>
+    <input
+      :checked="checked"
+      :disabled="disabled"
+      :name="name"
+      @change="handleChange"
+      @click="handleClick"
+      type="checkbox"
+      class="s-switch"
+    >
 </template>
 
 <script>
@@ -20,13 +22,44 @@
       value: {
         type: Boolean
       },
+      trueValue: {
+        default: true
+      },
+      falseValue: {
+        default: false
+      },
       disabled: {
+        type: Boolean
+      },
+      name: {
+        type: String
+      },
+      checked: {
         type: Boolean
       }
     },
     data () {
-      return {}
+      return {
+        isChecked: this.checked,
+        val: this.value
+      }
     },
-    methods: {}
+    methods: {
+      handleChange ($event) {
+        this.$emit('change', this.isChecked ? this.trueValue : this.falseValue, $event);
+      },
+      handleClick ($event) {
+        this.isChecked = $event.target.checked;
+        this.$emit('input', $event.target.checked ? this.trueValue : this.falseValue);
+      }
+    },
+    created() {
+      this.$emit('input', this.isChecked ? this.trueValue : this.falseValue);
+    },
+    watch: {
+      value () {
+        this.isChecked = this.value === this.trueValue;
+      }
+    }
   }
 </script>
