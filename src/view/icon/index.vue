@@ -11,147 +11,147 @@
       <h3 class="example-title">type - 类型</h3>
       <div class="iconExample-type">
         <div>
-          <icon type="appreciate"></icon>
+          <s-icon type="appreciate"></s-icon>
           <p>appreciate</p>
         </div>
         <div>
-          <icon type="check"></icon>
+          <s-icon type="check"></s-icon>
           <p>check</p>
         </div>
         <div>
-          <icon type="close"></icon>
+          <s-icon type="close"></s-icon>
           <p>close</p>
         </div>
         <div>
-          <icon type="edit"></icon>
+          <s-icon type="edit"></s-icon>
           <p>edit</p>
         </div>
         <div>
-          <icon type="favorfill"></icon>
+          <s-icon type="favorfill"></s-icon>
           <p>favorfill</p>
         </div>
         <div>
-          <icon type="favor"></icon>
+          <s-icon type="favor"></s-icon>
           <p>favor</p>
         </div>
         <div>
-          <icon type="roundcheckfill"></icon>
+          <s-icon type="roundcheckfill"></s-icon>
           <p>roundcheckfill</p>
         </div>
         <div>
-          <icon type="roundcheck"></icon>
+          <s-icon type="roundcheck"></s-icon>
           <p>roundcheck</p>
         </div>
         <div>
-          <icon type="roundclosefill"></icon>
+          <s-icon type="roundclosefill"></s-icon>
           <p>roundclosefill</p>
         </div>
         <div>
-          <icon type="roundclose"></icon>
+          <s-icon type="roundclose"></s-icon>
           <p>roundclose</p>
         </div>
         <div>
-          <icon type="search"></icon>
+          <s-icon type="search"></s-icon>
           <p>search</p>
         </div>
         <div>
-          <icon type="timefill"></icon>
+          <s-icon type="timefill"></s-icon>
           <p>timefill</p>
         </div>
         <div>
-          <icon type="time"></icon>
+          <s-icon type="time"></s-icon>
           <p>time</p>
         </div>
         <div>
-          <icon type="unfold"></icon>
+          <s-icon type="unfold"></s-icon>
           <p>unfold</p>
         </div>
         <div>
-          <icon type="commentfill"></icon>
+          <s-icon type="commentfill"></s-icon>
           <p>commentfill</p>
         </div>
         <div>
-          <icon type="comment"></icon>
+          <s-icon type="comment"></s-icon>
           <p>comment</p>
         </div>
         <div>
-          <icon type="likefill"></icon>
+          <s-icon type="likefill"></s-icon>
           <p>likefill</p>
         </div>
         <div>
-          <icon type="like"></icon>
+          <s-icon type="like"></s-icon>
           <p>like</p>
         </div>
         <div>
-          <icon type="back"></icon>
+          <s-icon type="back"></s-icon>
           <p>back</p>
         </div>
         <div>
-          <icon type="more"></icon>
+          <s-icon type="more"></s-icon>
           <p>more</p>
         </div>
         <div>
-          <icon type="right"></icon>
+          <s-icon type="right"></s-icon>
           <p>right</p>
         </div>
         <div>
-          <icon type="moreandroid"></icon>
+          <s-icon type="moreandroid"></s-icon>
           <p>moreandroid</p>
         </div>
         <div>
-          <icon type="deletefill"></icon>
+          <s-icon type="deletefill"></s-icon>
           <p>deletefill</p>
         </div>
         <div>
-          <icon type="delete"></icon>
+          <s-icon type="delete"></s-icon>
           <p>delete</p>
         </div>
         <div>
-          <icon type="fold"></icon>
+          <s-icon type="fold"></s-icon>
           <p>fold</p>
         </div>
         <div>
-          <icon type="appreciatefill"></icon>
+          <s-icon type="appreciatefill"></s-icon>
           <p>appreciatefill</p>
         </div>
         <div>
-          <icon type="infofill"></icon>
+          <s-icon type="infofill"></s-icon>
           <p>infofill</p>
         </div>
         <div>
-          <icon type="info"></icon>
+          <s-icon type="info"></s-icon>
           <p>info</p>
         </div>
         <div>
-          <icon type="warnfill"></icon>
+          <s-icon type="warnfill"></s-icon>
           <p>warnfill</p>
         </div>
         <div>
-          <icon type="warn"></icon>
+          <s-icon type="warn"></s-icon>
           <p>warn</p>
         </div>
         <div>
-          <icon type="female"></icon>
+          <s-icon type="female"></s-icon>
           <p>female</p>
         </div>
         <div>
-          <icon type="male"></icon>
+          <s-icon type="male"></s-icon>
           <p>male</p>
         </div>
         <div>
-          <icon type="add1"></icon>
+          <s-icon type="add1"></s-icon>
           <p>add1</p>
         </div>
         <div>
-          <icon type="move"></icon>
+          <s-icon type="move"></s-icon>
           <p>move</p>
         </div>
         <div>
-          <icon type="triangledownfill"></icon>
+          <s-icon type="triangledownfill"></s-icon>
           <p>triangledownfill</p>
         </div>
         <div>
-          <icon type="triangleupfill"></icon>
+          <s-icon type="triangleupfill"></s-icon>
           <p>triangleupfill</p>
         </div>
       </div>

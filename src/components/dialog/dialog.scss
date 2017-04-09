@@ -20,7 +20,6 @@
   &-mark {
     position: absolute;
     background-color: rgba(0, 0, 0, .5);
-
   }
 
   &-overflow {
@@ -56,18 +55,6 @@
     width: 5.4rem;
     background-color: #fff;
     border-radius: .1rem;
-  }
-
-  &-lg &-content {
-    width: 900px;
-  }
-
-  &-md &-content {
-    width: 600px;
-  }
-
-  &-sm &-content {
-    width: 300px;
   }
 
   &-header {

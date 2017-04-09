@@ -15,6 +15,7 @@
 .s-icon {
 
   font-family: "s-iconfont" !important;
+  line-height: 1;
   font-size: inherit;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -107,10 +108,14 @@
   &-warnfill:before {
     content: "\e6e4";
     transform: rotate(180deg);
+    display: inline-flex;
+    line-height: 0.875;
   }
   &-warn:before {
     content: "\e6e5";
     transform: rotate(180deg);
+    display: inline-flex;
+    line-height: 0.875;
   }
   &-female:before {
     content: "\e71a";

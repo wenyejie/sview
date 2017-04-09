@@ -9,7 +9,7 @@
     :class="classes"
     @click="handleClick"
   >
-    <template v-if="icon"><icon :type="icon"></icon></template>
+    <template v-if="icon"><s-icon :type="icon"></s-icon></template>
     <slot></slot>
   </button>
 </template>

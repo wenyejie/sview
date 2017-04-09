@@ -15,6 +15,7 @@ import Table from './table';
 import Row from './row';
 import Col from './col';
 import Switch from './switch';
+import Message from './message';
 
 const sview = {
   Radio,
@@ -22,13 +23,14 @@ const sview = {
   Breadcrumb,
   Checkbox,
   CheckboxGroup,
-  Icon,
+  sIcon: Icon,
   sButton: Button,
   sDialog: Dialog,
   sTable: Table,
   sRow: Row,
   sCol: Col,
-  sSwitch: Switch
+  sSwitch: Switch,
+  sMessage: Message
 };
 
 const install = Vue => {
@@ -37,6 +39,7 @@ const install = Vue => {
   });
 
   Vue.prototype.$Dialog = Dialog;
+  Vue.prototype.$Message = Message;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

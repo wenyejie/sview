@@ -112,6 +112,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/tool'], resolve);
       }
+    },
+
+    {
+      path: '/message',
+      name: 'MessageExample',
+      component: resolve => {
+        require(['@/view/message'], resolve);
+      }
     }
 
   ]
