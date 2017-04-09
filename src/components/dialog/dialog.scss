@@ -10,6 +10,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  font-size: .28rem;
 }
 .s-dialog {
   position: fixed;
@@ -18,19 +19,33 @@
 
   &-mark {
     position: absolute;
-    background-color: rgba(0, 0, 0, .45);
+    background-color: rgba(0, 0, 0, .5);
+
   }
 
   &-overflow {
     overflow: hidden;
   }
   &-footer {
-    padding: 10px 20px 15px;
-    text-align: right;
+    display: flex;
+    border-top: 1px solid #D8D8D8;
+  }
+  &-cancel,
+  &-ok {
+    flex-grow: 1;
+    padding: .21rem 0;
+    border: none;
+    background-color: transparent;
   }
   &-cancel + &-ok {
-    margin-left: 15px;
+    border-left: 1px solid #D8D8D8;
 
+  }
+  &-ok {
+    color: #FD802C;
+  }
+  &-cancel {
+    color: #333;
   }
   &-content {
     position: absolute;
@@ -38,10 +53,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    width: 420px;
-    box-shadow: 0 4px 26px 0 rgba(204, 204, 204, .46);
+    width: 5.4rem;
     background-color: #fff;
-    border-radius: .25em;
+    border-radius: .1rem;
   }
 
   &-lg &-content {
@@ -61,10 +75,12 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 1;
+    text-align: center;
   }
 
   &-body {
-    padding: 30px 20px;
+    padding: .5rem;
+    text-align: center;
   }
 
   &-enter,

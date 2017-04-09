@@ -12,7 +12,7 @@
       <div class="s-dialog-mark"></div>
       <div class="s-dialog-content" :style="contentStyles">
         <a v-if="showClose" class="s-dialog-close s-icon s-icon-close"></a>
-        <header v-if="showHeader || title" class="s-dialog-header">
+        <header v-if="showHeader" class="s-dialog-header">
           <h4>
             <slot name="header">{{title}}</slot>
           </h4>
@@ -24,8 +24,8 @@
         </div>
         <footer v-if="showFooter" class="s-dialog-footer">
           <slot name="footer">
-            <s-button v-if="showCancel" @click="cancel" class="s-dialog-cancel">{{cancelText}}</s-button>
-            <s-button v-if="showOk" @click="ok" type="primary" class="s-dialog-ok">{{okText}}</s-button>
+            <button v-if="showCancel" @click="cancel" class="s-dialog-cancel">{{cancelText}}</button>
+            <button v-if="showOk" @click="ok" type="primary" class="s-dialog-ok">{{okText}}</button>
           </slot>
         </footer>
       </div>

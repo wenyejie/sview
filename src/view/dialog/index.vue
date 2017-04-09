@@ -47,7 +47,7 @@
     },
     methods: {
       show002 () {
-        this.$Dialog.alert('请登录游戏！')
+        this.$Dialog.confirm('请登录游戏！')
           .then(() => {
             console.log('demo');
           })

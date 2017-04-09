@@ -5,9 +5,9 @@
  */
 
 body {
-  font: 14px/1.5 "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-  color: #657180;
-  background-color: #fff;
+  font: .24rem/1.5 "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  color: #333;
+  background-color: #F4F4F4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24,19 +24,6 @@ a {
 
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-
-  max-width: 1200px;
+  max-width: 640px;
   margin: 0 auto;
-  padding: 60px 0 150px;
-
-  & h1 {
-    font-size: 48px;
-    border-bottom: 1px solid #d7dde4;
-    margin-bottom: 30px;
-    text-align: center;
-  }
 }
