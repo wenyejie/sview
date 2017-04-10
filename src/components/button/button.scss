@@ -19,14 +19,14 @@
   max-width: 100%;
   font-size: .26rem;
 
-  &-angle {
-    border-radius: 0;
-  }
-
   &-lg {
     height: .8rem;
     letter-spacing: .01rem;
     border-radius: .1rem;
+  }
+
+  &-angle {
+    border-radius: 0;
   }
 
   &-lg &-round {
