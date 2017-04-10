@@ -142,7 +142,15 @@ export default new Router({
       path: '/popup',
       name: 'PopupExample',
       component: resolve => {
-        require(['@/view/popup/'], resolve);
+        require(['@/view/popup'], resolve);
+      }
+    },
+
+    {
+      path: '/tabs',
+      name: 'TabsExample',
+      component: resolve => {
+        require(['@/view/tabs'], resolve);
       }
     }
 

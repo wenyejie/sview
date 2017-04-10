@@ -1,0 +1,15 @@
+@charset "utf-8";
+/**
+ * TabsPanel
+ *
+ * author: Storm
+ * date: 2017/04/10
+ */
+
+.s-tabs-panel {
+  display: none;
+}
+
+.s-tabs-panel.on {
+  display: block;
+}
