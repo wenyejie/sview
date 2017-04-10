@@ -12,9 +12,7 @@
       :disabled="disabled"
       :checked="val"
       @change="change"
-    >
-    <span class="s-radio-inner"></span>
-    <span class="s-radio-text"><slot>{{label}}</slot></span>
+    ><span class="s-radio-text"><slot>{{label}}</slot></span>
   </label>
 </template>
 
@@ -26,6 +24,9 @@
       value: {},
       type: {
         type: String
+      },
+      block: {
+        type: Boolean
       },
       size: {},
       label: {
@@ -69,10 +70,13 @@
     },
     computed: {
       classes () {
-        return {
-          's-radio-disabled': !!this.disabled,
-          [`s-radio-${this.type}`]: !!this.type
-        }
+        return [
+          this.block ? 's-radio-block' : 's-radio-inline',
+          {
+            's-radio-disabled': !!this.disabled,
+            [`s-radio-${this.type}`]: !!this.type,
+          }
+        ]
       }
     },
     watch: {
