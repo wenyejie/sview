@@ -80,10 +80,12 @@ const getInstance = (opts) => {
  * @param opts 实例化选项
  * @returns {Promise} 返回一个Promise
  */
-const vmInit = (text = '', opts = {}) => {
+Message.init = (text = '', opts = {}) => {
   return new Promise((resolve) => {
-    if (text !== '') {
+    if (typeof text === 'string') {
       opts.body = text;
+    } else if (typeof text === 'object') {
+      opts = text;
     }
     const vm = getInstance(opts);
     opts.onOk = resolve;
@@ -100,23 +102,41 @@ const vmInit = (text = '', opts = {}) => {
 Message.success = (text = '', opts = {}) => {
   opts.type = 'success';
   opts.icon = 'roundcheckfill';
-  return vmInit(text, opts);
+  return Message.init(text, opts);
 };
 
 /**
  * 警告弹出框
- * @param text 弹出框文本
- * @param opts 弹出框选项
+ * @param text 提示框文本
+ * @param opts 提示框选项
  * @returns {Promise} 返回一个Promise对象
  */
 Message.warning = (text = '', opts = {}) => {
   opts.type = 'warning';
   opts.icon = 'warnfill';
-  return vmInit(text, opts);
+  return Message.init(text, opts);
 };
 
+/**
+ * 默认提示提示框
+ * @param text 提示框文本
+ * @param opts 提示框选项
+ * @returns {Promise}
+ */
 Message.default = (text = '', opts = {}) => {
-  return vmInit(text, opts);
+  return Message.init(text, opts);
+};
+
+/**
+ * loading提示框
+ * @param text 提示框文本
+ * @param opts 提示框选项
+ * @returns {Promise}
+ */
+Message.loading = (text = '', opts = {}) => {
+  opts.type = 'loading';
+  opts.icon = 'loading';
+  return Message.init(text, opts);
 };
 
 /**

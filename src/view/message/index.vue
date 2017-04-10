@@ -9,12 +9,17 @@
 
     <section>
       <h3 class="example-title">success - 成功</h3>
-      <s-button type="primary" @click="show001">显示</s-button>
+      <s-button type="primary" @click="show001">success</s-button>
     </section>
 
     <section>
       <h3 class="example-title">warning - 警告</h3>
-      <s-button type="primary" @click="show002">显示</s-button>
+      <s-button type="primary" @click="show002">warning</s-button>
+    </section>
+
+    <section>
+      <h3 class="example-title">loading - 警告</h3>
+      <s-button type="primary" @click="show003">loading</s-button>
     </section>
 
   </div>
@@ -37,6 +42,12 @@
           /*.then(() => {
             console.log('demo');
           })*/
+      },
+      show003 () {
+        this.$Message.loading('加载中')
+          .then(() => {
+            console.log('loading success');
+          });
       }
     }
   }
