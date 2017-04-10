@@ -136,6 +136,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/flag'], resolve);
       }
+    },
+
+    {
+      path: '/popup',
+      name: 'PopupExample',
+      component: resolve => {
+        require(['@/view/popup/'], resolve);
+      }
     }
 
   ]
