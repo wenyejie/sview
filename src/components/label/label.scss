@@ -1,0 +1,31 @@
+@charset "utf-8";
+/**
+ * Label
+ *
+ * author: Storm
+ * date: 2017/04/10
+ */
+
+.s-label {
+  display: inline-block;
+  vertical-align: middle;
+  color: #f4f4f4;
+  height: 1.3333333333333333em;
+  line-height: 1.3333333333333333;
+  font-size: .75em;
+  border-radius: .02rem;
+  padding-left: .1rem;
+  padding-right: .1rem;
+
+  &-primary {
+    background-color: #ff9947;
+  }
+
+  &-warning {
+    background-color: #ffca37;
+  }
+
+  &-info {
+    background-color: #b3c2ec;
+  }
+}

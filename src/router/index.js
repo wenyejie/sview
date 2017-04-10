@@ -120,6 +120,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/message'], resolve);
       }
+    },
+
+    {
+      path: '/label',
+      name: 'LabelExample',
+      component: resolve => {
+        require(['@/view/label'], resolve);
+      }
     }
 
   ]
