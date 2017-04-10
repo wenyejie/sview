@@ -7,9 +7,12 @@
  */
 
 .s-tabs-panel {
-  display: none;
-}
+  transition: opacity .3s ease-in-out;
 
-.s-tabs-panel.on {
-  display: block;
+  &-enter {
+    opacity: 0;
+  }
+  &-leave-active {
+    display: none;
+  }
 }

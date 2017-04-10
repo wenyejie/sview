@@ -6,7 +6,9 @@
  -->
 
 <template>
-  <div class="s-tabs-panel" :class="classes"><slot></slot></div>
+  <transition name="s-tabs-panel">
+    <div v-show="visible" class="s-tabs-panel" :class="classes"><slot></slot></div>
+  </transition>
 </template>
 
 <script>
@@ -19,12 +21,20 @@
       }
     },
     data () {
-      return {}
+      return {
+        visible: false
+      }
     },
     methods: {},
     computed: {
       classes () {
-        return this.$parent.activeIndex === this._uid ? 'on' : '';
+        this.visible = this.$parent.activeIndex === this._uid;
+        return this.visible ? 'on' : '';
+      }
+    },
+    watch: {
+      'this.$parent.activeIndex' () {
+        this.visible = this.$parent.activeIndex === this._uid;
       }
     }
   }
