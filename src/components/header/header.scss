@@ -1,0 +1,87 @@
+@charset "utf-8";
+/**
+ * Header
+ *
+ * author: Storm
+ * date: 2017/04/10
+ */
+
+.header {
+  height: .88rem;
+  position: relative;
+
+  &-default {
+    background-image: linear-gradient(to left, #f25200 0%, #ff9616 100%);
+    color: #fff;
+
+    .header-back {
+      color: #fff;
+    }
+
+    a {
+      color: #fff;
+    }
+
+  }
+
+  &-white {
+    background-color: #fff;
+    color: #333;
+
+    a {
+      color: #333;
+    }
+  }
+
+  &-l,
+  &-r {
+    position: absolute;
+  }
+
+  &-l {
+    left: 0;
+  }
+
+  &-r {
+    right: 0;
+    line-height: .88rem;
+    font-size: .28rem;
+
+    a {
+      display: inline-block;
+      font-size: .28rem;
+      padding-left: .2rem;
+      padding-right: .2rem;
+    }
+  }
+
+  &-c {
+    flex-grow: 1;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    overflow: hidden;
+  }
+
+  &-back {
+    display: inline-block;
+    line-height: .88rem;
+    font-size: .36rem;
+    padding: 0 .16rem;
+  }
+
+  &-title {
+    font-size: .32rem;
+    line-height: .88rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-line {
+    color: rgba(255,255,255,.2);
+    margin-left: .022rem;
+    margin-right: .022rem;
+  }
+
+}
