@@ -128,6 +128,14 @@ export default new Router({
       component: resolve => {
         require(['@/view/label'], resolve);
       }
+    },
+
+    {
+      path: '/flag',
+      name: 'FlagExample',
+      component: resolve => {
+        require(['@/view/flag'], resolve);
+      }
     }
 
   ]

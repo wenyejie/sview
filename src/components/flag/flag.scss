@@ -1,0 +1,49 @@
+@charset "utf-8";
+/**
+ * Flag
+ *
+ * author: Storm
+ * date: 2017/04/10
+ */
+
+.s-flag {
+  position: relative;
+  width: .4rem;
+  height: .5rem;
+  font-size: .14rem;
+  line-height: .16rem;
+  text-align: center;
+  color: #fff;
+  padding: .05rem .06rem;
+  margin-right: .1rem;
+  word-wrap: break-word;
+
+  span {
+    display: block;
+    font-size: .18rem;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    border-width: 0 .2rem .06rem .2rem;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+  }
+
+  &-primary {
+    background-color: #FF9947;
+  }
+
+  &-warning {
+    background-color: #FFB816;
+  }
+
+  &-info {
+    background-color: #81C8E4;
+  }
+}
