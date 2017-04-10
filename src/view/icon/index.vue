@@ -154,6 +154,10 @@
           <s-icon type="triangleupfill"></s-icon>
           <p>triangleupfill</p>
         </div>
+        <div>
+          <s-icon type="loading"></s-icon>
+          <p>loading</p>
+        </div>
       </div>
     </section>
   </div>

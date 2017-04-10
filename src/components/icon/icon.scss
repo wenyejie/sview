@@ -108,13 +108,13 @@
   &-warnfill:before {
     content: "\e6e4";
     transform: rotate(180deg);
-    display: inline-flex;
+    display: inline-block;
     line-height: 0.875;
   }
   &-warn:before {
     content: "\e6e5";
     transform: rotate(180deg);
-    display: inline-flex;
+    display: inline-block;
     line-height: 0.875;
   }
   &-female:before {
@@ -141,6 +141,14 @@
     background-size: 100%;
     width: 1em;
     height: 1em;
+    display: inline-block;
+    animation: s-loop 1s steps(12, end) infinite;
   }
 
+}
+
+@keyframes s-loop {
+  100% {
+    transform: rotate(360deg);
+  }
 }
