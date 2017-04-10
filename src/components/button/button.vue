@@ -10,7 +10,7 @@
     @click="handleClick"
   >
     <template v-if="icon"><s-icon :type="icon"></s-icon></template>
-    <slot></slot>
+    <span><slot></slot></span>
   </button>
 </template>
 
@@ -27,8 +27,9 @@
       },
       type: {
         type: String,
+        default: 'default',
         validator (val) {
-          return ['primary', 'info', 'success', 'warning', 'danger'].includes(val);
+          return ['default', 'primary', 'link'].includes(val);
         }
       },
       size: {
@@ -40,7 +41,7 @@
       shape: {
         type: String,
         validator (val) {
-          return ['shape'].includes('val');
+          return ['angle'].includes(val);
         }
       },
       block: {
@@ -70,6 +71,7 @@
           {
             [`s-button-${this.type}`]: !!this.type,
             [`s-button-${this.size}`]: !!this.size,
+            [`s-button-${this.shape}`]: !!this.shape,
             [`s-button-block`]: !!this.block,
             [`s-button-outline`]: !!this.outline,
           }

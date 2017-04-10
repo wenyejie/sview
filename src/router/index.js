@@ -20,7 +20,7 @@ export default new Router({
 
     {
       path: '/',
-      name: 'Hello',
+      name: 'App',
       component: resolve => {
         require(['@/view'], resolve);
       }

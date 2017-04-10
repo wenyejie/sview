@@ -10,44 +10,38 @@
     <section>
       <h3 class="example-title">type - 类型</h3>
       <s-button>Default</s-button>
+      <s-button type="link">Link</s-button>
       <s-button type="primary">Primary</s-button>
-      <s-button type="success">Success</s-button>
-      <s-button type="warning">Warning</s-button>
-      <s-button type="danger">Danger</s-button>
-      <s-button type="info">Info</s-button>
+    </section>
+
+    <section>
+      <h3 class="example-title">shape - 形状</h3>
+        <s-button type="primary">Default</s-button>
+        <s-button shape="angle" type="primary">Angle</s-button>
     </section>
 
     <section>
       <h3 class="example-title">size - 大小</h3>
-      <s-button size="lg" type="primary">Default</s-button>
-      <s-button type="primary">Primary</s-button>
-      <s-button size="sm" type="primary">Primary</s-button>
+      <s-button type="primary">Default(md)</s-button>
+      <s-button size="lg" type="primary">Lg</s-button>
+    </section>
+
+    <section>
+      <h3 class="example-title">icon - 图标</h3>
+      <s-button type="link" icon="favor">favor</s-button>
+      <s-button type="primary" icon="roundclose">roundclose</s-button>
     </section>
 
     <section>
       <h3 class="example-title">disabled - 禁用</h3>
       <s-button disabled>Default</s-button>
       <s-button disabled type="primary">Primary</s-button>
-      <s-button disabled type="success">Success</s-button>
-      <s-button disabled type="warning">Warning</s-button>
-      <s-button disabled type="danger">Danger</s-button>
-      <s-button disabled type="info">Info</s-button>
     </section>
 
     <section>
-      <h3 class="example-title">block - 块</h3>
-      <s-button>Default</s-button>
+      <h3 class="example-title">block - 块级</h3>
       <s-button block>Default</s-button>
-    </section>
-
-    <section>
-      <h3 class="example-title">icon - 图标</h3>
-      <s-button icon="delete">Default</s-button>
-      <s-button icon="appreciate" type="primary"></s-button>
-      <s-button icon="check" type="success">Success</s-button>
-      <s-button icon="close" type="warning">Warning</s-button>
-      <s-button icon="edit" type="danger">Danger</s-button>
-      <s-button icon="favor" type="info">Info</s-button>
+      <s-button block type="primary">Primary</s-button>
     </section>
 
   </div>
