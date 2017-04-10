@@ -128,6 +128,18 @@ Message.default = (text = '', opts = {}) => {
 };
 
 /**
+ * 错误提示框
+ * @param text 提示框文本
+ * @param opts 提示框选项
+ * @returns {Promise}
+ */
+Message.error = (text = '', opts = {}) => {
+  opts.type = 'error';
+  opts.icon = 'roundclosefill';
+  return Message.init(text, opts);
+};
+
+/**
  * loading提示框
  * @param text 提示框文本
  * @param opts 提示框选项

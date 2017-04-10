@@ -47,16 +47,6 @@
 
   }
 
-  &-loading {
-
-    & .s-message-content {
-      width: 1.5rem;
-      height: 1.5rem;
-      min-width: 0;
-    }
-
-  }
-
   &-icon {
 
     font-size: .3rem;
@@ -71,8 +61,11 @@
       color: #FFA045;
     }
 
+    &-error {
+      color: #FF5845;
+    }
+
     &-loading {
-      font-size: .48rem;
     }
 
   }

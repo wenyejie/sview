@@ -18,8 +18,13 @@
     </section>
 
     <section>
-      <h3 class="example-title">loading - 警告</h3>
-      <s-button type="primary" @click="show003">loading</s-button>
+      <h3 class="example-title">error - 错误</h3>
+      <s-button type="primary" @click="show003">error</s-button>
+    </section>
+
+    <section>
+      <h3 class="example-title">loading - 加载</h3>
+      <s-button type="primary" @click="show004">loading</s-button>
     </section>
 
   </div>
@@ -44,6 +49,9 @@
           })*/
       },
       show003 () {
+        this.$Message.error('网络错误！');
+      },
+      show004 () {
         this.$Message.loading('加载中')
           .then(() => {
             console.log('loading success');

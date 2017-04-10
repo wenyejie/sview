@@ -36,7 +36,7 @@
       },
       duration: {
         type: Number,
-        default: 30000
+        default: 3000
       },
       body: {
         type: String
