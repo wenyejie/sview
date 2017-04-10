@@ -14,11 +14,11 @@
   line-height: .16rem;
   text-align: center;
   color: #fff;
-  padding: .05rem .06rem;
+  padding: .05rem 0;
   margin-right: .1rem;
-  word-wrap: break-word;
 
   span {
+    margin-top: -.01rem;
     display: block;
     font-size: .18rem;
     line-height: 1;
