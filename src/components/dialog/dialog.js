@@ -86,10 +86,12 @@ const getInstance = (opts) => {
  * @param opts 实例化选项
  * @returns {Promise} 返回一个Promise
  */
-const vmInit = (text = '', opts = {}) => {
+Dialog.init = (text = '', opts = {}) => {
   return new Promise((resolve, reject) => {
-    if (text !== '') {
+    if (typeof text === 'string') {
       opts.body = text;
+    } else if (typeof text === 'object') {
+      opts = text;
     }
     const vm = getInstance(opts);
     opts.onOk = resolve;
@@ -105,7 +107,7 @@ const vmInit = (text = '', opts = {}) => {
  * @returns {Promise} 返回一个Promise对象
  */
 Dialog.confirm = (text = '', opts = {}) => {
-  return vmInit(text, opts);
+  return Dialog.init(text, opts);
 };
 
 /**
@@ -116,7 +118,7 @@ Dialog.confirm = (text = '', opts = {}) => {
  */
 Dialog.alert = (text = '', opts = {}) => {
   opts.showCancel = false;
-  return vmInit(text, opts);
+  return Dialog.init(text, opts);
 };
 
 /**
