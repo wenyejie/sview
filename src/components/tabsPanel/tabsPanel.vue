@@ -31,11 +31,6 @@
         this.visible = this.$parent.activeIndex === this._uid;
         return this.visible ? 'on' : '';
       }
-    },
-    watch: {
-      'this.$parent.activeIndex' () {
-        this.visible = this.$parent.activeIndex === this._uid;
-      }
     }
   }
 </script>
