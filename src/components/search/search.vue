@@ -1,0 +1,58 @@
+<!--
+ - Search
+ -
+ - author: Storm
+ - date: 2017/04/13
+ -->
+
+<template>
+  <form class="s-search" @submit.prevent="handleSubmit">
+    <label class="s-search-label">
+      <s-icon type="search" class="s-search-icon"></s-icon>
+      <input type="search"
+             class="s-search-input"
+             :value="val"
+             :placeholder="placeholder"
+             :name="name"
+             @keyup.enter="handleEnter">
+    </label>
+    <button class="s-search-btn"
+            :type="type"
+            @click="handleButtonClick">{{text}}</button>
+  </form>
+</template>
+
+<script>
+  export default {
+    name: 'Search',
+    props: {
+      value: [String, Number],
+      name: String,
+      placeholder: String,
+      text: {
+        type: String,
+        default: '取消'
+      },
+      type: {
+        type: String,
+        default: 'button'
+      }
+    },
+    data () {
+      return {
+        val: this.value
+      }
+    },
+    methods: {
+      handleSubmit ($event) {
+        this.$emit('on-submit', $event);
+      },
+      handleEnter ($event) {
+        this.$emit('enter', $event);
+      },
+      handleButtonClick ($event) {
+        this.$emit('on-button-click', $event);
+      }
+    }
+  }
+</script>

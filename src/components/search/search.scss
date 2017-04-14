@@ -1,0 +1,49 @@
+@charset "utf-8";
+/**
+ * Search
+ *
+ * author: Storm
+ * date: 2017/04/13
+ */
+
+.s-search {
+
+  display: flex;
+  position: relative;
+  padding: .14rem .24rem;
+
+  &-label {
+    position: relative;
+    flex: 1;
+    display: block;
+  }
+
+  &-input {
+    width: 100%;
+    border: none;
+    height: .6rem;
+    padding: 0 0 0 .53rem;
+    border-radius: .3rem;
+    color: #333;
+    font-size: .24rem;
+    background-color: #fff;
+  }
+
+  &-icon {
+    color: #EB7A26;
+    position: absolute;
+    left: .2rem;
+    font-size: .23rem;
+    top: 50%;
+    margin-top: -.5em;
+  }
+
+  &-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0 .24rem;
+    margin-right: -.24rem;
+    height: .6rem;
+  }
+
+}

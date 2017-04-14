@@ -1,0 +1,37 @@
+@charset "utf-8";
+/**
+ * Input
+ *
+ * author: Storm
+ * date: 2017/04/10
+ */
+
+.s-input {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  line-height: 1;
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-box {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding: .26rem .62rem .26rem .16rem;
+    font-size: .26rem;
+  }
+
+  &-close {
+    position: absolute;
+    font-size: .3rem;
+    right: .16rem;
+    top: 50%;
+    margin-top: -.15rem;
+    color: #E0DFDE;
+    line-height: 1;
+  }
+}

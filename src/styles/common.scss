@@ -22,8 +22,25 @@ a {
 
 }
 
+$placeholder: #ccc;
+
+::-webkit-input-placeholder {
+  color: $placeholder;
+}
+:-moz-placeholder {
+  color: $placeholder;
+}
+:-ms-input-placeholder {
+  color: $placeholder;
+}
+
 
 #app {
   max-width: 640px;
+  min-height: 100vh;
   margin: 0 auto;
+}
+
+#app > div {
+  min-height: 100vh;
 }

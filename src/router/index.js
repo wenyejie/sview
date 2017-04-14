@@ -152,6 +152,22 @@ export default new Router({
       component: resolve => {
         require(['@/view/tabs'], resolve);
       }
+    },
+
+    {
+      path: '/input',
+      name: 'InputExample',
+      component: resolve => {
+        require(['@/view/input'], resolve);
+      }
+    },
+
+    {
+      path: '/search',
+      name: 'SearchExample',
+      component: resolve => {
+        require(['@/view/search'], resolve);
+      }
     }
 
   ]
