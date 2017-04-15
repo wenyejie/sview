@@ -10,7 +10,6 @@
 
   display: flex;
   position: relative;
-  padding: .14rem .24rem;
 
   &-label {
     position: relative;
@@ -20,10 +19,10 @@
 
   &-input {
     width: 100%;
-    border: none;
+    border: .01rem solid #F67B29;
     height: .6rem;
-    padding: 0 0 0 .53rem;
-    border-radius: .3rem;
+    padding: 0 .36rem 0 .53rem;
+    border-radius: .3rem 0 0 .3rem;
     color: #333;
     font-size: .24rem;
     background-color: #fff;
@@ -39,11 +38,29 @@
   }
 
   &-btn {
-    background-color: transparent;
     border: none;
-    padding: 0 .24rem;
-    margin-right: -.24rem;
     height: .6rem;
+    padding: 0 .36rem;
+    background-image: linear-gradient(-174deg, #F75D25 1%, #FF9F50 100%);
+    border-radius: 0 .3rem .3rem 0;
+    color: #fff;
+    font-size: .24rem;
   }
 
+}
+
+.header .s-search {
+  padding: .14rem .24rem;
+
+  &-btn {
+    background: none;
+    margin-right: -.24rem;
+    padding: 0 .24rem;
+    font-size: .26rem;
+  }
+
+  &-input {
+    border: none;
+    border-radius: .3rem;
+  }
 }
