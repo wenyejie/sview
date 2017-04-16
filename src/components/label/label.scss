@@ -10,12 +10,12 @@
   display: inline-block;
   vertical-align: middle;
   color: #f4f4f4;
-  height: 1.3333333333333333em;
-  line-height: 1.3333333333333333;
+  /*height: 1.3333333333333333em;
+  line-height: 1.3333333333333333;*/
+  line-height: 1;
   font-size: .75em;
   border-radius: .02rem;
-  padding-left: .1rem;
-  padding-right: .1rem;
+  padding: .16666666666666666em .47619047619047616em;
 
   &-primary {
     background-color: #ff9947;
@@ -28,4 +28,35 @@
   &-info {
     background-color: #b3c2ec;
   }
+
+  &-android,
+  &-ios,
+  &-jailbreak {
+    padding-left: .5714285714285714em;
+    padding-right: .5714285714285714em;
+    border-radius: .6666666666666666em;
+    min-width: .64rem;
+    text-align: center;
+  }
+
+  &-android {
+    background-image: linear-gradient(-90deg, #0BC1B5 0%, #1AE5B5 100%);
+  }
+
+  &-ios {
+    background-image: linear-gradient(-90deg, #62BEFF 0%, #67DDF3 100%);
+  }
+
+  &-jailbreak {
+    background-image: linear-gradient(-90deg, #928AFC 0%, #BD96F9 100%);
+  }
+
+  &-outline {
+    font-size: .22rem;
+    border: .01rem solid #A1B9E1;
+    color: #A1B9E1;
+    padding: .06rem .27rem;
+    border-radius: .18rem;
+  }
+
 }

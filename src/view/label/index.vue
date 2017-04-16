@@ -18,9 +18,13 @@
 
     <section>
       <h3>type - 类型</h3>
-      <s-label type="primary">primary</s-label>
-      <s-label type="warning">warning</s-label>
-      <s-label type="info">info</s-label>
+      <s-label type="primary">账号</s-label>
+      <s-label type="warning">游戏币</s-label>
+      <s-label type="info">装备</s-label>
+      <s-label type="android">安卓</s-label>
+      <s-label type="ios">ios</s-label>
+      <s-label type="jailbreak">苹果越狱</s-label>
+      <s-label type="outline">账号</s-label>
     </section>
 
   </div>
@@ -44,6 +48,6 @@
 
 <style scoped>
   .labelExample {
-    font-size: .24rem;
+    font-size: .28rem;
   }
 </style>

@@ -44,3 +44,9 @@ $placeholder: #ccc;
 #app > div {
   min-height: 100vh;
 }
+
+// 让文本与inline-block组件对齐
+.text-middle {
+  vertical-align: middle;
+  display: inline-block;
+}
