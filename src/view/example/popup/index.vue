@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import Popup from '../../components/popup';
+  import Popup from '../../../components/popup';
   export default {
     name: 'PopupExample',
     components: {

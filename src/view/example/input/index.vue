@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import Input from '../../components/input';
+  import Input from '../../../components/input';
   export default {
     name: 'InputExample',
     components: {

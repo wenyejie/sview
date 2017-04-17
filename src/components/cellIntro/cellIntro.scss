@@ -8,8 +8,8 @@
 
 .s-cell-intro {
   font-size: .22rem;
-  line-height: 1;
-  padding: .14rem .24rem;
+  line-height: 1.2727272727272727;
+  padding: .11rem .24rem;
   background-color: #f4f4f4;
   color: #666;
 
@@ -19,7 +19,8 @@
 
   &-icon {
     font-size: .2rem;
-    margin-left: -.1rem;
+    position: relative;
+    left: -.1rem;
     margin-right: .02rem;
     color: #FF7653;
   }

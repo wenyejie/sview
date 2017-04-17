@@ -19,6 +19,7 @@ import Message from './message';
 import Header from './header';
 import Cell from './cell';
 import CellIntro from './cellIntro';
+import Link from './link';
 
 const sview = {
   Radio,
@@ -36,7 +37,8 @@ const sview = {
   sMessage: Message,
   sHeader: Header,
   sCell: Cell,
-  sCellIntro: CellIntro
+  sCellIntro: CellIntro,
+  sLink: Link
 };
 
 const install = Vue => {

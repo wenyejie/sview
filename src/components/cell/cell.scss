@@ -8,19 +8,17 @@
 
 .s-cell {
   background-color: #fff;
-  padding: .31rem .24rem;
+  padding-left: .24rem;
+  padding-right: .24rem;
+  height: .88rem;
+  line-height: .88rem;
   display: flex;
-  line-height: 1;
   font-size: .26rem;
   color: #333;
 
   &-lg {
-    padding: .37rem .24rem;
-  }
-
-  &:hover,
-  &:focus {
-    opacity: .75;
+    height: 1rem;
+    line-height: 1rem;
   }
 
   & + & {

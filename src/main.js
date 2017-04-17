@@ -10,7 +10,6 @@ Vue.config.productionTip = false;
 
 Vue.use(sView);
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

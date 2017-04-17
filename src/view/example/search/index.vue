@@ -16,7 +16,7 @@
 </template>
 
 <script>
-  import Search from '../../components/search';
+  import Search from '../../../components/search';
   export default {
     name: 'SearchExample',
     components: {
