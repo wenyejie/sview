@@ -17,6 +17,8 @@ import Col from './col';
 import Switch from './switch';
 import Message from './message';
 import Header from './header';
+import Cell from './cell';
+import CellIntro from './cellIntro';
 
 const sview = {
   Radio,
@@ -32,7 +34,9 @@ const sview = {
   sCol: Col,
   sSwitch: Switch,
   sMessage: Message,
-  sHeader: Header
+  sHeader: Header,
+  sCell: Cell,
+  sCellIntro: CellIntro
 };
 
 const install = Vue => {

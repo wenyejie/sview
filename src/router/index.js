@@ -168,6 +168,22 @@ export default new Router({
       component: resolve => {
         require(['@/view/search'], resolve);
       }
+    },
+
+    {
+      path: '/cell',
+      name: 'CellExample',
+      component: resolve => {
+        require(['@/view/cell'], resolve);
+      }
+    },
+
+    {
+      path: '/link',
+      name: 'LinkExample',
+      component: resolve => {
+        require(['@/view/link'], resolve);
+      }
     }
 
   ]
