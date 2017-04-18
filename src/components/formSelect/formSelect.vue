@@ -22,7 +22,8 @@
         <li class="s-form-select-item"
             v-for="item in opts"
             :class="{'selected': item.selected}"
-            @click="selectItem(item)">{{item[name]}}</li>
+            @click="selectItem(item)">{{item[name]}}
+        </li>
       </ul>
     </transition>
 
@@ -67,8 +68,8 @@
       },
       listStyles () {
         let sty = {};
-        const length = this.options.length >=5 ? 5 : this.options.length;
-        sty.height =  (56 * length + 29) / 100 + 'rem';
+        const length = this.options.length >= 5 ? 5 : this.options.length;
+        sty.height = (56 * length + 29) / 100 + 'rem';
         return sty;
       }
     },

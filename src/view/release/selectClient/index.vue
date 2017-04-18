@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app" class="selectGame">
+  <div id="app">
     <s-header>选择客户端</s-header>
 
     <s-main>

@@ -15,7 +15,7 @@
       <form name="goodsInfo" novalidate>
         <s-cell-intro icon="warning">请认真填写您出售的商品信息，让买家快速了解并下单，可大大提高成功交易机会。</s-cell-intro>
         <s-cell>
-          <span class="text-primary">*&nbsp;</span>
+          <span class="c-primary">*&nbsp;</span>
           <span>上传图片</span>
           <s-radio-group v-model="hasImage" slot="right">
             <s-radio :label="true" name="city">有图</s-radio>
@@ -62,8 +62,8 @@
         </s-form-control>
 
         <s-cell-intro>每笔交易将被收取
-          <span class="text-primary">0</span> 元服务费,
-          <span class="text-primary">&lt;收费规则&gt;</span>
+          <span class="c-primary">0</span> 元服务费,
+          <span class="c-primary">&lt;收费规则&gt;</span>
         </s-cell-intro>
 
         <div class="content" style="margin-top: .36rem">

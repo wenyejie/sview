@@ -9,12 +9,13 @@ export default {
   path: '/example',
   name: 'Example',
   component: {
-    template: '<router-view></router-view>'
+    template: '<router-view></router-view>',
+    name: 'Example'
   },
   children: [
     {
       path: '',
-      name: 'example',
+      name: 'Example',
       component: resolve => {
         require(['@/view/example'], resolve);
       }

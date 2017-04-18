@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div class="s-main" :class="classes"><slot></slot></div>
+  <div class="s-main" :class="classes" :style="styles"><slot></slot></div>
 </template>
 
 <script>
@@ -25,6 +25,14 @@
         return {
           [`s-main-${this.bgc}`]: !!this.bgc
         }
+      },
+      bottom () {
+        return this.$store.state.mainDown;
+      },
+      styles () {
+        let sty = {};
+        sty.paddingBottom = this.bottom + (/^\d+$/.test(this.bottom) ? 'rem' : '');
+        return sty;
       }
     },
     methods: {}

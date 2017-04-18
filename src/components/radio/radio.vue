@@ -28,7 +28,12 @@
       block: {
         type: Boolean
       },
-      size: {},
+      size: {
+        type: String,
+        validator (val) {
+          return ['sm'].includes(val);
+        }
+      },
       label: [String, Number, Boolean],
       name: String,
       disabled: Boolean
@@ -73,6 +78,7 @@
           {
             's-radio-disabled': !!this.disabled,
             [`s-radio-${this.type}`]: !!this.type,
+            [`s-radio-${this.size}`]: !!this.size,
           }
         ]
       }

@@ -8,8 +8,9 @@
 export default {
   path: '/release',
   name: 'Release',
-  component: resolve => {
-    require(['@/view/release'], resolve);
+  component: {
+    template: '<router-view></router-view>',
+    name: 'Release'
   },
   children: [
 
@@ -18,14 +19,14 @@ export default {
       path: 'selectGame',
       name: 'SelectGame',
       component: resolve => {
-        require(['@/view/release/selectGame/index'], resolve);
+        require(['@/view/release/selectGame'], resolve);
       }
     },
     {
       path: 'selectClass',
       name: 'SelectClass',
       component: resolve => {
-        require(['@/view/release/selectClass/index'], resolve);
+        require(['@/view/release/selectClass'], resolve);
       }
     },
 
@@ -34,7 +35,7 @@ export default {
       path: 'selectType',
       name: 'SelectType',
       component: resolve => {
-        require(['@/view/release/selectType/index'], resolve);
+        require(['@/view/release/selectType'], resolve);
       }
     },
 
@@ -43,7 +44,7 @@ export default {
       path: 'selectClient',
       name: 'SelectClient',
       component: resolve => {
-        require(['@/view/release/selectClient/index'], resolve);
+        require(['@/view/release/selectClient'], resolve);
       }
     },
 
@@ -52,7 +53,7 @@ export default {
       path: 'selectArea',
       name: 'SelectArea',
       component: resolve => {
-        require(['@/view/release/selectArea/index'], resolve);
+        require(['@/view/release/selectArea'], resolve);
       }
     },
 
@@ -61,7 +62,7 @@ export default {
       path: 'selectServer',
       name: 'selectServer',
       component: resolve => {
-        require(['@/view/release/selectServer/index'], resolve);
+        require(['@/view/release/selectServer'], resolve);
       }
     },
 
@@ -70,7 +71,16 @@ export default {
       path: 'goodsInfo',
       name: 'goodsInfo',
       component: resolve => {
-        require(['@/view/release/goodsInfo/index'], resolve);
+        require(['@/view/release/goodsInfo'], resolve);
+      }
+    },
+
+    // 填写寄售账号信息
+    {
+      path: 'accountInfo',
+      name: 'accountInfo',
+      component: resolve => {
+        require(['@/view/release/accountInfo'], resolve);
       }
     }
 

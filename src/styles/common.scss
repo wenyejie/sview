@@ -63,7 +63,10 @@ h3 {
 
 $required: #fa5a5a;
 
-.text-primary {
+.c-9 {
+  color: #999;
+}
+.c-primary {
   color: #FF7653;
 }
 
@@ -74,4 +77,15 @@ $required: #fa5a5a;
     position: absolute;
     left: .24rem;
   }
+}
+
+.fz-22 {
+  font-size: .22rem;
+}
+
+.mt-15 {
+  margin-top: .15rem;
+}
+.mt-30 {
+  margin-top: .3rem;
 }

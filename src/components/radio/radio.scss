@@ -9,6 +9,10 @@
   cursor: pointer;
   font-size: .26rem;
 
+  &-sm {
+    font-size: .22rem;
+  }
+
   &-inline {
     & + & {
       margin-left: .225rem;
