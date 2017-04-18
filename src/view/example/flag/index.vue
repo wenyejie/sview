@@ -19,8 +19,8 @@
 </template>
 
 <script>
-  import FlagGroup from '../../../components/flagGroup';
-  import Flag from '../../../components/flag';
+  import FlagGroup from '@/components/flagGroup';
+  import Flag from '@/components/flag';
   export default {
     name: 'FlagExample',
     components: {

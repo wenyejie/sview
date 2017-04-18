@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <form class="s-search" @submit.prevent="handleSubmit">
+  <form class="s-search" @submit.prevent="handleSubmit" :class="classes">
     <label class="s-search-label">
       <s-icon type="search" class="s-search-icon"></s-icon>
       <input type="search"
@@ -17,7 +17,7 @@
              @keyup.enter="handleEnter">
     </label>
     <button class="s-search-btn"
-            :type="type"
+            type="button"
             @click="handleButtonClick">{{text}}</button>
   </form>
 </template>
@@ -35,12 +35,21 @@
       },
       type: {
         type: String,
-        default: 'button'
+        validator (val) {
+          return ['primary'].includes(val);
+        }
       }
     },
     data () {
       return {
         val: this.value
+      }
+    },
+    computed: {
+      classes () {
+        return {
+          [`s-search-${this.type}`]: !!this.type
+        }
       }
     },
     methods: {

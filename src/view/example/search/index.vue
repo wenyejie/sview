@@ -7,16 +7,14 @@
 
 <template>
   <div class="SearchExample">
-    <s-header title="Search">
-      <s-search @on-submit="submit" text="取消" placeholder="请输入游戏名称"></s-search>
-    </s-header>
+    <s-search @on-submit="submit" type="primary" text="取消" placeholder="请输入游戏名称"></s-search>
 
     <s-search placeholder="请输入游戏名称" text="搜索" style="margin-top: .2rem"></s-search>
   </div>
 </template>
 
 <script>
-  import Search from '../../../components/search';
+  import Search from '@/components/search';
   export default {
     name: 'SearchExample',
     components: {

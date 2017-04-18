@@ -6,14 +6,14 @@
  -->
 
 <template>
-  <div class="page404">
-    <h1>404</h1>
+  <div class="Release">
+
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Page404',
+    name: 'Release',
     props: {},
     data () {
       return {}
@@ -21,3 +21,6 @@
     methods: {}
   }
 </script>
+
+<style scoped>
+</style>

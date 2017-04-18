@@ -30,8 +30,8 @@
 </template>
 
 <script>
-  import Tabs from '../../../components/tabs';
-  import TabsPanel from '../../../components/tabsPanel';
+  import Tabs from '@/components/tabs';
+  import TabsPanel from '@/components/tabsPanel';
   export default {
     name: 'TabsExample',
     components: {

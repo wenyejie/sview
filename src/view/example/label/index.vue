@@ -32,7 +32,7 @@
 </template>
 
 <script>
-  import Label from '../../../components/label';
+  import Label from '@/components/label';
   export default {
     name: 'LabelExample',
     components: {

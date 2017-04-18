@@ -5,19 +5,17 @@
  */
 
 body {
-  font: .24rem/1.5 "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font: .24rem/1.5 "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   color: #333;
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 a {
   color: #1976d2;
   transition: color .3s ease-in-out;
 
 }
-
 $placeholder: #ccc;
 
 ::-webkit-input-placeholder {
@@ -29,20 +27,26 @@ $placeholder: #ccc;
 :-ms-input-placeholder {
   color: $placeholder;
 }
-
-
+html, body {
+  height: 100%;
+}
 #app {
   max-width: 640px;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
 }
-
 #app > div {
   min-height: 100vh;
 }
-
 // 让文本与inline-block组件对齐
 .text-middle {
   vertical-align: middle;
   display: inline-block;
+}
+.content {
+  padding-left: .24rem;
+  padding-right: .24rem;
 }

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Example from './example';
+import Release from './release';
 
 Vue.use(Router);
 
@@ -29,9 +30,11 @@ export default new Router({
 
     Example,
 
+    Release,
+
     {
       path:'*',
-      name: 'error404',
+      name: 'Page404',
       component: resolve => {
         require(['@/view/404.vue'], resolve);
       }

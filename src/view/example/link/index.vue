@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import Link from '../../../components/link';
+  import Link from '@/components/link';
   export default {
     name: 'LineExample',
     components: {

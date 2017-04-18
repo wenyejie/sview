@@ -1,12 +1,11 @@
 /**
- * example
+ * example page
  *
  * author: Storm
  * date: 2017/04/17
  */
 
 export default {
-
   path: '/example',
   name: 'Example',
   component: {

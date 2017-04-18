@@ -5,7 +5,7 @@
 
 import Vue from 'vue';
 import Dialog from './dialog.vue';
-import props2string from '../../untils/props2string';
+import props2string from '@/untils/props2string';
 
 let vmInstance;
 

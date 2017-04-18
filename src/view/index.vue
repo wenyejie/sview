@@ -5,7 +5,7 @@
       <div slot="right">
         <a href="">个人中心</a>
         <span class="header-line">|</span>
-        <a href="">我要卖</a>
+        <router-link to="/release/selectGame">我要卖</router-link>
       </div>
     </s-header>
 
