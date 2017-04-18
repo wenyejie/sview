@@ -1,7 +1,93 @@
 @charset "utf-8";
 /**
- * 表单控件
+ * Title
  *
  * author: Storm
  * date: 2017/04/18
  */
+
+.s-form-select {
+  position: relative;
+  overflow: hidden;
+
+  &-fold {
+    transform: rotate(180deg) !important;
+  }
+
+  .s-icon {
+    display: inline-block;
+    transition: all .3s ease;
+    transform: rotate(0deg);
+  }
+
+  .s-cell {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-list {
+    background-color: #fdfdfd;
+    color: #666;
+    border-top: .01rem solid #e5e5e5;
+    padding: .14rem 0;
+    transition: height .3s ease-in-out, padding .3s ease-in-out;
+    overflow: hidden;
+    max-height: 3.1rem;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  &-item {
+    padding: .14rem .83rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color .3s ease;
+
+    &:hover,
+    &:focus {
+      background: #eee;
+    }
+
+    &.selected {
+      position: relative;
+
+      &:before {
+
+        content: '';
+        position: absolute;
+        right: .24rem;
+        background: url('../../assets/selected.png');
+        width: .23rem;
+        height: .17rem;
+      }
+    }
+
+  }
+
+  .s-form-input,
+  & input {
+    width: 4.36rem;
+    display: block;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: right;
+  }
+
+  &-enter,
+  &-leave-active {
+    padding: 0;
+    height: 0 !important;
+  }
+
+  + & {
+    border-top: .01rem solid #e5e5e5;
+  }
+}
+.s-cell + .s-form-select,
+.s-form-select + .s-cell {
+  border-top: .01rem solid #e5e5e5;
+}

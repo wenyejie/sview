@@ -15,6 +15,7 @@
   display: flex;
   font-size: .26rem;
   color: #333;
+  align-content: space-between;
 
   &-lg {
     height: 1rem;
@@ -26,7 +27,7 @@
   }
 
   &-left {
-    flex-grow: 1;
+    flex-grow:1;
 
     .s-icon:first-child {
       color: #D6DAE0;
@@ -34,6 +35,7 @@
     }
   }
   &-right {
+    text-align: right;
     align-self: center;
     white-space: nowrap;
 

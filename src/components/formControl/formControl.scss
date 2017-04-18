@@ -1,0 +1,29 @@
+@charset "utf-8";
+/**
+ * 表单控件
+ *
+ * author: Storm
+ * date: 2017/04/18
+ */
+
+.s-form-control {
+
+  padding-left: .46rem;
+  position: relative;
+
+  .s-cell {
+    padding-left: .46rem;
+  }
+
+  .s-form-input,
+  & input {
+    width: 4.36rem;
+    display: block;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: right;
+  }
+}

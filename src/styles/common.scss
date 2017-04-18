@@ -18,6 +18,9 @@ a {
 }
 $placeholder: #ccc;
 
+.s-placeholder {
+  color: $placeholder;
+}
 ::-webkit-input-placeholder {
   color: $placeholder;
 }
@@ -58,6 +61,11 @@ h3 {
   }
 }
 
-.text-primary {
-  color: #FA5A5A;
+.s-form-required {
+  &:before {
+    content: '*';
+    color: #FA5A5A;
+    position: absolute;
+    left: .24rem;
+  }
 }

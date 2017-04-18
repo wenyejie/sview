@@ -177,6 +177,14 @@ export default {
       component: resolve => {
         require(['@/view/example/link'], resolve);
       }
+    },
+
+    {
+      path: 'formSelect',
+      name: 'FormSelect',
+      component: resolve => {
+        require(['@/view/example/formSelect'], resolve);
+      }
     }
   ]
 }
