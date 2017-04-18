@@ -6,12 +6,11 @@
  -->
 
 <template>
-  <div class="Release">
-
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
+  import './release.scss';
   export default {
     name: 'Release',
     props: {},
@@ -21,6 +20,3 @@
     methods: {}
   }
 </script>
-
-<style scoped>
-</style>

@@ -23,11 +23,11 @@ import Link from './link';
 import Main from './main';
 
 const sview = {
-  Radio,
-  RadioGroup,
-  Breadcrumb,
-  Checkbox,
-  CheckboxGroup,
+  sRadio: Radio,
+  sRadioGroup: RadioGroup,
+  sBreadcrumb: Breadcrumb,
+  sCheckbox: Checkbox,
+  sCheckboxGroup: CheckboxGroup,
   sIcon: Icon,
   sButton: Button,
   sDialog: Dialog,
@@ -40,7 +40,7 @@ const sview = {
   sCell: Cell,
   sCellIntro: CellIntro,
   sLink: Link,
-  [Main.name]: Main
+  sMain: Main
 };
 
 const install = Vue => {

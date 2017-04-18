@@ -7,13 +7,12 @@
  */
 
 .s-main {
-  background-color: #fff;
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 
-  &-gray {
-    background-color: #F4F4F4;
+  &-white {
+    background-color: #fff;
   }
 }

@@ -6,16 +6,16 @@
  -->
 
 <template>
-  <div class="s-cell-intro" :class="classes">
+  <h4 class="s-cell-intro" :class="classes">
     <s-icon :type="iconName"
             v-if="this.iconName"
             class="s-cell-intro-icon"></s-icon><slot></slot>
-  </div>
+  </h4>
 </template>
 
 <script>
   export default {
-    name: 'CellTitle',
+    name: 'CellIntro',
     props: {
       icon: {
         type: String,

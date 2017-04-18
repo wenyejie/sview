@@ -8,22 +8,50 @@
 export default {
   path: '/release',
   name: 'Release',
-  component: {
-    template: '<router-view></router-view>'
+  component: resolve => {
+    require(['@/view/release'], resolve);
   },
   children: [
     {
-      path: '',
-      name: 'ReleaseHome',
+      path: 'selectGame',
+      name: 'SelectGame',
       component: resolve => {
-        require(['@/view/release'], resolve);
+        require(['@/view/release/selectGame/index'], resolve);
       }
     },
     {
-      path: 'selectGame',
-      name: 'ReleaseSelectGame',
+      path: 'selectClass',
+      name: 'SelectClass',
       component: resolve => {
-        require(['@/view/release/selectGame/index'], resolve);
+        require(['@/view/release/selectClass/index'], resolve);
+      }
+    },
+    {
+      path: 'selectType',
+      name: 'SelectType',
+      component: resolve => {
+        require(['@/view/release/selectType/index'], resolve);
+      }
+    },
+    {
+      path: 'selectClient',
+      name: 'SelectClient',
+      component: resolve => {
+        require(['@/view/release/selectClient/index'], resolve);
+      }
+    },
+    {
+      path: 'selectArea',
+      name: 'SelectArea',
+      component: resolve => {
+        require(['@/view/release/selectArea/index'], resolve);
+      }
+    },
+    {
+      path: 'selectServer',
+      name: 'selectServer',
+      component: resolve => {
+        require(['@/view/release/selectServer/index'], resolve);
       }
     }
   ]

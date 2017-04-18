@@ -38,10 +38,12 @@ html, body {
   flex-direction: column;
   margin: 0 auto;
 }
-#app > div {
-  min-height: 100vh;
+
+h3 {
+  font-size: .28rem;
 }
-// 让文本与inline-block组件对齐
+
+/* 让文本与inline-block组件对齐 */
 .text-middle {
   vertical-align: middle;
   display: inline-block;
@@ -49,4 +51,9 @@ html, body {
 .content {
   padding-left: .24rem;
   padding-right: .24rem;
+
+  &-lg {
+    padding-left: .3rem;
+    padding-right: .3rem;
+  }
 }

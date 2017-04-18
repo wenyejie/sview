@@ -27,9 +27,20 @@
 
   &-left {
     flex-grow: 1;
+
+    .s-icon:first-child {
+      color: #D6DAE0;
+      margin-right: .12rem;
+    }
   }
   &-right {
     align-self: center;
     white-space: nowrap;
+
+    .s-icon:last-child {
+      color: #D8D8D8;
+    }
+
   }
+
 }

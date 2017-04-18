@@ -11,7 +11,7 @@
 
 <script>
   export default {
-    name: 'sMain',
+    name: 'Main',
     props: {
       bgc: {
         type: String
@@ -30,6 +30,3 @@
     methods: {}
   }
 </script>
-
-<style scoped>
-</style>

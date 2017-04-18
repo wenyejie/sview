@@ -11,6 +11,7 @@ export default {
       this.tag,
       {
         'class': this.classes,
+        'style': this.styles,
         props: {
           'to': this.to
         }
@@ -52,7 +53,8 @@ export default {
       validator (val) {
         return ['lg', 'sm'].includes(val)
       }
-    }
+    },
+    padding: [Number, String]
   },
   data () {
     return {}
@@ -62,9 +64,16 @@ export default {
       return [
         's-cell',
         {
-          [`s-cell-${this.size}`]: !!this.size
+          [`s-cell-${this.size}`]: !!this.size,
+          [`s-cell-noPadding`]: !!this.padding
         }
       ];
+    },
+    styles () {
+      let styles = {};
+      styles.paddingLeft = this.padding + (/^\d+$/.test(this.gutter) ? 'px' : '');
+      styles.paddingRight = styles.paddingLeft;
+      return styles;
     }
   },
   methods: {}

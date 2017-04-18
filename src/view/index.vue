@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
 
+  <div id="app" class="selectArea">
     <s-header>
       <div slot="right">
         <a href="">个人中心</a>
@@ -9,12 +9,9 @@
       </div>
     </s-header>
 
-    <div style="display: inline-block;">
-      <span style="width: 5px; display: inline-block;"></span>
-      <span></span>
-      <span style="width: 5px; display: inline-block;"></span>
-    </div>
+    <s-main bgc="gray">
 
+    </s-main>
   </div>
 </template>
 
