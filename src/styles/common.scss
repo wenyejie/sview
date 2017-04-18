@@ -61,10 +61,16 @@ h3 {
   }
 }
 
+$required: #fa5a5a;
+
+.text-primary {
+  color: #FF7653;
+}
+
 .s-form-required {
   &:before {
     content: '*';
-    color: #FA5A5A;
+    color: $required;
     position: absolute;
     left: .24rem;
   }

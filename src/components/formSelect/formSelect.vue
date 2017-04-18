@@ -36,12 +36,15 @@
       value: {},
       label: [Number, String],
       placeholder: String,
-      isRequired: Boolean,
-      isDisabled: Boolean,
-      isReadonly: Boolean,
+      required: Boolean,
+      disabled: Boolean,
+      readonly: Boolean,
       state: Boolean,
       options: {
-        type: [Object, Array]
+        type: [Object, Array],
+        default () {
+          return [];
+        }
       },
       name: String,
       val: String
@@ -57,9 +60,9 @@
     computed: {
       classes () {
         return {
-          [`s-form-required`]: !!this.isRequired,
-          [`s-form-disabled`]: !!this.isDisabled,
-          [`s-form-readonly`]: !!this.isReadonly
+          [`s-form-required`]: !!this.required,
+          [`s-form-disabled`]: !!this.disabled,
+          [`s-form-readonly`]: !!this.readonly
         }
       },
       listStyles () {
@@ -86,6 +89,7 @@
     },
     methods: {
       listen () {
+        if (!this.options) return false;
         for (let item of this.options) {
           if (this.value === (this.val ? item[this.val] : item)) {
             this.subLabel = item[this.name];

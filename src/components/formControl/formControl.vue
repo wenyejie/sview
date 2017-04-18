@@ -17,25 +17,23 @@
 
 <script>
   export default {
-    name: 'formSelect',
+    name: 'formControl',
     props: {
       label: [Number, String],
-      isRequired: Boolean,
-      isDisabled: Boolean,
-      isReadonly: Boolean
+      required: Boolean,
+      disabled: Boolean,
+      readonly: Boolean
     },
     data () {
       return {
-        required: false,
-        disabled: false
       }
     },
     computed: {
       classes () {
         return {
-          [`s-form-required`]: !!this.isRequired,
-          [`s-form-disabled`]: !!this.isDisabled,
-          [`s-form-readonly`]: !!this.isReadonly
+          [`s-form-required`]: !!this.required,
+          [`s-form-disabled`]: !!this.disabled,
+          [`s-form-readonly`]: !!this.readonly
         }
       }
     },
