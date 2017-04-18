@@ -31,10 +31,16 @@
       },
       styles () {
         let sty = {};
-        sty.paddingBottom = this.bottom + (/^\d+$/.test(this.bottom) ? 'rem' : '');
+        sty.paddingBottom = this.bottom + (/^[\.|\d]+$/.test(this.bottom) ? 'rem' : '');
         return sty;
       }
     },
-    methods: {}
+    methods: {},
+    created () {
+      this.$store.commit('setting', {
+        name: 'mainDown',
+        value: '.24'
+      })
+    }
   }
 </script>

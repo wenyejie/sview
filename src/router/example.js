@@ -14,13 +14,6 @@ export default {
   },
   children: [
     {
-      path: '',
-      name: 'Example',
-      component: resolve => {
-        require(['@/view/example'], resolve);
-      }
-    },
-    {
       path: 'radio',
       name: 'RadioExample',
       component: resolve => {
@@ -182,9 +175,17 @@ export default {
 
     {
       path: 'formSelect',
-      name: 'FormSelect',
+      name: 'FormSelectExample',
       component: resolve => {
         require(['@/view/example/formSelect'], resolve);
+      }
+    },
+
+    {
+      path: 'steps',
+      name: 'StepsExample',
+      component: resolve => {
+        require(['@/view/example/steps'], resolve);
       }
     }
   ]

@@ -1,0 +1,18 @@
+@charset "utf-8";
+/**
+ * Title
+ *
+ * author: Storm
+ * date: 2017/04/18
+ */
+
+.s-steps {
+  padding: .2rem .24rem;
+  background-color: #F4F4F4;
+
+  &-list {
+    border-radius: .06rem;
+    background-color: #fff;
+    padding: .3rem .35rem;
+  }
+}

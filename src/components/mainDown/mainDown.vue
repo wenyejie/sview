@@ -7,7 +7,9 @@
  -->
 
 <template>
-  <footer class="s-main-down"><slot></slot></footer>
+  <footer class="s-main-down">
+    <slot></slot>
+  </footer>
 </template>
 
 <script>
@@ -19,10 +21,9 @@
     },
     methods: {},
     mounted () {
-      console.log([this.$el]);
       this.$store.commit('setting', {
         name: 'mainDown',
-        value: this.$el.clientHeight + 'px'
+        value: this.$el.clientHeight / window.rootFontSize + 'rem'
       });
     }
   }

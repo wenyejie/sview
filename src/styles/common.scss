@@ -70,6 +70,14 @@ $required: #fa5a5a;
   color: #FF7653;
 }
 
+.bgc-white {
+  background-color: #fff;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
 .s-form-required {
   &:before {
     content: '*';
