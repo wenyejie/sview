@@ -29,9 +29,7 @@
         type: Boolean
       },
       size: {},
-      label: {
-        type: [String, Number]
-      },
+      label: [String, Number, Boolean],
       name: String,
       disabled: Boolean
     },
