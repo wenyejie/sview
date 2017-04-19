@@ -19,7 +19,7 @@ export default {
       path: 'selectGame',
       name: 'SelectGame',
       component: resolve => {
-        require(['@/view/release/selectGame'], resolve);
+        require(['@/view/release/selectGame/index.vue'], resolve);
       }
     },
     {
@@ -81,6 +81,15 @@ export default {
       name: 'accountInfo',
       component: resolve => {
         require(['@/view/release/accountInfo'], resolve);
+      }
+    },
+
+    // 发布成功
+    {
+      path: 'success',
+      name: 'success',
+      component: resolve => {
+        require(['@/view/release/success'], resolve);
       }
     }
 

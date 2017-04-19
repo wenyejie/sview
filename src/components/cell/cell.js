@@ -7,6 +7,31 @@
 export default {
   name: 'Cell',
   render (h) {
+    let array =  [
+      h(
+        'div',
+        {
+          attrs: {
+            'class': 's-cell-left'
+          }
+        },
+        this.$slots.default
+      )
+    ];
+
+    if (this.hasRight) {
+      array.push(h(
+        'div',
+        {
+          attrs: {
+            'class': 's-cell-right'
+          },
+
+        },
+        this.$slots.right
+      ));
+    }
+
     return h(
       this.tag,
       {
@@ -16,27 +41,8 @@ export default {
           'to': this.to
         }
       },
-      [
-        h(
-          'div',
-          {
-            attrs: {
-              'class': 's-cell-left'
-            }
-          },
-          this.$slots.default
-        ),
-        h(
-          'div',
-          {
-            attrs: {
-              'class': 's-cell-right'
-            }
-          },
-          this.$slots.right
-        )
-      ]
-    )
+      array
+    );
   },
   props: {
     label: String,
@@ -54,10 +60,12 @@ export default {
         return ['lg', 'sm'].includes(val)
       }
     },
-    padding: [Number, String]
+    padding: [Number, String],
   },
   data () {
-    return {}
+    return {
+      hasRight: null
+    }
   },
   computed: {
     classes () {
@@ -76,5 +84,7 @@ export default {
       return styles;
     }
   },
-  methods: {}
+  mounted () {
+    this.hasRight = !! this.$slots.right;
+  }
 }

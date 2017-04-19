@@ -146,6 +146,16 @@
     animation: s-loop 1s steps(12, end) infinite;
   }
 
+  &-success:before {
+    content: '\e656';
+    color: #6FD769;
+  }
+
+  &-success:before {
+    content: '\e656';
+    color: #EE5A5A;
+  }
+
 }
 
 @keyframes s-loop {

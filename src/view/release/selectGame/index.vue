@@ -6,6 +6,7 @@
  -->
 
 <template>
+
   <div id="app">
     <s-header>选择游戏</s-header>
 
@@ -71,6 +72,7 @@
 
     </s-main>
   </div>
+
 </template>
 
 <script>

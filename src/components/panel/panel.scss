@@ -1,0 +1,32 @@
+@charset "utf-8";
+/**
+ * Panel
+ *
+ * author: Storm
+ * date: 2017/04/19
+ */
+
+.s-panel {
+  background-color: #fff;
+  font-size: .24rem;
+  padding: .3rem .24rem .3rem;
+
+  &-lg {
+    padding: .4rem .3rem;
+  }
+
+  &-none {
+    padding: 0;
+  }
+
+  &-header {
+    font-size: .26rem;
+    line-height: 1;
+    color: #333;
+    font-weight: bold;
+  }
+
+  &-footer {
+    padding-top: .24rem;
+  }
+}

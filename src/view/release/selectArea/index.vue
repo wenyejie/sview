@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app" class="selectArea">
+  <div id="app">
     <s-header>选择服务区</s-header>
 
     <s-main>

@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="selectArea">
+  <div id="app">
     <s-header>
       <div slot="right">
         <a href="">个人中心</a>

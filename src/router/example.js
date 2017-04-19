@@ -187,6 +187,14 @@ export default {
       component: resolve => {
         require(['@/view/example/steps'], resolve);
       }
+    },
+
+    {
+      path: 'panel',
+      name: 'PanelExample',
+      component: resolve => {
+        require(['@/view/example/panel'], resolve);
+      }
     }
   ]
 }
