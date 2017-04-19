@@ -155,6 +155,18 @@
           <p>triangleupfill</p>
         </div>
         <div>
+          <s-icon type="link"></s-icon>
+          <p>link</p>
+        </div>
+        <div>
+          <s-icon type="success"></s-icon>
+          <p>success</p>
+        </div>
+        <div>
+          <s-icon type="error"></s-icon>
+          <p>error</p>
+        </div>
+        <div>
           <s-icon type="loading"></s-icon>
           <p>loading</p>
         </div>

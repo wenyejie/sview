@@ -19,7 +19,7 @@
       </s-steps>
 
       <s-panel>
-        <p>每日发布商品数： <span style="color: #FF9616">1</span> / 10</p>
+        <p>每日发布商品数： <span style="color: #ff9616">1</span> / 10</p>
 
         <template slot="footer">
           <s-row gutter=".1rem">
@@ -31,6 +31,44 @@
             </s-col>
           </s-row>
         </template>
+      </s-panel>
+
+      <s-panel title="交易安全防骗提醒" class="mt-20">
+
+        <ul class="content-neg c-9">
+          <s-cell tag="li">
+            <s-icon type="success"></s-icon>
+            客服只会通过本站内的聊天系统联系您
+          </s-cell>
+          <s-cell tag="li">
+            <s-icon type="success"></s-icon>
+            本站仅收取【交易服务费】交易成功时自动扣款 ，您提现的手续费由收款方自动扣除
+          </s-cell>
+          <s-cell tag="li">
+            <s-icon type="error"></s-icon>
+            交易时请勿在本站以外的聊天软件（如QQ、微信、贴吧等）进行沟通
+          </s-cell>
+          <s-cell tag="li">
+            <s-icon type="error"></s-icon>
+            本站不会要求您转账、汇款，或向您索要其他任何费用
+          </s-cell>
+          <s-cell tag="li">
+            <s-icon type="error"></s-icon>
+            本站不会向您主动索要游戏账号和密码
+          </s-cell>
+        </ul>
+
+        <template slot="footer">
+          <s-row gutter=".1rem">
+            <s-col span="12">
+              <s-button block>返回首页</s-button>
+            </s-col>
+            <s-col span="12">
+              <s-button block type="primary" shadow icon="link">复制商品链接</s-button>
+            </s-col>
+          </s-row>
+        </template>
+
       </s-panel>
 
     </s-main>

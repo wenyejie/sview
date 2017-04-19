@@ -64,16 +64,20 @@
 
   &-outline {
     border-color: #fd802c;
-    color: #FD802C;
+    color: #fd802c;
   }
 
   &-primary {
-    background-image: linear-gradient(to left, #FF775E 0%, #F9A567 100%);
+    background-image: linear-gradient(to left, #ff775e 0%, #f9a567 100%);
     color: #fff;
   }
 
   &-link {
     color: #999;
+  }
+
+  &-shadow {
+    box-shadow: 0 .01rem .16rem 0 rgba(255, 178, 178, .6);
   }
 
 }

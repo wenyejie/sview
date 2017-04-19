@@ -59,7 +59,13 @@ h3 {
     padding-left: .3rem;
     padding-right: .3rem;
   }
+
+  &-neg {
+    margin-left: -.24rem;
+    margin-right: -.24rem;
+  }
 }
+
 
 $required: #fa5a5a;
 
@@ -93,6 +99,9 @@ $required: #fa5a5a;
 
 .mt-15 {
   margin-top: .15rem;
+}
+.mt-20 {
+  margin-top: .2rem;
 }
 .mt-30 {
   margin-top: .3rem;

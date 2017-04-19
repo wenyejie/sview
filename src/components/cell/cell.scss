@@ -11,11 +11,12 @@
   padding-left: .24rem;
   padding-right: .24rem;
   height: .88rem;
-  line-height: .88rem;
+  line-height: 1.3333333333333333;
   display: flex;
-  font-size: .26rem;
-  color: #333;
+  //font-size: .26rem;
+  //color: #333;
   align-content: space-between;
+  align-items: center;
 
   &-lg {
     height: 1rem;
@@ -28,10 +29,12 @@
 
   &-left {
     flex-grow:1;
+    display: flex;
 
     .s-icon:first-child {
       color: #D6DAE0;
       margin-right: .12rem;
+      line-height: 1.3333333333333333;
     }
   }
   &-right {

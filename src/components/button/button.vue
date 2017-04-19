@@ -54,6 +54,9 @@
       },
       icon: {
         type: String
+      },
+      shadow: {
+        type: Boolean
       }
     },
     data () {
@@ -74,6 +77,7 @@
             [`s-button-${this.shape}`]: !!this.shape,
             [`s-button-block`]: !!this.block,
             [`s-button-outline`]: !!this.outline,
+            [`s-button-shadow`]: !!this.shadow,
           }
         ]
       }
