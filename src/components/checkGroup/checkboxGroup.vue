@@ -77,6 +77,3 @@
     }
   }
 </script>
-
-<style scoped>
-</style>

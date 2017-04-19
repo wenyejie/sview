@@ -77,6 +77,7 @@
 
 <script>
   import Search from '@/components/search';
+  import '../release.scss';
   export default {
     name: 'SelectGame',
     components: {
