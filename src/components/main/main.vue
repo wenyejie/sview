@@ -40,7 +40,7 @@
       this.$store.commit('setting', {
         name: 'mainDown',
         value: '.24'
-      })
+      });
     }
   }
 </script>

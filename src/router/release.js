@@ -17,14 +17,14 @@ export default {
     // 选择商品分类
     {
       path: 'selectGame',
-      name: 'SelectGame',
+      name: 'selectGameRelease',
       component: resolve => {
         require(['@/view/release/selectGame/index.vue'], resolve);
       }
     },
     {
       path: 'selectClass',
-      name: 'SelectClass',
+      name: 'selectClassRelease',
       component: resolve => {
         require(['@/view/release/selectClass'], resolve);
       }
@@ -33,7 +33,7 @@ export default {
     // 选择商品类型
     {
       path: 'selectType',
-      name: 'SelectType',
+      name: 'selectTypeRelease',
       component: resolve => {
         require(['@/view/release/selectType'], resolve);
       }
@@ -42,7 +42,7 @@ export default {
     // 选择客户端
     {
       path: 'selectClient',
-      name: 'SelectClient',
+      name: 'selectClientRelease',
       component: resolve => {
         require(['@/view/release/selectClient'], resolve);
       }
@@ -51,7 +51,7 @@ export default {
     // 选择服务区
     {
       path: 'selectArea',
-      name: 'SelectArea',
+      name: 'selectAreaRelease',
       component: resolve => {
         require(['@/view/release/selectArea'], resolve);
       }
@@ -60,7 +60,7 @@ export default {
     // 选择服务器
     {
       path: 'selectServer',
-      name: 'selectServer',
+      name: 'selectServerRelease',
       component: resolve => {
         require(['@/view/release/selectServer'], resolve);
       }
@@ -69,7 +69,7 @@ export default {
     // 填写商品描述
     {
       path: 'goodsInfo',
-      name: 'goodsInfo',
+      name: 'goodsInfoRelease',
       component: resolve => {
         require(['@/view/release/goodsInfo'], resolve);
       }
@@ -78,7 +78,7 @@ export default {
     // 填写寄售账号信息
     {
       path: 'accountInfo',
-      name: 'accountInfo',
+      name: 'accountInfoRelease',
       component: resolve => {
         require(['@/view/release/accountInfo'], resolve);
       }
@@ -87,7 +87,7 @@ export default {
     // 发布成功
     {
       path: 'success',
-      name: 'success',
+      name: 'successRelease',
       component: resolve => {
         require(['@/view/release/success'], resolve);
       }

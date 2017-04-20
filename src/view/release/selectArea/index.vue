@@ -12,8 +12,9 @@
     <s-main>
 
       <s-cell-intro>请选择商品所在服务区：</s-cell-intro>
-      <s-link>微信2区</s-link>
-      <s-link>微信20区</s-link>
+      <s-link v-for="item in serviceAreaList"
+              :key="item.domainId"
+              :to="`/release/selectServer?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${item.domainId}`">{{item.domainName}}</s-link>
 
     </s-main>
   </div>
@@ -24,8 +25,35 @@
     name: 'selectArea',
     props: {},
     data () {
-      return {}
+      return {
+        gameId: null,
+        goodsClassId: null,
+        goodsSubClassId: null,
+        clientId: null
+      }
     },
-    methods: {}
+    computed: {
+
+      // 从store中获取的服务区列表
+      serviceAreaList () {
+        return this.$store.state.serviceAreaList || [];
+      }
+    },
+    methods: {
+
+      // 获取链接中所带参数
+      getQuery () {
+        const query = this.$route.query;
+        this.gameId = parseInt(query.gameId);
+        this.goodsClassId = parseInt(query.goodsClassId);
+        this.goodsSubClassId = parseInt(query.goodsSubClassId);
+        this.clientId = parseInt(query.clientId);
+      },
+    },
+
+    created () {
+      this.getQuery();
+    }
+
   }
 </script>

@@ -23,13 +23,48 @@
           </s-radio-group>
         </s-cell>
 
-        <s-upload></s-upload>
-
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
+        <s-form-select
+          label="宝石名称"
+          placeholder="请选择"
+          name="name"
+          val="id"
+          :options="gemNames"
+          required></s-form-select>
 
-        <s-form-make v-for="item in attrs" :key="item.subClassAttrId" :options="item"></s-form-make>
+        <s-form-select
+          label="宝石等级"
+          placeholder="请选择"
+          name="name"
+          val="id"
+          :options="gemNames"
+          required></s-form-select>
 
+         <s-cell-intro>我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,</s-cell-intro>
+
+        <s-form-control label="宝石数量">
+          <input type="number" placeholder="请输入数量">
+        </s-form-control>
+
+        <s-form-control label="商品价格">
+          <input type="number" min="1" placeholder="请输入数量">
+        </s-form-control>
+
+        <s-cell-intro>商品价格必须大于1</s-cell-intro>
+
+        <s-form-control label="库存">
+          <input type="number" placeholder="请输入库存数量">
+        </s-form-control>
+
+        <s-form-control label="商品描述" required>
+          <input type="text" placeholder="请输入商品描述">
+        </s-form-control>
+
+        <s-cell-intro>每笔交易将被收取
+          <span class="c-primary">0</span> 元服务费,
+          <span class="c-primary">&lt;收费规则&gt;</span>
+        </s-cell-intro>
 
         <div class="content" style="margin-top: .36rem">
           <s-button type="primary" block>下一步</s-button>
@@ -46,16 +81,13 @@
 <script>
   import FormControl from '@/components/formControl';
   import FormSelect from '@/components/formSelect';
-  import FormMake from '@/components/formMake';
-  import Upload from '@/components/upload';
+  import attrType from '@/data/attrType';
 
   export default {
     name: 'goodsInfo',
     components: {
       sFormControl: FormControl,
-      sFormSelect: FormSelect,
-      sFormMake: FormMake,
-      sUpload: Upload
+      sFormSelect: FormSelect
     },
     props: {},
     data () {
@@ -67,9 +99,7 @@
         domainId: null,
         serverId: null,
 
-        getAttrsLoading: null,
-
-        attrs: [],
+        getGoodsInfosLoading: null,
 
         hasImage: true,
         gemNames: [
@@ -109,10 +139,10 @@
        * 获取商品信息
        * @returns {boolean}
        */
-      getAttrs () {
+      getGoodsInfos () {
 
-        if (this.getAttrsLoading) return false;
-        this.getAttrsLoading = true;
+        if (this.getGoodsInfosLoading) return false;
+        this.getGoodsInfosLoading = true;
 
         this
           .$http
@@ -126,10 +156,10 @@
           )
           .then(response => {
             if (response.body.code !== '000') return false;
-            this.attrs = response.body.data.list;
+            this.goodsClassList = response.body.data.list;
           })
           .finally(() => {
-            this.getAttrsLoading = false;
+            this.getGoodsInfosLoading = false;
           })
         ;
 
@@ -139,7 +169,8 @@
 
     created () {
       this.getQuery();
-      this.getAttrs();
+      this.getGoodsInfos();
+      attrType.getNameById(1);
     }
 
   }

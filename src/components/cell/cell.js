@@ -7,6 +7,7 @@
 export default {
   name: 'Cell',
   render (h) {
+    let self = this;
     let array =  [
       h(
         'div',
@@ -39,6 +40,11 @@ export default {
         'style': this.styles,
         props: {
           'to': this.to
+        },
+        on: {
+          click ($event) {
+            self.$emit('click', $event);
+          }
         }
       },
       array

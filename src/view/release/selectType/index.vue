@@ -12,8 +12,9 @@
     <s-main>
 
       <s-cell-intro>目前【热血传奇手机版】支持出售的商品类型如下：</s-cell-intro>
-      <s-link>金币</s-link>
-      <s-link>银币</s-link>
+      <s-link v-for="item in goodsTypeList"
+              :key="item.goodsSubClassId"
+              :to="`/release/selectClient?goodsSubClassId=${item.goodsSubClassId}&goodsSubClassEnableServer=${item.goodsSubClassEnableServer}&gameId=${gameId}&goodsClassId=${goodsClassId}`">{{item.goodsSubClassName}}</s-link>
 
     </s-main>
   </div>
@@ -24,8 +25,66 @@
     name: 'SelectType',
     props: {},
     data () {
-      return {}
+      return {
+
+        // 游戏ID
+        gameId: null,
+
+        // 游戏分类ID
+        goodsClassId: null,
+
+        getGoodsTypeLoading: null,
+
+        goodsTypeList: []
+      }
     },
-    methods: {}
+    methods: {
+
+      // 获取链接中所带参数
+      getQuery () {
+        const query = this.$route.query;
+        this.gameId = parseInt(query.gameId);
+        this.goodsClassId = parseInt(query.goodsClassId);
+      },
+
+      /**
+       * 获取商品类型
+       * @returns {boolean}
+       */
+      getGoodsType () {
+
+        if (this.getGoodsTypeLoading) return false;
+        this.getGoodsTypeLoading = true;
+
+        this
+          .$http
+          .post('/h5/goods/common/queryEnableGoodsSubClass', {
+              gameId: this.gameId,
+              goodsClassId: this.goodsClassId
+            },
+            {
+              loading: true
+            }
+          )
+          .then(response => {
+            if (response.body.code !== '000') return false;
+            this.goodsTypeList = response.body.data.list;
+          })
+          .finally(() => {
+            this.getGoodsTypeLoading = false;
+          })
+        ;
+
+      }
+    },
+    watch: {
+      '$route' () {
+        this.getQuery();
+      }
+    },
+    created () {
+      this.getQuery();
+      this.getGoodsType();
+    }
   }
 </script>

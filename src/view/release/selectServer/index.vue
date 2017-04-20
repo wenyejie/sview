@@ -15,8 +15,9 @@
 
       <section>
         <s-cell-intro>请选择商品所在服务器：</s-cell-intro>
-        <s-link>智慧之泉</s-link>
-        <s-link>背水一战</s-link>
+        <s-link v-for="item in servers"
+                :key="item.domainId"
+                :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&=clientId=${clientId}&domainId=${domainId}&serverId=${item.domainId}`">{{item.domainName}}</s-link>
       </section>
 
     </s-main>
@@ -32,8 +33,70 @@
     },
     props: {},
     data () {
-      return {}
+      return {
+        getServersLoading: null,
+        servers: [],
+
+        gameId: null,
+        goodsClassId: null,
+        goodsSubClassId: null,
+        clientId: null,
+        domainId: null
+      }
     },
-    methods: {}
+    methods: {
+
+      // 获取链接中所带参数
+      getQuery () {
+        const query = this.$route.query;
+        this.gameId = parseInt(query.gameId);
+        this.goodsClassId = parseInt(query.goodsClassId);
+        this.goodsSubClassId = parseInt(query.goodsSubClassId);
+        this.clientId = parseInt(query.clientId);
+        this.domainId = parseInt(query.domainId);
+      },
+
+      /**
+       * 获取服务器列表
+       * @returns {boolean}
+       */
+      getServers () {
+
+        if (this.getServersLoading) return false;
+        this.getServersLoading = true;
+
+        this
+          .$http
+          .post('/h5/goods/common/queryServerByDomain', {
+              domainId: this.domainId
+            },
+            {
+              loading: true
+            }
+          )
+          .then(response => {
+            if (response.body.code !== '000') return false;
+            this.servers = response.body.data.list;
+          })
+          .finally(() => {
+            this.getServersLoading = false;
+          })
+        ;
+
+      }
+    },
+
+    watch: {
+      '$route' () {
+        this.getQuery();
+        this.getServers();
+      }
+    },
+
+    created () {
+      this.getQuery();
+      this.getServers();
+    }
+
   }
 </script>

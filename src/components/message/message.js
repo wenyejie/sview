@@ -81,16 +81,18 @@ const getInstance = (opts) => {
  * @returns {Promise} 返回一个Promise
  */
 Message.init = (text = '', opts = {}) => {
-  return new Promise((resolve) => {
+  //return new Promise((resolve) => {
     if (typeof text === 'string') {
       opts.body = text;
     } else if (typeof text === 'object') {
       opts = text;
     }
+    opts.duration = typeof opts.duration === 'undefined' ? 3000 : opts.duration;
     const vm = getInstance(opts);
-    opts.onOk = resolve;
+    //opts.onOk = resolve;
     vm.show(opts);
-  });
+    return vm;
+  //});
 };
 
 /**
@@ -148,6 +150,7 @@ Message.error = (text = '', opts = {}) => {
 Message.loading = (text = '', opts = {}) => {
   opts.type = 'loading';
   opts.icon = 'loading';
+  opts.duration = 0;
   return Message.init(text, opts);
 };
 

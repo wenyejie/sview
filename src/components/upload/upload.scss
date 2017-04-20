@@ -1,0 +1,75 @@
+@charset "utf-8";
+/**
+ * Title
+ *
+ * author: Storm
+ * date: 2017/04/20
+ */
+
+.s-upload {
+
+  display: flex;
+  min-width: 100%;
+
+  &-wrap {
+    overflow-x: auto;
+    position: relative;
+    padding: .2rem .44rem;
+    background-color: #fff;
+    border-top: .01rem solid #E5E5E5;
+  }
+
+  &-item {
+    background: #F8F8F8;
+    border-radius: .04rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: .2rem;
+
+  }
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &-button {
+    position: relative;
+
+    &:after,
+    &:before {
+      position: absolute;
+      content: '';
+      background: #ccc;
+      border-radius: .02rem;
+      left: 50%;
+      top: 50%;
+    }
+
+    &:before {
+      width: .5rem;
+      height: .04rem;
+      margin-left: -.25rem;
+      margin-top: -.02rem;
+    }
+
+    &:after {
+      width: .04rem;
+      height: .5rem;
+      margin-left: -.02rem;
+      margin-top: -.25rem;
+    }
+
+  }
+
+  &-input {
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    -webkit-appearance: none;
+    height: 100%;
+    width: 100%;
+  }
+
+}

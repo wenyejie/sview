@@ -9,12 +9,11 @@
 .s-link {
 
   transition: opacity .15s ease-in-out;
+  color: inherit;
 
   &-icon {
     color: #d2d2d2;
     font-size: .24rem;
-    margin-left: .05rem;
-    margin-right: -.05rem;
   }
 
   &:hover,

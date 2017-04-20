@@ -40,7 +40,7 @@
           <h3 class="section-title">热门游戏</h3>
 
           <ul class="game game-grid">
-            <li class="game-item">
+            <li class="game-item" @click="selectGame">
               <img class="game-icon" src="http://img.la/100x100?s=demo">
               <p class="game-name">时空猎人</p>
             </li>
@@ -87,6 +87,14 @@
     data () {
       return {}
     },
-    methods: {}
+    methods: {
+      selectGame () {
+        // 阴阳师
+        this.$router.push({
+          name: 'selectClassRelease',
+          query: {gameId: 6}
+        });
+      }
+    }
   }
 </script>
