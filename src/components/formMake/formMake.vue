@@ -1,5 +1,5 @@
 <!--
- - Title
+ - 表单生成
  -
  - author: Storm
  - date: 2017/04/19
@@ -7,47 +7,115 @@
 
 <template>
   <div class="s-form-make">
+    <template v-if="formData.attrRule[0].inputType === 1">
+      <s-form-control :label="formData.attrName"
+                      :required="required(formData.attrRule[0])">
 
-    <template v-if="options.subClassAttrRule[0].inputType === 1">
-      <s-form-control :label="options.subClassAttrName"
-                      :required="required(options.subClassAttrRule[0])">
-        <input :type="type(options.subClassAttrRule[0])"
-               :maxlength="length(options.subClassAttrRule[0])"
-               :min="options.subClassAttrRule[0].inputLimitRule === 2 ? 0 : undefined"
-               @input="inputChange(options, $event)"
-               :placeholder="`请输入${options.subClassAttrName}`">
+        <input v-if="type(formData.attrRule[0]) === 'password'"
+               type="password"
+               :maxlength="length(formData.attrRule[0])"
+               v-model.trim.number="formData.modelValue"
+               @input="inputChange(formData, $event)"
+               :placeholder="`请输入${formData.attrName}`">
+
+        <input v-if="type(formData.attrRule[0]) === 'number'"
+               type="number"
+               :maxlength="length(formData.attrRule[0])"
+               :min="min(formData.attrRule[0])"
+               v-model.trim.number="formData.modelValue"
+               @input="inputChange(formData, $event)"
+               :placeholder="`请输入${formData.attrName}`">
+
+        <input v-if="type(formData.attrRule[0]) === 'tel'"
+               type="number"
+               maxlength="11"
+               minlength="11"
+               :min="min(formData.attrRule[0])"
+               v-model.trim.number="formData.modelValue"
+               @input="inputChange(formData, $event)"
+               :placeholder="`请输入${formData.attrName}`">
+
+        <input v-if="type(formData.attrRule[0]) === 'email'"
+               type="email"
+               :maxlength="length(formData.attrRule[0])"
+               v-model.trim="formData.modelValue"
+               @input="inputChange(formData, $event)"
+               :placeholder="`请输入${formData.attrName}`">
+
+        <input v-if="type(formData.attrRule[0]) === 'text'"
+               type="text"
+               :maxlength="length(formData.attrRule[0])"
+               v-model.trim="formData.modelValue"
+               @input="inputChange(formData, $event)"
+               :placeholder="`请输入${formData.attrName}`">
       </s-form-control>
-      <s-cell-intro v-if="options.subClassAttrRule[0].showDesc">{{options.subClassAttrRule[0].showDesc}}</s-cell-intro>
+      <s-cell-intro v-if="formData.attrRule[0].showDesc">{{formData.attrRule[0].showDesc}}</s-cell-intro>
     </template>
 
-    <template v-if="options.subClassAttrRule[0].inputType === 2">
-      <s-form-select :label="options.subClassAttrName"
+    <template v-if="formData.attrRule[0].inputType === 2">
+      <s-form-select :label="formData.attrName"
                      placeholder="请选择"
                      name="ruleDefaultValue"
                      val="ruleId"
-                     :options="options.subClassAttrRule"
-                     :required="required(options.subClassAttrRule[0])"></s-form-select>
-      <s-cell-intro v-if="options.subClassAttrRule[0].showDesc">{{options.subClassAttrRule[0].showDesc}}</s-cell-intro>
-    </template>
-
-    <template v-if="options.subClassAttrRule[0].inputType === 3">
-
-      <s-form-select :label="options.subClassAttrName"
-                     placeholder="请选择"
-                     name="ruleDefaultValue"
-                     val="ruleId"
+                     :options="formData.attrRule"
                      v-model="selectModel"
-                     :options="options.subClassAttrRule"
-                     :required="required(options.subClassAttrRule[0])"></s-form-select>
+                     @on-change="selectChange(formData, $event)"
+                     :required="required(formData.attrRule[0])"></s-form-select>
+      <s-cell-intro v-if="formData.attrRule[0].showDesc">{{formData.attrRule[0].showDesc}}</s-cell-intro>
+    </template>
 
-      <template v-for="item in options.subClassAttrRule">
+    <template v-if="formData.attrRule[0].inputType === 3">
+
+      <s-form-select :label="formData.attrName"
+                     placeholder="请选择"
+                     name="ruleDefaultValue"
+                     val="ruleId"
+                     v-model="hybridModelValue"
+                     :options="formData.attrRule"
+                     :required="required(formData.attrRule[0])"></s-form-select>
+
+      <template v-for="item in formData.attrRule">
         <s-form-control :label="item.ruleDefaultValue"
                         :key="item.ruleId"
-                        v-if="item.selected"
+                        v-if="item.ruleId === hybridModelValue"
                         :required="required(item)">
-          <input :type="type(item)"
+
+          <input v-if="type(item) === 'password'"
+                 type="password"
                  :maxlength="length(item)"
-                 :placeholder="`请输入${options.subClassAttrName}`">
+                 v-model.trim.number="formData.modelValue"
+                 @input="hybridChange(formData, item, $event.target)"
+                 :placeholder="`请输入${formData.attrName}`">
+
+          <input v-if="type(item) === 'number'"
+                 type="number"
+                 :maxlength="length(item)"
+                 :min="min(item)"
+                 v-model.trim.number="formData.modelValue"
+                 @input="hybridChange(formData, item, $event.target)"
+                 :placeholder="`请输入${formData.attrName}`">
+
+          <input v-if="type(item) === 'tel'"
+                 type="tel"
+                 maxlength="11"
+                 minlength="11"
+                 v-model.trim="formData.modelValue"
+                 @input="hybridChange(formData, item, $event.target)"
+                 :placeholder="`请输入${formData.attrName}`">
+
+          <input v-if="type(item) === 'email'"
+                 type="email"
+                 :maxlength="length(item)"
+                 v-model.trim="formData.modelValue"
+                 @input="hybridChange(formData, item, $event.target)"
+                 :placeholder="`请输入${formData.attrName}`">
+
+          <input v-if="type(item) === 'text'"
+                 type="text"
+                 :maxlength="length(item)"
+                 v-model.trim="formData.modelValue"
+                 @input="hybridChange(formData, item, $event.target)"
+                 :placeholder="`请输入${formData.attrName}`">
         </s-form-control>
         <s-cell-intro v-if="item.showDesc && item.selected">{{item.showDesc}}</s-cell-intro>
       </template>
@@ -78,48 +146,79 @@
       return {
         model: null,
         selectModel: null,
-        modelValue: this.value
+        modelValue: this.value,
+        formData: this.options,
+        hybridModelValue: null
       }
     },
     computed: {},
     watch: {
       value (val) {
         this.modelValue = val;
+      },
+      options (val) {
+        this.formData = val;
       }
     },
     methods: {
-      saveValue (options, result, value) {
+      saveValue (options, value, ruleId) {
+        const result = this.modelValue.find(item => item.attrId === options.attrId);
+
         if (result) {
           result.attrValue = value;
         } else {
           this.modelValue.push({
-            attrId: options.subClassAttrId,
-            attrName: options.subClassAttrName,
-            attrType: options.subClassAttrType,
+            attrId: options.attrId,
+            attrName: options.attrName,
+            attrType: options.attrType,
             attrValue: value,
-            ruleId: options.subClassAttrRule[0].ruleId
+            ruleId: ruleId
           });
         }
         this.$emit('input', this.modelValue);
       },
-      inputChange (options, $event) {
 
-        const result = this.modelValue.find(item => item.attrId === options.subClassAttrId);
+      // 混合选择框
+      hybridChange (formData, item, $target) {
+        const value = $target.type !== 'number' ? $target.value : parseInt($target.value);
+        this.saveValue(formData, value, item.ruleId);
+      },
+
+      // 选择框
+      selectChange (formData, ruleId) {
+        let value = formData.attrRule.find(item => item.ruleId === ruleId);
+        value = value.ruleDefaultValue;
+        this.saveValue(formData, value, ruleId);
+      },
+
+      // 输入框
+      inputChange (formData, $event) {
 
         const value = $event.target.type !== 'number' ? $event.target.value : parseInt($event.target.value);
 
-        this.saveValue(options, result, value);
+        this.saveValue(formData, value, formData.attrRule[0].ruleId);
 
       },
+
+      // 最小数组
+      min (item) {
+        return item.inputLimitRule === 2 ? 0 : undefined;
+      },
+
+      // 验证是否必填
       required (item) {
         return item.isRequired === 1;
       },
+
+      // 长度
       length (item) {
         const length = item.inputLimitLen;
         return length > 0 ? length : false;
       },
+
+
       type (item) {
-        if (item.isPwd === 2) return 'password';
+        if (item.isPwd === 1) return 'password';
 
 
         /*输入规则 - inputLimitRule

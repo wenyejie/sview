@@ -39,7 +39,8 @@ export default {
         'class': this.classes,
         'style': this.styles,
         props: {
-          'to': this.to
+          'to': this.to,
+          'replace': this.replace
         },
         on: {
           click ($event) {
@@ -66,6 +67,7 @@ export default {
         return ['lg', 'sm'].includes(val)
       }
     },
+    replace: Boolean,
     padding: [Number, String],
   },
   data () {

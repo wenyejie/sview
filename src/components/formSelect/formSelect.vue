@@ -34,7 +34,9 @@
   export default {
     name: 'formSelect',
     props: {
-      value: {},
+      value: {
+        type: [Number, String]
+      },
       label: [Number, String],
       placeholder: String,
       required: Boolean,
@@ -112,8 +114,7 @@
         item.selected = true;
 
         // 移除旧的选中值
-        if (this.selected
-        ) delete this.selected.selected;
+        if (this.selected) this.selected.selected = false;
 
         // 保存选中的值
         this.selected = item;

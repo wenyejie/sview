@@ -12,15 +12,21 @@
     <s-main>
 
       <s-cell-intro>目前【热血传奇手机版】支持出售的商品类型如下：</s-cell-intro>
-      <s-link v-for="item in goodsTypeList"
-              :key="item.goodsSubClassId"
-              :to="`/release/selectClient?goodsSubClassId=${item.goodsSubClassId}&goodsSubClassEnableServer=${item.goodsSubClassEnableServer}&gameId=${gameId}&goodsClassId=${goodsClassId}`">{{item.goodsSubClassName}}</s-link>
+
+      <s-cell v-for="item in goodsTypeList"
+              @click="selectType(item)"
+              :key="item.goodsSubClassId">{{item.goodsSubClassName}}
+        <template slot="right">
+          <s-icon type="right"></s-icon>
+        </template>
+      </s-cell>
 
     </s-main>
   </div>
 </template>
 
 <script>
+  import local from '@/untils/local';
   export default {
     name: 'SelectType',
     props: {},
@@ -39,6 +45,21 @@
       }
     },
     methods: {
+
+      // 选择类型
+      selectType (item) {
+        local.set('releaseTitleAttr', item);
+
+        this.$router.push({
+          path: 'selectClient',
+          query: {
+            goodsSubClassEnableServer: item.goodsSubClassEnableServer,
+            gameId: this.gameId,
+            goodsClassId: this.goodsClassId,
+            goodsSubClassId: item.goodsSubClassId
+          }
+        })
+      },
 
       // 获取链接中所带参数
       getQuery () {

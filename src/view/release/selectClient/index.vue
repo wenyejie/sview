@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import local from '@/untils/local';
   export default {
     name: 'SelectClient',
     props: {},
@@ -94,14 +95,13 @@
               }
             )
             .then(response => {
-              if (response.body.code !== '000') return false;
-              response.body.data.list.length >= 1 ? resolve() : reject();
+              if (response.body.code !== '000') reject();
 
               // 保存至store，未来页需要调用
-              this.$store.commit('setting', {
-                name: 'serviceAreaList',
-                value: response.body.data.list
-              });
+              local.set('serviceAreaList', response.body.data.list);
+
+              response.body.data.list.length >= 1 ? resolve() : reject();
+
             })
             .finally(() => {
               this.getAreaListLoading = false;
@@ -121,12 +121,15 @@
 
           // 全部区服
           case 1:
+
+          // 全服通用+全部区服
+          case 3:
             this
               .getAreaList(item.gameClientId)
               .then(
                 // 如果该客户端下存在服务区则跳转至选择服务区
                 () => this.$router.push({
-                  path: '/release/selectArea',
+                  path: 'selectArea',
                   query: {
                     gameId: this.gameId,
                     goodsClassId: this.goodsClassId,
@@ -137,12 +140,12 @@
 
                 // 不存在服务区在跳转至选择服务器
                 () => this.$router.push({
-                  name: 'selectServerRelease',
+                  path: 'selectServer',
                   query: {
                     gameId: this.gameId,
                     goodsClassId: this.goodsClassId,
                     goodsSubClassId: this.goodsSubClassId,
-                    clientId: item.gameClientId,
+                    clientId: item.gameClientId
                   }
                 })
               );
@@ -150,16 +153,6 @@
 
           // 全服通用
           case 2:
-
-            /*this.$router.push({
-              path: '/release/selectServer',
-              query: {
-                gameId: this.gameId,
-                goodsClassId: this.goodsClassId,
-                goodsSubClassId: this.goodsSubClassId,
-                clientId: item.gameClientId,
-              }
-            });*/
             this.$router.push({
               path: '/release/goodsInfo',
               query: {
@@ -170,10 +163,6 @@
                 serverId: -1
               }
             });
-            break;
-
-          // 全服通用+全部区服
-          case 3:
             break;
 
           // 其它

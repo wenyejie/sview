@@ -10,6 +10,7 @@
     class="s-link"
     tag="router-link"
     :to="to"
+    :replace="replace"
   ><slot></slot><span slot="right"><s-icon type="right" class="s-link-icon"></s-icon></span>
   </s-cell>
 </template>
@@ -25,7 +26,8 @@
       to: {
         type: String,
         default: ''
-      }
+      },
+      replace: Boolean
     },
     data () {
       return {}

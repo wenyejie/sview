@@ -28,5 +28,13 @@ export default {
   set (key, value) {
     if (typeof value === 'object') value = JSON.stringify(value);
     window.localStorage.setItem(key, value);
+  },
+
+  /**
+   * 移除本地存储
+   * @param key
+   */
+  remove (key) {
+    window.localStorage.removeItem(key);
   }
 }

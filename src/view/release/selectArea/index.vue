@@ -21,6 +21,7 @@
 </template>
 
 <script>
+  import local from '@/untils/local';
   export default {
     name: 'selectArea',
     props: {},
@@ -36,7 +37,7 @@
 
       // 从store中获取的服务区列表
       serviceAreaList () {
-        return this.$store.state.serviceAreaList || [];
+        return local.get('serviceAreaList');
       }
     },
     methods: {

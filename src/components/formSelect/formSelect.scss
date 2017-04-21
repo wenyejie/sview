@@ -91,6 +91,8 @@
 }
 .s-cell + .s-form-select,
 .s-form-select + .s-cell,
-.s-form-make + .s-form-make {
+.s-form-make + .s-form-make,
+.s-form-make + .s-form-control,
+.s-form-control + .s-form-make {
   border-top: .01rem solid #e5e5e5;
 }

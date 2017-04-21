@@ -18,33 +18,53 @@
           <span class="c-primary">*&nbsp;</span>
           <span>上传图片</span>
           <s-radio-group v-model="showType" slot="right">
-            <s-radio :label="1" name="showType">有图</s-radio>
-            <s-radio :label="2" name="showType">无图</s-radio>
+            <s-radio :label="2" name="showType">有图</s-radio>
+            <s-radio :label="1" name="showType">无图</s-radio>
           </s-radio-group>
         </s-cell>
 
-        <s-upload v-model="picUrls" v-if="showType === 1"></s-upload>
+        <s-upload v-model="picUrls" v-if="showType === 2"></s-upload>
 
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
+        <!-- 当用户需要输入标题时展示商品标题输入框 -->
+        <s-form-control label="商品标题" v-if="titleAttr.goodsSubClassTitleRule !== 1">
+          <input type="text"
+                 v-model="releaseInfo.title"
+                 :maxlength="titleAttr.goodsSubClassMaxTitleLen"
+                 placeholder="请输入商品标题">
 
-        <s-form-make v-for="item in attrs"
+        </s-form-control>
+
+        <s-form-make v-for="item in formAttrs"
                      v-model="modelAttrs"
-                     :key="item.subClassAttrId"
-                     v-if="item.subClassAttrRule[0].showType === showType || item.subClassAttrRule[0].showType === 3"
+                     :key="item.attrId"
+                     v-if="item.attrRule[0].showType === showType || item.attrRule[0].showType === 3"
                      :options="item"></s-form-make>
 
-        <!--{{modelAttrs}}-->
 
+        <!-- 库存，价格 -->
+        <s-form-control label="商品库存" required>
+          <input type="number"
+                 v-if="goodsClassId !==1"
+                 :max="titleAttr.store"
+                 min="1"
+                 v-model.number="releaseInfo.storage" placeholder="请输入商品库存">
+        </s-form-control>
 
-        <!--<div class="content" style="margin-top: .36rem">
-          <s-button type="primary" @click="next" block>下一步</s-button>
-        </div>-->
+        <s-form-control label="商品价格" required>
+          <input type="number"
+                 :max="titleAttr.maxPrice"
+                 :min="titleAttr.minPrice"
+                 v-model.number="releaseInfo.price"
+                 placeholder="请输入商品价格">
+        </s-form-control>
+
 
       </form>
 
       <s-main-down>
-        <s-button type="primary" @click="next" block>下一步</s-button>
+        <s-button type="primary" @click="nextStep" block>下一步</s-button>
       </s-main-down>
 
     </s-main>
@@ -55,6 +75,7 @@
 
 <script>
   import FormMake from '@/components/formMake';
+  import FormControl from '@/components/formControl';
   import MainDown from '@/components/mainDown';
   import Upload from '@/components/upload';
   import local from '@/untils/local';
@@ -64,6 +85,7 @@
     components: {
       sFormMake: FormMake,
       sMainDown: MainDown,
+      sFormControl: FormControl,
       sUpload: Upload
     },
     props: {},
@@ -78,7 +100,9 @@
 
         getAttrsLoading: null,
 
-        attrs: [],
+        getAccountTypeLoading: null,
+
+        formAttrs: [],
 
         modelAttrs: [],
 
@@ -86,14 +110,21 @@
 
         picUrls: [],
 
-        releaseInfo: {}
+        releaseInfo: {
+          title: '',
+          storage: 0,
+          price: 0
+        },
+
+        // 标题属性
+        titleAttr: {}
       }
     },
     methods: {
 
       // 获取发布信息
       getInfo () {
-        this.releaseInfo = {
+        this.releaseInfo = Object.assign({}, this.releaseInfo, {
           clientId: this.clientId,
           domainId: this.domainId,
           showType: this.showType,
@@ -101,28 +132,61 @@
           goodsClassId: this.goodsClassId,
           goodsSubClassId: this.goodsSubClassId,
           attrs: this.modelAttrs
-        };
+        });
 
         this.releaseInfo.picUrls = this.picUrls.length > 0 ? this.picUrls : undefined;
 
       },
 
-      next () {
+      // 下一步
+      nextStep () {
         this.getInfo();
         local.set('releaseInfo', this.releaseInfo);
         this.$store.dispatch('setReleaseInfo', this.releaseInfo);
-        this.$router.push('selectAccount');
-        /*this.$router.push({
-          path: '/release/accountInfo',
-          query: {
-            gameId: this.gameId,
-            goodsClassId: this.goodsClassId,
-            goodsSubClassId: this.goodsSubClassId,
-            clientId: this.clientId,
-            domainId: this.domainId,
-            serverId: this.serverId
-          }
-        });*/
+
+        this.getAccountType();
+      },
+
+      // 获取账号类型
+      getAccountType () {
+
+        if (this.getAccountTypeLoading) return false;
+        this.getAccountTypeLoading = true;
+
+        this
+          .$http
+          .post('/h5/seller/publish/queryAccountTypeInfo', {
+            clientId: this.clientId
+          }, {
+            loading: true
+          })
+          .then(response => {
+            if (response.body.code !== '000') return false;
+            this.accountTypes = response.body.data.list;
+
+            if (this.accountTypes.length === 0) {
+              this.$Dialog.alert('账号类型数据错误，请联系客服！');
+              return false;
+            }
+
+            // 当账号类型大于等于2的时候，跳转至账号类型选择页面，
+            // 否则直接跳转至账号信息填写页面
+            if (this.accountTypes.length > 1) {
+              local.set('releaseAccountTypes', this.accountTypes);
+              this.$router.replace('selectAccount');
+              return false;
+            }
+            this.$router.replace({
+              path: 'accountInfo',
+              query: {
+                accountTypeId: this.accountTypes[0].gameAccountTypeId
+              }
+            });
+          })
+          .finally(() => {
+            this.getAccountTypeLoading = false;
+          });
+
       },
 
       // 获取链接中所带参数
@@ -157,19 +221,36 @@
           )
           .then(response => {
             if (response.body.code !== '000') return false;
-
-             this.attrs = response.body.data.list;
+             this.dataSync(response.body.data.list);
           })
           .finally(() => {
             this.getAttrsLoading = false;
           })
         ;
 
+      },
+
+      // 数据同步
+      dataSync (list) {
+        list.forEach(item => {
+          this.formAttrs.push({
+            attrSeq: item.subClassAttrSeq,
+            attrRule: item.subClassAttrRule,
+            attrId: item.subClassAttrId,
+            attrName: item.subClassAttrName,
+            attrType: item.subClassAttrType
+          });
+        })
+
       }
 
     },
 
     created () {
+
+      // 获取到在选择商品类型中保存的标题属性信息
+
+      this.titleAttr = local.get('releaseTitleAttr');
       this.getQuery();
       this.getAttrs();
     }
