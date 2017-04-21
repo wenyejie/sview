@@ -59,6 +59,7 @@
         position: absolute;
         right: .24rem;
         background: url('../../assets/selected.png');
+        background-size: 100%;
         width: .23rem;
         height: .17rem;
       }
@@ -89,6 +90,7 @@
   }
 }
 .s-cell + .s-form-select,
-.s-form-select + .s-cell {
+.s-form-select + .s-cell,
+.s-form-make + .s-form-make {
   border-top: .01rem solid #e5e5e5;
 }

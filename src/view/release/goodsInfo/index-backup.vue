@@ -7,7 +7,7 @@
 
 <template>
 
-  <div id="app" class="goodsInfo">
+  <div id="app">
     <s-header>填写商品描述</s-header>
 
     <s-main>

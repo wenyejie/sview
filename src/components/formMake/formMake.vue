@@ -5,42 +5,54 @@
  - date: 2017/04/19
  -->
 
-<!--
-输入规则 - inputLimitRule
-case 1: return '不限制';
-case 2: return '数字';
-case 3: return '字母';
-case 4: return '手机号';
-case 5: return '邮箱';
--->
-
 <template>
   <div class="s-form-make">
 
-    <template v-if="options.subClassAttrRule.inputType === 1">
+    <template v-if="options.subClassAttrRule[0].inputType === 1">
       <s-form-control :label="options.subClassAttrName"
-                      :required="required">
-        <input :type="type"
-               :maxlength="length"
-               :name="`formMark${options.subClassAttrRule.ruleId}`"
-               :form-mark="json2string(options)"
+                      :required="required(options.subClassAttrRule[0])">
+        <input :type="type(options.subClassAttrRule[0])"
+               :maxlength="length(options.subClassAttrRule[0])"
+               :min="options.subClassAttrRule[0].inputLimitRule === 2 ? 0 : undefined"
+               @input="inputChange(options, $event)"
                :placeholder="`请输入${options.subClassAttrName}`">
       </s-form-control>
+      <s-cell-intro v-if="options.subClassAttrRule[0].showDesc">{{options.subClassAttrRule[0].showDesc}}</s-cell-intro>
     </template>
 
-    <template v-if="options.subClassAttrRule.inputType === 2">
+    <template v-if="options.subClassAttrRule[0].inputType === 2">
       <s-form-select :label="options.subClassAttrName"
                      placeholder="请选择"
-                     name="name"
-                     val="id"
-                     :form-mark="json2string(options)"
-                     :options="gemNames"
-                     required></s-form-select>
+                     name="ruleDefaultValue"
+                     val="ruleId"
+                     :options="options.subClassAttrRule"
+                     :required="required(options.subClassAttrRule[0])"></s-form-select>
+      <s-cell-intro v-if="options.subClassAttrRule[0].showDesc">{{options.subClassAttrRule[0].showDesc}}</s-cell-intro>
     </template>
 
-    <template v-if="options.subClassAttrRule.inputType === 3">3</template>
+    <template v-if="options.subClassAttrRule[0].inputType === 3">
 
-    <s-cell-intro>{{options.subClassAttrRule.showDesc}}</s-cell-intro>
+      <s-form-select :label="options.subClassAttrName"
+                     placeholder="请选择"
+                     name="ruleDefaultValue"
+                     val="ruleId"
+                     v-model="selectModel"
+                     :options="options.subClassAttrRule"
+                     :required="required(options.subClassAttrRule[0])"></s-form-select>
+
+      <template v-for="item in options.subClassAttrRule">
+        <s-form-control :label="item.ruleDefaultValue"
+                        :key="item.ruleId"
+                        v-if="item.selected"
+                        :required="required(item)">
+          <input :type="type(item)"
+                 :maxlength="length(item)"
+                 :placeholder="`请输入${options.subClassAttrName}`">
+        </s-form-control>
+        <s-cell-intro v-if="item.showDesc && item.selected">{{item.showDesc}}</s-cell-intro>
+      </template>
+
+    </template>
   </div>
 </template>
 
@@ -54,22 +66,69 @@ case 5: return '邮箱';
       sFormSelect: FormSelect
     },
     props: {
-      options: Object
+      options: Object,
+      value: {
+        type: Array,
+        default () {
+          return [];
+        }
+      }
     },
     data () {
-      return {}
+      return {
+        model: null,
+        selectModel: null,
+        modelValue: this.value
+      }
     },
-    computed: {
-      length () {
-        const length = this.options.subClassAttrRule.inputLimitLen;
+    computed: {},
+    watch: {
+      value (val) {
+        this.modelValue = val;
+      }
+    },
+    methods: {
+      saveValue (options, result, value) {
+        if (result) {
+          result.attrValue = value;
+        } else {
+          this.modelValue.push({
+            attrId: options.subClassAttrId,
+            attrName: options.subClassAttrName,
+            attrType: options.subClassAttrType,
+            attrValue: value,
+            ruleId: options.subClassAttrRule[0].ruleId
+          });
+        }
+        this.$emit('input', this.modelValue);
+      },
+      inputChange (options, $event) {
+
+        const result = this.modelValue.find(item => item.attrId === options.subClassAttrId);
+
+        const value = $event.target.type !== 'number' ? $event.target.value : parseInt($event.target.value);
+
+        this.saveValue(options, result, value);
+
+      },
+      required (item) {
+        return item.isRequired === 1;
+      },
+      length (item) {
+        const length = item.inputLimitLen;
         return length > 0 ? length : false;
       },
-      required () {
-        return this.options.subClassAttrRule.isRequired === 1;
-      },
-      type () {
-        if (this.options.subClassAttrRule.isPwd === 2) return 'password';
-        switch (this.options.subClassAttrRule.inputLimitRule) {
+      type (item) {
+        if (item.isPwd === 2) return 'password';
+
+
+        /*输入规则 - inputLimitRule
+         case 1: return '不限制';
+         case 2: return '数字';
+         case 3: return '字母';
+         case 4: return '手机号';
+         case 5: return '邮箱';*/
+        switch (item.inputLimitRule) {
           case 2:
             return 'number';
           case 4:
@@ -80,11 +139,6 @@ case 5: return '邮箱';
             return 'text'
         }
 
-      }
-    },
-    methods: {
-      json2string (opts) {
-        return JSON.stringify(opts);
       }
     },
     created () {

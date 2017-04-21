@@ -31,6 +31,9 @@
   export default {
     name: 'name',
     props: {
+      value: {
+        type: Array
+      },
       accept: {
         type: String,
         default: 'image/jpg,image/jpeg,image/png'
@@ -82,8 +85,22 @@
     data () {
       return {
         imagesList: [],
-        styles: {}
+        styles: {},
+        modelValue: this.value
       }
+    },
+    watch: {
+      value (val) {
+        this.modelValue = val;
+      },
+      modelValue (val) {
+
+        // this.list.find(item => item[name] === value)[key];
+
+      }
+    },
+    computed: {
+
     },
     methods: {
 

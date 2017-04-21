@@ -6,6 +6,5 @@
  */
 
 import FormMake from './formMake.vue';
-import './formMake.scss';
 
 export default FormMake;

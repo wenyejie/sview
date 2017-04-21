@@ -150,6 +150,26 @@
 
           // 全服通用
           case 2:
+
+            /*this.$router.push({
+              path: '/release/selectServer',
+              query: {
+                gameId: this.gameId,
+                goodsClassId: this.goodsClassId,
+                goodsSubClassId: this.goodsSubClassId,
+                clientId: item.gameClientId,
+              }
+            });*/
+            this.$router.push({
+              path: '/release/goodsInfo',
+              query: {
+                gameId: this.gameId,
+                goodsClassId: this.goodsClassId,
+                goodsSubClassId: this.goodsSubClassId,
+                clientId: item.gameClientId,
+                serverId: -1
+              }
+            });
             break;
 
           // 全服通用+全部区服

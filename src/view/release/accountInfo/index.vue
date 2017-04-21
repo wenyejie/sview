@@ -8,7 +8,7 @@
 <template>
 
   <div id="app">
-    <s-header>选择游戏</s-header>
+    <s-header>填写寄售账号信息</s-header>
 
     <s-main>
 
@@ -16,32 +16,10 @@
 
         <s-cell-intro icon="warning"><span class="c-primary">谨防受骗：请勿向任何人泄露您的账号密码！</span></s-cell-intro>
 
-        <s-form-control required label="游戏账号">
-          <input type="text" placeholder="请输入游戏账号">
-        </s-form-control>
-
-        <s-form-control required label="游戏密码">
-          <input type="text" placeholder="请输入游戏密码">
-        </s-form-control>
-
-        <s-form-control required label="解锁密码">
-          <input type="text" placeholder="请输入解锁密码">
-        </s-form-control>
-
-        <s-form-control required label="角色名称">
-          <input type="text" placeholder="请输入角色名称">
-        </s-form-control>
-
-        <s-form-select
-          label="交易设定"
-          placeholder="请选择"
-          required></s-form-select>
-
-        <s-cell-intro>我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,我是提示信息,</s-cell-intro>
-
-        <s-form-control required label="联系手机">
-          <input type="tel" placeholder="请输入联系手机">
-        </s-form-control>
+        <s-form-make v-for="item in attrs"
+                     v-model="modelAttrs"
+                     :key="item.subClassAttrId"
+                     :options="item"></s-form-make>
 
         <s-cell-intro>【寄售交易】由闪电虎发货客服代替您给买家发货（7x24小时服务），快速完成交易。</s-cell-intro>
 
@@ -51,7 +29,7 @@
             class="c-9"
             size="sm">已阅读<a href="javascript:;" class="c-primary">&lt;闪电虎手机网游服务平台服务协议&gt;</a></s-radio>
 
-          <s-button type="primary" block class="mt-30">下一步</s-button>
+          <s-button @click="release" type="primary" block class="mt-30">下一步</s-button>
         </s-main-down>
 
       </form>
@@ -62,20 +40,80 @@
 </template>
 
 <script>
-  import FormControl from '@/components/formControl';
-  import FormSelect from '@/components/formSelect';
+  import FormMake from '@/components/formMake';
   import MainDown from '@/components/mainDown';
+  import customForm from '@/api/customForm';
+  import local from '@/untils/local';
+
+  const {getAttr} = customForm;
+
   export default {
     name: 'accountInfo',
     components: {
-      sFormControl: FormControl,
-      sFormSelect: FormSelect,
+      sFormMake: FormMake,
       sMainDown: MainDown
     },
     props: {},
     data () {
-      return {}
+      return {
+        getAccountLoading: null,
+        attrs: [],
+        modelAttrs: [],
+        releaseInfo: {},
+        getSellerAttrTempLoading: null,
+      }
     },
-    methods: {}
+    methods: {
+
+      getAttr,
+
+      // 获取客户端下卖家的模版属性以及配置
+      getSellerAttrTemp () {
+        if (this.getSellerAttrTempLoading) return false;
+        this.getSellerAttrTempLoading = true;
+
+        this.
+          $http
+          .post('')
+      },
+
+      /**
+       * 获取卖家账号信息
+       * @returns {boolean}
+       */
+      getAccount () {
+
+        if (this.getAccountLoading) return false;
+        this.getAccountLoading = true;
+
+        console.log(this.releaseInfo);
+
+        this
+          .getAttr(2, this.releaseInfo.goodsSubClassId)
+          .then(response => {
+            this.attrs = response;
+          })
+          .then(() => {
+            this.getAccountLoading = false;
+          })
+
+      },
+
+      /**
+       * 发布商品
+       */
+      release () {
+        this
+          .$http
+          .post('/h5/seller/publish/publishGoods', this.releaseInfo)
+          .then(response => {
+            console.log(response);
+          })
+      }
+    },
+    created () {
+      this.releaseInfo = local.get('releaseInfo');
+      this.getAccount();
+    }
   }
 </script>

@@ -91,6 +91,15 @@ export default {
       component: resolve => {
         require(['@/view/release/success'], resolve);
       }
+    },
+
+    // 选择账号类型
+    {
+      path: 'selectAccount',
+      name: 'selectAccountRelease',
+      component: resolve => {
+        require(['@/view/release/selectAccount'], resolve);
+      }
     }
 
 

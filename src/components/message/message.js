@@ -87,7 +87,7 @@ Message.init = (text = '', opts = {}) => {
     } else if (typeof text === 'object') {
       opts = text;
     }
-    opts.duration = typeof opts.duration === 'undefined' ? 3000 : opts.duration;
+    //opts.duration = typeof opts.duration === 'undefined' ? 2400 : opts.duration;
     const vm = getInstance(opts);
     //opts.onOk = resolve;
     vm.show(opts);

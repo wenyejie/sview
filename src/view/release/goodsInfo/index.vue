@@ -7,7 +7,7 @@
 
 <template>
 
-  <div id="app" class="goodsInfo">
+  <div id="app">
     <s-header>填写商品描述</s-header>
 
     <s-main>
@@ -17,25 +17,35 @@
         <s-cell>
           <span class="c-primary">*&nbsp;</span>
           <span>上传图片</span>
-          <s-radio-group v-model="hasImage" slot="right">
-            <s-radio :label="true" name="city">有图</s-radio>
-            <s-radio :label="false" name="city">无图</s-radio>
+          <s-radio-group v-model="showType" slot="right">
+            <s-radio :label="1" name="showType">有图</s-radio>
+            <s-radio :label="2" name="showType">无图</s-radio>
           </s-radio-group>
         </s-cell>
 
-        <s-upload></s-upload>
+        <s-upload v-model="picUrls" v-if="showType === 1"></s-upload>
 
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
 
-        <s-form-make v-for="item in attrs" :key="item.subClassAttrId" :options="item"></s-form-make>
+        <s-form-make v-for="item in attrs"
+                     v-model="modelAttrs"
+                     :key="item.subClassAttrId"
+                     v-if="item.subClassAttrRule[0].showType === showType || item.subClassAttrRule[0].showType === 3"
+                     :options="item"></s-form-make>
+
+        <!--{{modelAttrs}}-->
 
 
-        <div class="content" style="margin-top: .36rem">
-          <s-button type="primary" block>下一步</s-button>
-        </div>
+        <!--<div class="content" style="margin-top: .36rem">
+          <s-button type="primary" @click="next" block>下一步</s-button>
+        </div>-->
 
       </form>
+
+      <s-main-down>
+        <s-button type="primary" @click="next" block>下一步</s-button>
+      </s-main-down>
 
     </s-main>
   </div>
@@ -44,17 +54,16 @@
 </template>
 
 <script>
-  import FormControl from '@/components/formControl';
-  import FormSelect from '@/components/formSelect';
   import FormMake from '@/components/formMake';
+  import MainDown from '@/components/mainDown';
   import Upload from '@/components/upload';
+  import local from '@/untils/local';
 
   export default {
     name: 'goodsInfo',
     components: {
-      sFormControl: FormControl,
-      sFormSelect: FormSelect,
       sFormMake: FormMake,
+      sMainDown: MainDown,
       sUpload: Upload
     },
     props: {},
@@ -71,28 +80,50 @@
 
         attrs: [],
 
-        hasImage: true,
-        gemNames: [
-          {
-            name: '提尔之石',
-            id: 1
-          },
-          {
-            name: '赫尔精之石',
-            id: 2
-          },
-          {
-            name: '氟利嘉之石',
-            id: 3
-          },
-          {
-            name: '须弥之石',
-            id: 4
-          }
-        ]
+        modelAttrs: [],
+
+        showType: 1,
+
+        picUrls: [],
+
+        releaseInfo: {}
       }
     },
     methods: {
+
+      // 获取发布信息
+      getInfo () {
+        this.releaseInfo = {
+          clientId: this.clientId,
+          domainId: this.domainId,
+          showType: this.showType,
+          serverId: this.serverId,
+          goodsClassId: this.goodsClassId,
+          goodsSubClassId: this.goodsSubClassId,
+          attrs: this.modelAttrs
+        };
+
+        this.releaseInfo.picUrls = this.picUrls.length > 0 ? this.picUrls : undefined;
+
+      },
+
+      next () {
+        this.getInfo();
+        local.set('releaseInfo', this.releaseInfo);
+        this.$store.dispatch('setReleaseInfo', this.releaseInfo);
+        this.$router.push('selectAccount');
+        /*this.$router.push({
+          path: '/release/accountInfo',
+          query: {
+            gameId: this.gameId,
+            goodsClassId: this.goodsClassId,
+            goodsSubClassId: this.goodsSubClassId,
+            clientId: this.clientId,
+            domainId: this.domainId,
+            serverId: this.serverId
+          }
+        });*/
+      },
 
       // 获取链接中所带参数
       getQuery () {
@@ -101,7 +132,7 @@
         this.goodsClassId = parseInt(query.goodsClassId);
         this.goodsSubClassId = parseInt(query.goodsSubClassId);
         this.clientId = parseInt(query.clientId);
-        this.domainId = parseInt(query.domainId);
+        this.domainId = parseInt(query.domainId) || undefined;
         this.serverId = parseInt(query.serverId);
       },
 
@@ -126,7 +157,8 @@
           )
           .then(response => {
             if (response.body.code !== '000') return false;
-            this.attrs = response.body.data.list;
+
+             this.attrs = response.body.data.list;
           })
           .finally(() => {
             this.getAttrsLoading = false;

@@ -13,7 +13,7 @@
       <div class="s-cell-right">
         <span class="s-placeholder" v-if="!subLabel">{{placeholder}}</span>
         <span class="s-value" v-if="subLabel">{{subLabel}}</span>
-        <s-icon type="fold" :class="{'s-form-select-fold': fold}"></s-icon>
+        <s-icon type="fold" :class="{'s-form-select-fold': !fold}"></s-icon>
       </div>
     </div>
 
@@ -112,7 +112,8 @@
         item.selected = true;
 
         // 移除旧的选中值
-        if (this.selected) delete this.selected.selected;
+        if (this.selected
+        ) delete this.selected.selected;
 
         // 保存选中的值
         this.selected = item;
