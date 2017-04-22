@@ -64,7 +64,7 @@ export default {
     size: {
       type: String,
       validator (val) {
-        return ['lg', 'sm'].includes(val)
+        return ['lg', 'md', 'sm'].includes(val)
       }
     },
     replace: Boolean,

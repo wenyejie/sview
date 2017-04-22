@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app">
+  <s-app>
     <s-header>选择登录账号类型</s-header>
 
     <s-main>
@@ -14,13 +14,12 @@
       <s-cell-intro>请选择登录账号类型：</s-cell-intro>
       <s-link v-for="item in accountTypes"
               @click="clientClick(item)"
-              replace
               :to="`/release/accountInfo?accountTypeId=${item.accountTypeId}`"
               :key="item.gameAccountTypeId">{{item.gameAccountTypeName}}
       </s-link>
 
     </s-main>
-  </div>
+  </s-app>
 </template>
 
 <script>

@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app">
+  <s-app>
     <s-header>选择商品类型</s-header>
 
     <s-main>
@@ -22,7 +22,7 @@
       </s-cell>
 
     </s-main>
-  </div>
+  </s-app>
 </template>
 
 <script>

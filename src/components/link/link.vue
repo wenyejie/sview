@@ -11,7 +11,8 @@
     tag="router-link"
     :to="to"
     :replace="replace"
-  ><slot></slot><span slot="right"><s-icon type="right" class="s-link-icon"></s-icon></span>
+    :size="size"
+  ><slot></slot><template slot="right"><slot name="right"></slot><s-icon type="right" class="s-link-icon"></s-icon></template>
   </s-cell>
 </template>
 
@@ -27,7 +28,13 @@
         type: String,
         default: ''
       },
-      replace: Boolean
+      replace: Boolean,
+      size: {
+        type: String,
+        validator (val) {
+          return ['lg', 'md', 'sm'].includes(val);
+        }
+      }
     },
     data () {
       return {}

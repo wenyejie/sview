@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app">
+  <s-app>
     <s-header>选择服务区</s-header>
 
     <s-main>
@@ -17,7 +17,7 @@
               :to="`/release/selectServer?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${item.domainId}`">{{item.domainName}}</s-link>
 
     </s-main>
-  </div>
+  </s-app>
 </template>
 
 <script>

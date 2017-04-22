@@ -159,6 +159,14 @@
           <p>link</p>
         </div>
         <div>
+          <s-icon type="picfill"></s-icon>
+          <p>picfill</p>
+        </div>
+        <div>
+          <s-icon type="pic"></s-icon>
+          <p>pic</p>
+        </div>
+        <div>
           <s-icon type="success"></s-icon>
           <p>success</p>
         </div>

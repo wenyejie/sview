@@ -19,8 +19,11 @@
   align-items: center;
 
   &-lg {
+    height: 1.36rem;
+  }
+
+  &-md {
     height: 1rem;
-    line-height: 1rem;
   }
 
   & + & {

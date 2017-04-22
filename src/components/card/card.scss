@@ -1,0 +1,49 @@
+@charset "utf-8";
+/**
+ * card
+ *
+ * author: Storm
+ * date: 2017/04/21
+ */
+
+.s-card {
+
+  background-color: #fff;
+  margin-top: .2rem;
+  font-size: .24rem;
+
+  &-left {
+    overflow: hidden;
+    width: 5.25rem;
+  }
+
+  &-title {
+    font-size: .26rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .s-icon {
+      margin-right: 0 !important;
+      line-height: 1!important;
+      display: inline-block;
+      vertical-align: -.125em;
+    }
+
+  }
+
+  &-time {
+    margin-right: .1rem;
+  }
+
+  &-desc {
+    color: #999;
+    font-size: .22rem;
+    margin-top: .1rem;
+  }
+
+  &-confirm {
+    color: #999;
+  }
+
+}

@@ -9,7 +9,7 @@
 
   <div class="labelExample">
 
-    <s-header title="Label"></s-header>
+    <s-header>Label</s-header>
 
     <section>
       <h3>default - 默认</h3>
@@ -45,9 +45,3 @@
     methods: {}
   }
 </script>
-
-<style scoped>
-  .labelExample {
-    font-size: .28rem;
-  }
-</style>

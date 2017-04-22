@@ -7,7 +7,7 @@
 
 <template>
 
-  <div id="app">
+  <s-app>
     <s-header>选择游戏</s-header>
 
     <s-main bgc="white">
@@ -71,7 +71,7 @@
       </div>
 
     </s-main>
-  </div>
+  </s-app>
 
 </template>
 

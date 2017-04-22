@@ -22,8 +22,10 @@
 
     <section>
       <h3 class="example-title">size - 大小</h3>
-      <s-button type="primary">Default(md)</s-button>
       <s-button size="lg" type="primary">Lg</s-button>
+      <s-button type="primary">md</s-button>
+      <s-button size="sm" type="primary">sm</s-button>
+      <s-button size="xs" type="primary">xs</s-button>
     </section>
 
     <section>

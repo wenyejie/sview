@@ -30,17 +30,6 @@ $placeholder: #ccc;
 :-ms-input-placeholder {
   color: $placeholder;
 }
-html, body {
-  height: 100%;
-}
-#app {
-  max-width: 640px;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-}
 
 h3 {
   font-size: .28rem;

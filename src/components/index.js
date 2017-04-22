@@ -22,6 +22,7 @@ import CellIntro from './cellIntro';
 import Link from './link';
 import Main from './main';
 import Panel from './panel';
+import App from './app';
 
 const sview = {
   sRadio: Radio,
@@ -42,7 +43,8 @@ const sview = {
   sCellIntro: CellIntro,
   sLink: Link,
   sMain: Main,
-  sPanel: Panel
+  sPanel: Panel,
+  sApp: App
 };
 
 const install = Vue => {

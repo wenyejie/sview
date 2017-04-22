@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div id="app">
+  <s-app>
     <s-header>选择服务器</s-header>
 
     <s-main>
@@ -21,7 +21,7 @@
       </section>
 
     </s-main>
-  </div>
+  </s-app>
 </template>
 
 <script>

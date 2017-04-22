@@ -24,7 +24,7 @@
       styles () {
         let css = {};
         if (this.size) {
-          css['font-size'] = `${this.size}px`;
+          css['font-size'] = `.${this.size}rem`;
         }
 
         if (this.color) {

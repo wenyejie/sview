@@ -7,12 +7,29 @@
 
 export default {
   path: '/release',
-  name: 'Release',
   component: {
     template: '<router-view></router-view>',
     name: 'Release'
   },
   children: [
+
+    // 全部商品
+    {
+      path: '',
+      name: 'homeRelease',
+      component: resolve => {
+        require(['@/view/release'], resolve);
+      }
+    },
+
+    // 商品分类详情
+    {
+      path: 'goodsClass',
+      name: 'goodsClassRelease',
+      component: resolve => {
+        require(['@/view/release/goodsClass'], resolve);
+      }
+    },
 
     // 选择商品分类
     {

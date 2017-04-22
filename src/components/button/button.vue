@@ -35,7 +35,7 @@
       size: {
         type: String,
         validator (val) {
-          return ['lg', 'sm'].includes(val);
+          return ['lg', 'sm', 'xs'].includes(val);
         }
       },
       shape: {

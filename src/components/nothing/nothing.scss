@@ -1,0 +1,36 @@
+@charset "utf-8";
+/**
+ * Title
+ *
+ * author: Storm
+ * date: 2017/04/22
+ */
+
+.s-nothing {
+  text-align: center;
+  background-color: #fff;
+  padding-top: 1.4rem;
+  margin: 0;
+  height: 100%;
+
+  &-img {
+    width: 3.9rem;
+    height: 3.9rem;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &-title {
+    font-size: .26rem;
+    line-height: 1;
+  }
+
+  &-subtitle {
+    color: #999;
+    font-size: .22rem;
+    line-height: 1;
+    margin-top: .14rem;
+  }
+
+}

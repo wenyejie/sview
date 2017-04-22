@@ -7,12 +7,12 @@
 
 <template>
 
-  <div id="app">
+  <s-app>
     <s-header>发布成功</s-header>
 
     <s-main>
 
-      <s-steps :active="1" status="error">
+      <s-steps :active="0" status="success">
         <s-step label="发布成功,等待商品审核">03-30 14:53</s-step>
         <s-step label="审核通过，商品自动上架">约30分钟</s-step>
         <s-step label="等待玩家购买"></s-step>
@@ -61,10 +61,10 @@
         <template slot="footer">
           <s-row gutter=".1rem">
             <s-col span="12">
-              <s-button block>返回首页</s-button>
+              <s-button block @click="goHome">返回首页</s-button>
             </s-col>
             <s-col span="12">
-              <s-button block type="primary" shadow icon="link">复制商品链接</s-button>
+              <s-button block type="primary" shadow icon="link" @click="copyLink">复制商品链接</s-button>
             </s-col>
           </s-row>
         </template>
@@ -72,7 +72,7 @@
       </s-panel>
 
     </s-main>
-  </div>
+  </s-app>
 
 </template>
 
@@ -87,8 +87,22 @@
     },
     props: {},
     data () {
-      return {}
+      return {
+        surplusTimes: 0
+      }
     },
-    methods: {}
+    methods: {
+      goHome () {
+        this.$router.push('/');
+      },
+
+      // http://caniuse.com/#search=clipboard
+      copyLink() {
+        this.$Message.success('复制成功！');
+      }
+    },
+    created () {
+      this.surplusTimes = this.$route.query.surplusTimes;
+    }
   }
 </script>

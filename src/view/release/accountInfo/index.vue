@@ -7,8 +7,8 @@
 
 <template>
 
-  <div id="app">
-    <s-header>填写寄售账号信息</s-header>
+  <s-app>
+    <s-header>全部商品</s-header>
 
     <s-main>
 
@@ -34,7 +34,7 @@
       </form>
 
     </s-main>
-  </div>
+  </s-app>
 
 </template>
 
@@ -162,10 +162,10 @@
               .post('/h5/seller/publish/publishGoods', this.releaseInfo)
               .then(response => {
                 if (response.body.code !== '000') return false;
-                this.$router.push({
+                this.$router.replace({
                   path: 'success',
                   query: {
-                    demo: 1
+                    surplusTimes: 1
                   }
                 })
               });

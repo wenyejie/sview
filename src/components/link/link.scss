@@ -8,7 +8,7 @@
 
 .s-link {
 
-  transition: opacity .15s ease-in-out;
+  transition: all .15s ease-in-out;
   color: inherit;
 
   &-icon {
@@ -18,7 +18,7 @@
 
   &:hover,
   &:focus {
-    opacity: .75;
+    background-color: #f4f4f4;
   }
 
 }

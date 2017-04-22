@@ -7,7 +7,7 @@
 
 <template>
 
-  <div id="app">
+  <s-app>
     <s-header>填写商品描述</s-header>
 
     <s-main>
@@ -68,7 +68,7 @@
       </s-main-down>
 
     </s-main>
-  </div>
+  </s-app>
 
 
 </template>
@@ -173,10 +173,10 @@
             // 否则直接跳转至账号信息填写页面
             if (this.accountTypes.length > 1) {
               local.set('releaseAccountTypes', this.accountTypes);
-              this.$router.replace('selectAccount');
+              this.$router.push('selectAccount');
               return false;
             }
-            this.$router.replace({
+            this.$router.push({
               path: 'accountInfo',
               query: {
                 accountTypeId: this.accountTypes[0].gameAccountTypeId

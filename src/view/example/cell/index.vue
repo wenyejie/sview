@@ -17,6 +17,7 @@
     <section>
       <h3>size</h3>
       <s-cell size="lg">道具</s-cell>
+      <s-cell size="md">道具</s-cell>
       <s-cell>道具</s-cell>
     </section>
 
