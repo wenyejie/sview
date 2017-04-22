@@ -108,7 +108,7 @@
 
         showType: 1,
 
-        picUrls: [],
+        picUrls: '',
 
         releaseInfo: {
           title: '',
@@ -130,11 +130,11 @@
           showType: this.showType,
           serverId: this.serverId,
           goodsClassId: this.goodsClassId,
-          goodsSubClassId: this.goodsSubClassId,
+          subClassId: this.goodsSubClassId,
           attrs: this.modelAttrs
         });
 
-        this.releaseInfo.picUrls = this.picUrls.length > 0 ? this.picUrls : undefined;
+        this.releaseInfo.picUrls = this.picUrls !== '' ? this.picUrls : undefined;
 
       },
 

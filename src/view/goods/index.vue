@@ -1,15 +1,15 @@
 <!--
- - 发布商品
+ - Title
  -
  - author: Storm
- - date: 2017/04/17
+ - date: 2017/04/22
  -->
 
 <template>
 
   <s-app>
 
-    <s-header>选择服务器</s-header>
+    <s-header>游戏名称</s-header>
 
     <s-main>
 
@@ -29,31 +29,11 @@
 
 <script>
   export default {
-    name: 'Index',
+    name: 'index',
     props: {},
     data () {
-      return {
-        getGoodsLoading: null,
-        goods: {}
-      }
+      return {}
     },
-    methods: {
-      getGoods () {
-
-        if (this.getGoodsLoading) return false;
-        this
-          .$http
-          .post('/h5/goods/findSellerGoodsStatistics')
-          .then(response => {
-            if (response.body.code !== '000') return false;
-            this.goods = response.body.data.map;
-
-          })
-
-      }
-    },
-    created () {
-      this.getGoods();
-    }
+    methods: {}
   }
 </script>

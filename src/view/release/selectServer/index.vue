@@ -17,7 +17,7 @@
         <s-cell-intro>请选择商品所在服务器：</s-cell-intro>
         <s-link v-for="item in servers"
                 :key="item.domainId"
-                :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&=clientId=${clientId}&domainId=${domainId}&serverId=${item.serverId}`">{{item.serverName}}</s-link>
+                :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${domainId}&serverId=${item.serverId}`">{{item.serverName}}</s-link>
       </section>
 
     </s-main>

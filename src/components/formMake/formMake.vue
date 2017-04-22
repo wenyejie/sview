@@ -135,6 +135,9 @@
     },
     props: {
       options: Object,
+      prefix: {
+        type: String
+      },
       value: {
         type: Array,
         default () {

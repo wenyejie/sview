@@ -28,7 +28,7 @@
             class="c-9"
             size="sm">已阅读并同意<a href="javascript:;" class="c-primary">&lt;闪电虎手机网游服务平台服务协议&gt;</a></s-radio>
 
-          <s-button @click="release" type="primary" block class="mt-30">下一步</s-button>
+          <s-button @click="release" type="primary" block class="mt-30">提交</s-button>
         </s-main-down>
 
       </form>
@@ -90,7 +90,7 @@
             .$http
             .post('/h5/seller/publish/queryAttrByType', {
                 attrType: 2,
-                subClassId: this.releaseInfo.goodsSubClassId
+                subClassId: this.releaseInfo.subClassId
               }
             ).then(response => {
             if (response.body.code !== '000') reject();
@@ -124,7 +124,6 @@
         Promise
           .all([this.getSellerAttrTemp(), this.getAccount()])
           .then(([attrTemps, accounts]) => {
-            console.log(attrTemps);
             accounts = this.dataSync(accounts);
             this.formAttrs = attrTemps.concat(accounts);
           })
@@ -162,6 +161,7 @@
               .post('/h5/seller/publish/publishGoods', this.releaseInfo)
               .then(response => {
                 if (response.body.code !== '000') return false;
+                this.$Message.success('商品发布成功！');
                 this.$router.replace({
                   path: 'success',
                   query: {

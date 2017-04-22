@@ -16,7 +16,9 @@
       </slot>
     </div>
     <div class="header-c" v-if="center">
-      <h1 class="header-title"><slot></slot></h1>
+      <h1 class="header-title">
+        <slot></slot>
+      </h1>
     </div>
     <div class="header-r" v-if="right">
       <slot name="right"></slot>
@@ -57,11 +59,20 @@
     methods: {
       back () {
         window.history.back();
+      },
+
+      setTitle () {
+        if (this.$slots.default) {
+          document.title = this.$slots.default[0].text + ' - 闪电虎';
+        } else {
+          document.title = '闪电虎';
+        }
       }
     },
     created () {
       this.right = !!this.$slots.right;
       this.center = !!this.$slots.default;
+      this.setTitle()
     }
   }
 </script>

@@ -7,6 +7,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import resource from 'vue-resource';
+import './untils/promise';
 
 Vue.config.productionTip = false;
 
@@ -32,6 +33,8 @@ Vue.http.interceptors.push(function (request, next) {
     //loading = this.$Message.loading(typeof request.loading === 'string' ? request.loading : '加载中');
   }
   next(function (response) {
+
+    console.log(response);
 
     //debugger;
 
@@ -66,7 +69,7 @@ Vue.http.interceptors.push(function (request, next) {
 
 });
 
-new Vue({
+window.app = new Vue({
   el: '#app',
   router,
   store,

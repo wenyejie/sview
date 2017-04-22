@@ -118,7 +118,6 @@
        */
       clientClick (item) {
         switch (this.goodsSubClassEnableServer) {
-
           // 全部区服
           case 1:
 

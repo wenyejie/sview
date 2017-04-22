@@ -17,7 +17,7 @@
               :key="item.goodsId"
               :goods="item"></s-card>
 
-      <s-nothing v-if="goodsList.length === 0"
+      <s-nothing v-if="goodsList.length === 0 && loading === false"
                  title="没有找到对应的商品"
                  status="goods"></s-nothing>
 
@@ -58,7 +58,8 @@
       return {
         title: '',
         status: 0,
-        goodsList: []
+        goodsList: [],
+        loading: null
       }
     },
     methods: {
@@ -73,7 +74,10 @@
         const item = statusList.find(item => item.status === this.status);
         this.title = item.title;
       },
-      getGoodsInfo (currentPage = 1, pageSize = 20) {
+      getGoodsInfo (currentPage = 0, pageSize = 20) {
+
+        if (this.loading) return false;
+        this.loading = true;
 
         this
           .$http
@@ -86,6 +90,7 @@
             if (response.body.code !== '000') return false;
             this.goodsList = response.body.data.list;
           })
+          .finally(() => this.loading = false)
       }
     },
     watch: {

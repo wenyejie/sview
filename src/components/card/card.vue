@@ -10,13 +10,13 @@
     <s-cell class="s-card-header" tag="header">
       <span class="s-card-time c-9">发布时间:{{goods.ctime | date}}</span>
       <!--<s-button size="xs" type="default">复制</s-button>-->
-      <!--<template slot="right"><span class="s-card-type c-9">发货中</span></template>-->
+      <template slot="right"><span class="s-card-type c-9">{{goods.status | statusLabel}}</span></template>
     </s-cell>
     <s-link to="javascript:;" class="s-card-body" size="lg">
       <div class="s-card-left">
         <h4 class="s-card-title">
           <s-icon v-if="goods.showType !== 1" type="picfill" size="34" color="#81C8E4" class="text-middle"></s-icon>
-          <s-label :class="classClasses">{{goods.className}}</s-label>
+          <s-label :type="classType">{{goods.className}}</s-label>
           <span class="s-card-title-inner">{{goods.showTitle}}</span>
         </h4>
         <div class="s-card-desc">{{goods.gameName}}-{{goods.serverName}}</div>
@@ -31,13 +31,12 @@
       <!--<div class="s-card-confirm">最晚确认时间：xx小时</div>-->
       <div class="s-card-tool" slot="right">
         <template v-if="goods.status === 1 || goods.status === 2">
-          <s-button type="default" size="sm">下架</s-button>
+          <s-button type="default" size="sm" @click="down">下架</s-button>
         </template>
         <template v-if="goods.status === 3">
           <s-button type="default" size="sm" @click="modify">修改信息</s-button>
-          <s-button type="default" outline size="sm">重新上架</s-button>
+          <s-button type="default" outline size="sm" @click="up">重新上架</s-button>
         </template>
-        <!--<s-button type="default" outline size="sm">重新上架</s-button>-->
       </div>
     </s-cell>
   </section>
@@ -54,24 +53,35 @@
   const classClss = [
     {
       classId: 1,
-      className: 'primary'
+      type: 'primary'
     },
     {
       classId: 2,
-      className: 'info'
+      type: 'info'
     },
     {
       classId: 3,
-      className: 'warning'
+      type: 'warning'
     },
   ];
+
+  // 属性标签
+  const statusLabel = (status) => {
+    switch (status) {
+      case 3:
+        return '已下架';
+      default:
+        return '';
+    }
+  };
   export default {
     name: 'Card',
     components: {
       sLabel: Label
     },
     filters: {
-      date: date
+      date,
+      statusLabel,
     },
     props: {
       goods: {
@@ -80,13 +90,14 @@
     },
     data () {
       return {
-        up
+        uping: null,
+        downing: null
       }
     },
     computed: {
-      classClasses () {
-        const cls = classClss.find(item => item.classId = this.goods.classId);
-        return [`s-label-${cls.className}`];
+      classType () {
+        const cls = classClss.find(item => item.classId === this.goods.classId);
+        return cls.type;
       }
     },
     methods: {
@@ -94,7 +105,7 @@
       // 修改
       modify () {
         this.$router.push({
-          path: 'goodsInfo',
+          path: 'goodsModify',
           query: {
             goodsId: this.goods.goodsId
           }
@@ -122,20 +133,26 @@
 
       // 上架
       up () {
+        if (this.uping) return false;
+        this.uping = true;
         this
           .shelf(3)
           .then(() => {
             this.$Message.success('商品上架成功！');
-          });
+          })
+          .finally(() => this.uping = false);
       },
 
       // 下架
       down () {
+        if (this.downing) return false;
+        this.downing = true;
         this
           .shelf(4)
           .then(() => {
             this.$Message.success('商品下架成功！');
-          });
+          })
+          .finally(() => this.downing = false);
       }
     }
   }

@@ -16,9 +16,18 @@ export default {
     // 全部商品
     {
       path: '',
-      name: 'homeRelease',
+      name: 'indexRelease',
       component: resolve => {
         require(['@/view/release'], resolve);
+      }
+    },
+
+    // 修改商品信息
+    {
+      path: 'goodsModify',
+      name: 'goodsModifyRelease',
+      component: resolve => {
+        require(['@/view/release/goodsModify'], resolve);
       }
     },
 

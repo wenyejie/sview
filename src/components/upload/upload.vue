@@ -32,8 +32,9 @@
     name: 'name',
     props: {
       value: {
-        type: Array
+        type: String
       },
+
       accept: {
         type: String,
         default: 'image/jpg,image/jpeg,image/png'
@@ -99,9 +100,7 @@
 
       }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
 
       /**
@@ -149,9 +148,7 @@
        */
       generateDataURL (files, width, height, format, quality) {
 
-        return new Promise (resolve => {
-
-          let dataRUL = '';
+        return new Promise(resolve => {
 
           // 生成图片，画布节点
           const images = document.createElement('img');
@@ -166,6 +163,10 @@
           reader.onload = () => {
             images.src = reader.result;
             images.onload = () => {
+
+              // 重置画布底色为白色
+              context.fillStyle = "#ffffff";
+              context.fillRect(0, 0, this.width, this.height);
 
               // 获取图片的剪切信息
               const shear = this.getImageInfo(images, width, height);
@@ -182,12 +183,53 @@
       },
 
       /**
+       * 获取图片的base64信息
+       * @param files 图片文件
+       * @return {Promise} 返回base64位编码的文件
+       */
+      getbase64 (files) {
+        return new Promise(resolve => {
+          const reader = new FileReader();
+          reader.readAsDataURL(files[0]);
+          reader.onload(() => {
+            resolve(reader.result);
+          })
+        });
+      },
+
+      /**
+       * 获取图片信息
+       * @param base64 图片base64编码文件
+       * @param width 图片宽度
+       * @param height 图片高度
+       * @param format 图片格式
+       * @param quality 图片质量
+       * @return {Promise} 返回base64位编码的文件
+       */
+      getDataURL (base64, width, height, format, quality) {
+        return new Promise(resolve => {
+
+          // 生成图片，并初始化
+          const images = document.createElement('img');
+          images.src = base64;
+
+          // 生成画布，并初始化
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          // 生成
+          const context = canvas.getContext('2d');
+        })
+      },
+
+      /**
        * 选中图片
        * @param $event 图片事件
        * @return {Boolean} 退出
        */
       chosenImg ($event) {
-
+        console.log($event);
         // 列表中已经存在相同名称的图片所以退出
         if (this.imagesList.find(item => item.name === $event.target.value)) return false;
 
@@ -251,8 +293,11 @@
                 }
               })
               .then(response => {
-                if (response && response.key) {
-                  obj.url = `//${this.domain}/${response.key}`;
+                if (response && response.body.key) {
+                  obj.url = `//${this.domain}/${response.body.key}`;
+                  this.modelValue += this.modelValue ? ',' : '';
+                  this.modelValue += obj.url;
+                  this.$emit('input', this.modelValue);
                 }
               })
 
