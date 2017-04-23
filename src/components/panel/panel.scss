@@ -11,6 +11,17 @@
   font-size: .24rem;
   padding: .3rem .24rem .3rem;
 
+
+  &-article {
+
+    .s-panel-body {
+      margin-top: .26rem;
+      line-height: .32rem;
+      color: #666;
+    }
+
+  }
+
   &-lg {
     padding: .4rem .3rem;
   }
@@ -24,6 +35,11 @@
     line-height: 1;
     color: #333;
     font-weight: bold;
+
+    .s-icon {
+      margin-right: .1rem;
+    }
+
   }
 
   &-footer {

@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <div class="s-main" :class="classes" :style="styles"><slot></slot></div>
+  <div class="s-main" :class="classes"><div class="s-main-content" :style="styles"><slot></slot></div></div>
 </template>
 
 <script>
@@ -27,7 +27,7 @@
         }
       },
       bottom () {
-        return this.$store.state.mainDown;
+        return this.$store.state.mainPaddingBottom;
       },
       styles () {
         let sty = {};
@@ -38,7 +38,7 @@
     methods: {},
     created () {
       this.$store.commit('setting', {
-        name: 'mainDown',
+        name: 'mainPaddingBottom',
         value: '.24'
       });
     }

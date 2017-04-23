@@ -7,7 +7,7 @@
  -->
 
 <template>
-  <footer class="s-main-down">
+  <footer class="s-sedimentation">
     <slot></slot>
   </footer>
 </template>
@@ -22,7 +22,7 @@
     methods: {},
     mounted () {
       this.$store.commit('setting', {
-        name: 'mainDown',
+        name: 'mainPaddingBottom',
         value: this.$el.clientHeight / window.rootFontSize + 'rem'
       });
     }

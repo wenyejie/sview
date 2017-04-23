@@ -17,10 +17,11 @@
 
     <s-main bgc="white">
 
-      <swiper class="goodsDetail-swiper">
+      <swiper class="goodsDetail-swiper" :options="swiperOpts">
         <swiper-slide><img src="//img.la/640x400?s=demo0"></swiper-slide>
         <swiper-slide><img src="//img.la/640x400?s=demo1"></swiper-slide>
         <swiper-slide><img src="//img.la/640x400?s=demo2"></swiper-slide>
+        <div class="swiper-pagination"  slot="pagination"></div>
       </swiper>
 
       <header class="goodsDetail-header">
@@ -50,6 +51,15 @@
         看图，诚心买的拍看图，诚心买的拍
         看图，诚心买的拍看图，诚心买的拍</s-attr>
 
+      <s-panel class="s-panel-article goodsDetail-notify" title="免责声明" icon="notification">
+        <p>1.所展示的商品供求信息由买卖双方自行提供，其真实性、准确性和合法性由信息发布人负责</p>
+        <p>2.国家法律规定，未成年人不能参与虚拟物品交易</p>
+      </s-panel>
+
+      <s-suspension>
+        <s-button type="primary" block shadow>立即购买</s-button>
+      </s-suspension>
+
     </s-main>
   </s-app>
 </template>
@@ -58,6 +68,7 @@
   import {swiper, swiperSlide} from 'vue-awesome-swiper';
   import label from '@/components/label';
   import attr from '@/components/attr';
+  import suspension from '@/components/suspension';
   import './detail.scss';
   export default {
     name: 'detail',
@@ -65,11 +76,16 @@
       swiper,
       swiperSlide,
       sLabel: label,
-      sAttr: attr
+      sAttr: attr,
+      sSuspension: suspension
     },
     props: {},
     data () {
-      return {}
+      return {
+        swiperOpts: {
+          pagination: '.swiper-pagination'
+        }
+      }
     },
     methods: {}
   }

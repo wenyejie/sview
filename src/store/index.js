@@ -16,7 +16,7 @@ const debug = process.env.NODE_ENV !== 'production';
 const state = {
 
   // 主要内容具体底部的padding-bottom
-  mainDown: 0,
+  mainPaddingBottom: 0,
 
   // 服务区列表
   serviceAreas: [],
@@ -65,7 +65,7 @@ const actions = {
 // 在computed中调用
 // 调用方法：this.$store.getters.releaseInfo
 const getters = {
-  mainDown: state => state.mainDown,
+  mainDown: state => state.mainPaddingBottom,
   serviceAreaList: state => state.serviceAreaList,
   releaseInfo: state => state.releaseInfo
 };

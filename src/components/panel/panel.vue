@@ -8,7 +8,7 @@
 <template>
   <section class="s-panel">
     <header class="s-panel-header" v-if="hasHeader">
-      <slot name="header"><h4>{{title}}</h4></slot>
+      <slot name="header"><h4><s-icon v-if="icon" :type="icon"></s-icon>{{title}}</h4></slot>
     </header>
     <div class="s-panel-body"><slot></slot></div>
     <footer class="s-panel-footer" v-if="hasFooter"><slot name="footer"></slot></footer>
@@ -19,7 +19,8 @@
   export default {
     name: 'Panel',
     props: {
-      title: String
+      title: String,
+      icon: String
     },
     data () {
       return {

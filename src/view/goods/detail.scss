@@ -41,4 +41,12 @@
     color: #fd802c;
   }
 
+  &-notify {
+    border-top: .01rem solid #eee;
+  }
+
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #fff;
 }

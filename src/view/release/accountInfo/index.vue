@@ -22,14 +22,14 @@
 
         <s-cell-intro>【寄售交易】由闪电虎发货客服代替您给买家发货（7x24小时服务），快速完成交易。</s-cell-intro>
 
-        <s-main-down>
+        <s-sedimentation>
           <s-radio
             style="margin-left: .22rem;"
             class="c-9"
             size="sm">已阅读并同意<a href="javascript:;" class="c-primary">&lt;闪电虎手机网游服务平台服务协议&gt;</a></s-radio>
 
           <s-button @click="release" type="primary" block class="mt-30">提交</s-button>
-        </s-main-down>
+        </s-sedimentation>
 
       </form>
 
@@ -40,14 +40,14 @@
 
 <script>
   import FormMake from '@/components/formMake';
-  import MainDown from '@/components/mainDown';
+  import Sedimentation from '@/components/sedimentation';
   import local from '@/untils/local';
 
   export default {
     name: 'accountInfo',
     components: {
       sFormMake: FormMake,
-      sMainDown: MainDown
+      sSedimentation: Sedimentation
     },
     props: {},
     data () {

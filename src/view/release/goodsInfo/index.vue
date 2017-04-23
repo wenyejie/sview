@@ -63,9 +63,9 @@
 
       </form>
 
-      <s-main-down>
+      <s-sedimentation>
         <s-button type="primary" @click="nextStep" block>下一步</s-button>
-      </s-main-down>
+      </s-sedimentation>
 
     </s-main>
   </s-app>
@@ -76,7 +76,7 @@
 <script>
   import FormMake from '@/components/formMake';
   import FormControl from '@/components/formControl';
-  import MainDown from '@/components/mainDown';
+  import Sedimentation from '@/components/sedimentation';
   import Upload from '@/components/upload';
   import local from '@/untils/local';
 
@@ -84,7 +84,7 @@
     name: 'goodsInfo',
     components: {
       sFormMake: FormMake,
-      sMainDown: MainDown,
+      sSedimentation: Sedimentation,
       sFormControl: FormControl,
       sUpload: Upload
     },
