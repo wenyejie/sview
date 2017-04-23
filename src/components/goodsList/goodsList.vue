@@ -8,11 +8,11 @@
 <template>
   <article class="s-goodsList">
 
-    <div class="s-goodsList-flags">
+    <s-flag-group>
       <s-flag>热门商品</s-flag>
       <s-flag type="warning"><span>9.9</span>折</s-flag>
       <s-flag type="info">闪电发货</s-flag>
-    </div>
+    </s-flag-group>
 
     <div class="s-goodsList-tags">
       <s-icon type="picfill" color="#81C8E4" class="text-middle"></s-icon>
@@ -31,11 +31,13 @@
 
 <script>
   import Flag from '@/components/flag';
+  import FlagGroup from '@/components/flagGroup';
   import Label from '@/components/label';
   export default {
     name: 'goodsList',
     components: {
       sFlag: Flag,
+      sFlagGroup: FlagGroup,
       sLabel: Label
     },
     props: {},

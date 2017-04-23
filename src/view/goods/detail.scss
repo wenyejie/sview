@@ -1,0 +1,44 @@
+@charset "utf-8";
+/**
+ * Title
+ *
+ * author: Storm
+ * date: 2017/04/23
+ */
+
+.goodsDetail {
+
+  font-size: .24rem;
+
+  &-swiper {
+    height: 4rem;
+    background-color: #ccc;
+
+    img {
+      display: block;
+    }
+
+  }
+
+  &-header {
+    padding: .28rem 0 .3rem;
+    margin: 0 .24rem;
+    line-height: .36rem;
+    border-bottom: .01rem dashed #b1b1b1;
+
+    h3 {
+      margin-bottom: .16rem;
+    }
+
+  }
+
+  &-price {
+    font-size: .48rem;
+    font-weight: bold;
+  }
+
+  &-first {
+    color: #fd802c;
+  }
+
+}

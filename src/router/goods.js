@@ -22,14 +22,14 @@ export default {
       }
     },
 
-    /*// 修改商品信息
+    // 商品详情
     {
-      path: 'goodsModify',
-      name: 'goodsModifyRelease',
+      path: 'detail',
+      name: 'detailGoods',
       component: resolve => {
-        require(['@/view/release/goodsModify'], resolve);
+        require(['@/view/goods/detail'], resolve);
       }
-    },*/
+    },
 
 
   ]
