@@ -6,10 +6,11 @@
  -->
 
 <template>
-  <transition name="s-popup">
+  <transition :name="`s-popup-${direction}`">
     <div
       v-show="visible"
       class="s-popup"
+      :style="styles"
       :class="classes">
       <div
         class="s-popup-mask"
@@ -35,7 +36,22 @@
       maskClose: {
         type: Boolean,
         default: true
-      }
+      },
+      direction: {
+        type: String,
+        default: 'bottom',
+        validator (val) {
+          return ['top', 'right', 'bottom', 'left'].includes(val);
+        }
+      },
+
+      position: {
+        type: String,
+        validator (val) {
+          return ['fixed', 'absolute'].includes(val);
+        }
+      },
+
     },
     data () {
       return {
@@ -45,8 +61,13 @@
     computed: {
       classes () {
         return {
-
+          [`s-popup-${this.direction}`]: !!this.direction
         }
+      },
+      styles () {
+        let result = {};
+        if (this.position) result.position = this.position;
+        return result;
       },
       maskStyles () {
         let result = {};

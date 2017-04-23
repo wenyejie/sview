@@ -6,24 +6,30 @@
  -->
 
 <template>
-  <div class="PopupExample">
+  <s-app class="PopupExample">
     <s-header title="Popup"></s-header>
 
-    <s-popup v-model="visible">
-      <s-button
-        shape="angle"
-        type="primary"
-        @click="visible = false"
-        block
-        size="lg"
-      >hide</s-button>
-    </s-popup>
+    <s-main>
 
-    <section>
-      <h3>default - 默认</h3>
-      <s-button type="primary" @click="visible = true">show</s-button>
-    </section>
-  </div>
+      <s-popup v-model="visible" direction="top">
+        <s-button
+          shape="angle"
+          type="primary"
+          @click="visible = false"
+          block
+          size="lg"
+        >hide
+        </s-button>
+      </s-popup>
+
+      <section>
+        <h3>default - 默认</h3>
+        <s-button type="primary" @click="visible = true">show</s-button>
+      </section>
+
+    </s-main>
+
+  </s-app>
 </template>
 
 <script>

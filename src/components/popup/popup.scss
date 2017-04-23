@@ -14,7 +14,7 @@
   height: 100%;
 }
 .s-popup {
-  position: fixed;
+  position: absolute;
   transition: all .3s ease;
 
   &-mask {
@@ -24,19 +24,46 @@
 
   &-content {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #fff;
     transition: all .3s ease;
   }
 
-  &-enter,
-  &-leave-active {
-    opacity: 0;
+  &-bottom {
 
-    & .s-popup-content {
-      transform: translateY(100%);
+
+    .s-popup-content {
+      bottom: 0;
+      left: 0;
+      width: 100%;
     }
+
+    &-enter,
+    &-leave-active {
+      opacity: 0;
+
+      & .s-popup-content {
+        transform: translateY(100%);
+      }
+    }
+
+  }
+
+  &-top {
+
+    .s-popup-content {
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    &-enter,
+    &-leave-active {
+      opacity: 0;
+
+      & .s-popup-content {
+        transform: translateY(-100%);
+      }
+    }
+
   }
 }
