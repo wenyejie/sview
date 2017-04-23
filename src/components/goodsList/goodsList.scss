@@ -1,0 +1,60 @@
+@charset "utf-8";
+/**
+ * goods list 商品列表
+ *
+ * author: Storm
+ * date: 2017/04/23
+ */
+
+.s-goodsList {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 -.02rem .08rem 0 rgba(226,226,226,0.50);
+  border-radius: .06rem;
+  padding: .36rem .2rem;
+  line-height: 1;
+
+  & + & {
+    margin-top: .16rem;
+  }
+
+  &-wrap {
+    padding: .16rem .12rem;
+  }
+
+  &-flags {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    display: flex;
+  }
+
+  &-tags {
+    font-size: .24rem;
+  }
+
+  .s-icon {
+    font-size: 1.25em;
+    line-height: .8;
+  }
+
+  &-area {
+    color: #999;
+    margin-left: .13rem;
+  }
+
+  &-title {
+    color: #333;
+    font-size: .26rem;
+    margin-top: .07rem;
+
+  }
+
+  &-price {
+    font-size: .32rem;
+    font-weight: bold;
+    margin-top: .16rem;
+  }
+
+}

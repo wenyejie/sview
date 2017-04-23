@@ -102,7 +102,7 @@
           storage: 0,
           price: 0,
           showType: 1,
-          picUrls: []
+          picUrls: '//img.youximao.tv/FiFq7r48kcHq21lB-m2ycEKn4res'
         },
 
         // 加载模版信息loading
@@ -143,7 +143,7 @@
           })
           .then(response => {
             if (response.body.code !== '000') return false;
-            this.goods = response.body.data;
+            //this.goods = response.body.data;
           })
           .finally(() => this.getTemplateLoading = false);
 

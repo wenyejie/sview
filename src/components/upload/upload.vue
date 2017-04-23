@@ -58,7 +58,7 @@
       },
       format: {
         type: String,
-        default: 'image/jpeg'
+        default: ''
       },
 
       // token有效时间，单位豪秒
@@ -93,6 +93,7 @@
     watch: {
       value (val) {
         this.modelValue = val;
+        this.render();
       },
       modelValue (val) {
 
@@ -100,8 +101,32 @@
 
       }
     },
+    created() {
+      this.render();
+    },
     computed: {},
     methods: {
+
+      /**
+       * 根据model值重新渲染上传列表
+       */
+      render () {
+        if (!this.modelValue) return false;
+        const modelList = this.modelValue.split(',');
+
+        modelList.forEach(url => {
+          this
+            .getDataURL(url, this.thumbWidth, this.thumbHeight, this.format, this.thumbQuality)
+            .then(thumb => {
+
+              this.imagesList.push({
+                thumb,
+                url
+              });
+
+            });
+        });
+      },
 
       /**
        * 获取图片信息
@@ -138,62 +163,17 @@
       },
 
       /**
-       * 获取图片信息
-       * @param files 图片文件
-       * @param width 图片宽度
-       * @param height 图片高度
-       * @param format 图片格式
-       * @param quality 图片质量
-       * @return {Promise} 返回base64位编码的文件
-       */
-      generateDataURL (files, width, height, format, quality) {
-
-        return new Promise(resolve => {
-
-          // 生成图片，画布节点
-          const images = document.createElement('img');
-          const canvas = document.createElement('canvas');
-
-          const context = canvas.getContext('2d');
-          canvas.width = width;
-          canvas.height = height;
-
-          const reader = new FileReader();
-          reader.readAsDataURL(files[0]);
-          reader.onload = () => {
-            images.src = reader.result;
-            images.onload = () => {
-
-              // 重置画布底色为白色
-              context.fillStyle = "#ffffff";
-              context.fillRect(0, 0, this.width, this.height);
-
-              // 获取图片的剪切信息
-              const shear = this.getImageInfo(images, width, height);
-
-              // 把图片画到画布上，压缩，剪切等操作
-              context.drawImage(images, shear.sX, shear.sY, shear.sWidth, shear.sHeight, 0, 0, width, height);
-
-              // 生成dataRUL并返回
-              resolve(canvas.toDataURL(format, quality));
-            }
-          };
-
-        });
-      },
-
-      /**
        * 获取图片的base64信息
        * @param files 图片文件
        * @return {Promise} 返回base64位编码的文件
        */
-      getbase64 (files) {
+      getBase64 (files) {
         return new Promise(resolve => {
           const reader = new FileReader();
           reader.readAsDataURL(files[0]);
-          reader.onload(() => {
+          reader.onload = () => {
             resolve(reader.result);
-          })
+          }
         });
       },
 
@@ -211,6 +191,9 @@
 
           // 生成图片，并初始化
           const images = document.createElement('img');
+
+          // 解决canvas渲染跨域图片失败的办法
+          images.crossOrigin = 'anonymous';
           images.src = base64;
 
           // 生成画布，并初始化
@@ -218,8 +201,29 @@
           canvas.width = width;
           canvas.height = height;
 
-          // 生成
-          const context = canvas.getContext('2d');
+          document.body.appendChild(images);
+          document.body.appendChild(canvas);
+
+          // 生成画布工作区
+          let context = canvas.getContext('2d');
+
+          // 设置画布底色为透明
+          context.fillStyle = "#ffffff";
+          context.fillRect(0, 0, width, height);
+
+          images.onload = () => {
+
+            // 获取图片的剪切信息
+            const shear = this.getImageInfo(images, width, height);
+
+            // 把图片画到画布上，压缩，剪切等操作
+            context.drawImage(images, shear.sX, shear.sY, shear.sWidth, shear.sHeight, 0, 0, width, height);
+
+            // 生成dataRUL并返回
+            resolve(canvas.toDataURL(format, quality));
+
+          }
+
         })
       },
 
@@ -229,37 +233,44 @@
        * @return {Boolean} 退出
        */
       chosenImg ($event) {
-        console.log($event);
+
         // 列表中已经存在相同名称的图片所以退出
         if (this.imagesList.find(item => item.name === $event.target.value)) return false;
 
         this
-          .generateDataURL($event.target.files, this.width, this.height, this.format, this.quality)
-          .then(upload => {
+          .getBase64($event.target.files)
+          .then(base64 => {
 
             this
-              .generateDataURL($event.target.files, this.thumbWidth, this.thumbHeight, this.format, this.thumbQuality)
-              .then(thumb => {
+              .getDataURL(base64, this.width, this.height, this.format, this.quality)
+              .then(upload => {
 
-                const obj = {
-                  upload,
-                  thumb,
-                  url: '',
-                  name: $event.target.value
-                };
+                this
+                  .getDataURL(upload, this.thumbWidth, this.thumbHeight, this.format, this.thumbQuality)
+                  .then(thumb => {
 
-                // 增加到图片列表中
-                this.imagesList.push(obj);
+                    const obj = {
+                      upload,
+                      thumb,
+                      url: '',
+                      name: $event.target.value
+                    };
 
-                // 执行上传方法
-                this.upload(obj);
+                    // 增加到图片列表中
+                    this.imagesList.push(obj);
 
-                // 重置列表宽度
-                this.styles.width = (this.imagesList.length + 1) * this.itemWidth / 100 + 'rem';
+                    // 执行上传方法
+                    this.upload(obj);
 
-              })
+                    // 重置列表宽度
+                    this.styles.width = (this.imagesList.length + 1) * this.itemWidth / 100 + 'rem';
+
+                  });
+
+              });
 
           });
+
       },
 
       // 获取七牛token
@@ -303,8 +314,6 @@
 
           });
       }
-    },
-    mounted () {
     }
   }
 </script>

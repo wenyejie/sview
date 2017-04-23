@@ -7,7 +7,7 @@
 
 <template>
   <div class="FlagExample">
-    <s-header title="Flag"></s-header>
+    <s-header>Flag</s-header>
     <div class="demo">
       <s-flag-group>
         <s-flag>热门商品</s-flag>
