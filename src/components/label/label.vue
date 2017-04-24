@@ -22,7 +22,7 @@
         type: String,
         default: 'primary',
         validator (val) {
-          return ['primary', 'warning', 'info', 'android', 'ios', 'jailbreak', 'outline'].includes(val);
+          return ['primary', 'warning', 'info', 'android', 'ios', 'jailbreak', 'outline', ''].includes(val);
         }
       }
     },

@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <article class="s-goodsList">
+  <router-link :to="`/goods/detail?goodsId=${goods.goodsId}`" class="s-goodsList">
 
     <!--<s-flag-group>-->
     <!--<s-flag>热门商品</s-flag>-->
@@ -27,7 +27,7 @@
 
     <div class="s-goodsList-price">¥ {{goods.price}}</div>
 
-  </article>
+  </router-link>
 </template>
 
 <script>
