@@ -31,6 +31,12 @@
         this.visible = this.$parent.activeIndex === this._uid;
         return this.visible ? 'on' : '';
       }
+    },
+    created () {
+      this.$parent.pushPanel({
+        label: this.label,
+        _uid: this._uid
+      });
     }
   }
 </script>

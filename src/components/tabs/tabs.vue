@@ -41,7 +41,8 @@
     data () {
       return {
         navList: [],
-        activeIndex: this.value
+        activeIndex: 0,
+        active: this.value
       }
     },
     computed: {
@@ -56,13 +57,16 @@
         if (this.activeIndex === id) return false;
         this.activeIndex = id;
         this.$emit('input', id);
+        this.$emit('on-change', id);
       },
-      getPanel () {
-        return this.$children.filter(item => item.$options.name === 'TabsPanel');
+
+      pushPanel (obj) {
+        this.navList.push(obj);
       },
-      init () {
+      /*init () {
         const tabPanels = this.getPanel();
         let num = 0;
+        this.navList = [];
         tabPanels.forEach((panel) => {
           this.navList.push({
             label: panel.label,
@@ -76,15 +80,17 @@
               this.activeIndex = tabPanels[0]._uid;
           }
         });
-      }
+      }*/
     },
     watch: {
       value (val) {
         this.activeIndex = val;
+      },
+      navList (list) {
+        list.forEach((item, index) => {
+          if (this.activeIndex === 0 && this.active === index) this.activeIndex = item._uid;
+        });
       }
-    },
-    mounted () {
-      this.init();
     }
   }
 </script>

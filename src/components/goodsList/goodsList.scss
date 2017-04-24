@@ -13,6 +13,7 @@
   border-radius: .06rem;
   padding: .36rem .2rem;
   line-height: 1;
+  cursor: pointer;
 
   & + & {
     margin-top: .16rem;
@@ -38,14 +39,15 @@
   &-title {
     color: #333;
     font-size: .26rem;
-    margin-top: .07rem;
+    line-height: 1.1538461538461537;
+    margin-top: .05rem;
 
   }
 
   &-price {
     font-size: .32rem;
     font-weight: bold;
-    margin-top: .16rem;
+    margin-top: .14rem;
   }
 
 }

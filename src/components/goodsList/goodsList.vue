@@ -8,23 +8,24 @@
 <template>
   <article class="s-goodsList">
 
-    <s-flag-group>
-      <s-flag>热门商品</s-flag>
-      <s-flag type="warning"><span>9.9</span>折</s-flag>
-      <s-flag type="info">闪电发货</s-flag>
-    </s-flag-group>
+    <!--<s-flag-group>-->
+    <!--<s-flag>热门商品</s-flag>-->
+    <!--<s-flag type="warning"><span>9.9</span>折</s-flag>-->
+    <!--<s-flag type="info">闪电发货</s-flag>-->
+    <!--</s-flag-group>-->
 
     <div class="s-goodsList-tags">
-      <s-icon type="picfill" color="#81C8E4" class="text-middle"></s-icon>
-      <s-label type="primary">账号</s-label>
-      <s-label type="info">游戏币</s-label>
-      <s-label type="warning">装备</s-label>
-      <span class="s-goodsList-area">1036区</span>
+      <s-icon v-if="goods.showType === 2"
+              type="picfill"
+              color="#81C8E4"
+              class="text-middle"></s-icon>
+      <s-label :type="goddsType">{{goods.subClassName}}</s-label>
+      <span class="s-goodsList-area">{{goods.domainName || goods.serverName || '全服通用'}}</span>
     </div>
 
-    <h3 class="s-goodsList-title text-ellipsis">召唤师.165级.V10 155万影武者全召唤师.</h3>
+    <h3 class="s-goodsList-title text-ellipsis" :style="styles">{{goods.showTitle}}</h3>
 
-    <div class="s-goodsList-price">¥ 1222.0</div>
+    <div class="s-goodsList-price">¥ {{goods.price}}</div>
 
   </article>
 </template>
@@ -40,10 +41,32 @@
       sFlagGroup: FlagGroup,
       sLabel: Label
     },
-    props: {},
+    props: {
+      goods: Object
+    },
     data () {
       return {}
     },
-    methods: {}
+    methods: {},
+    computed: {
+      goddsType () {
+        switch (this.goods.classId) {
+          case 1:
+            return 'primary';
+          case 2:
+            return 'info';
+          case 3:
+            return 'warning';
+          default:
+            return '';
+        }
+      },
+
+      styles () {
+        let result = {};
+        if (/^【/.test(this.goods.showTitle)) result.marginLeft = '-.16rem';
+        return result;
+      }
+    }
   }
 </script>

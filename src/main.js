@@ -46,6 +46,9 @@ Vue.http.interceptors.push(function (request, next) {
         case 0:
           message = '网络错误, 请稍后重试！';
           break;
+        case 500:
+          message = '服务器错误, 请稍后重试！';
+          break;
 
         default:
           message = '未知错误, 请稍后重试！';
