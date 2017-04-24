@@ -87,26 +87,32 @@
         </s-cell>
         <s-cell>排序方式</s-cell>
 
+        <!--
+        PUBLISH_TIME_DESC(1, "按发布时间排序"),
+        PRICE_ASC(2, "按价格从低到高排序"),
+        PRICE_DESC(3, "按价格从高到低排序"),
+        SINGLE_PRICE_ASC(4, "按单价从低到高排序"),
+        -->
         <div class="s-radio-list">
           <label class="s-radio-item">
-            <input class="s-radio-check" type="radio" name="sort">
+            <input class="s-radio-check" type="radio" name="sortRule" :value="1" v-model="query.sortRule">
             <span class="s-radio-title">默认</span>
             <span class="s-radio-desc">按发布时间排序</span>
           </label>
           <label class="s-radio-item">
-            <input class="s-radio-check" type="radio" name="sort">
+            <input class="s-radio-check" type="radio" name="sortRule" :value="2" v-model="query.sortRule">
             <span class="s-radio-title">价格↑</span>
             <span class="s-radio-desc">按价格从低到高排序</span>
           </label>
           <label class="s-radio-item">
-            <input class="s-radio-check" type="radio" name="sort">
+            <input class="s-radio-check" type="radio" name="sortRule" :value="3" v-model="query.sortRule">
             <span class="s-radio-title">价格↓</span>
             <span class="s-radio-desc">按价格从高到低排序</span>
           </label>
           <label class="s-radio-item">
-            <input class="s-radio-check" type="radio" name="sort">
+            <input class="s-radio-check" type="radio" name="sortRule" :value="4" v-model="query.sortRule">
             <span class="s-radio-title">单价↑</span>
-            <span class="s-radio-desc">按价格从低到高排序</span>
+            <span class="s-radio-desc">按单价从低到高排序</span>
           </label>
         </div>
 
@@ -163,22 +169,74 @@
 
         sortVisible: null,
         sortModel: null,
-        sortText: '筛选排序'
+        sortText: '筛选排序',
+
+        loading: null,
+
+        query: {
+          domainId: undefined,
+          gameId: undefined,
+          goodsClassId: undefined,
+          platformId: undefined,
+          sortRule: 1,
+          serverId: undefined,
+          subClassId: undefined
+        }
       }
     },
     methods: {
+
+
+      getGoods (currentPage = 0, pageSize = 20) {
+        if (this.loading) return false;
+        this.loading = true;
+
+        const param = Object.assign({currentPage, pageSize}, this.query);
+
+        this.
+          $http
+          .post('/h5/goods/gameGoodsScreening', param)
+          .then(response => response.json())
+          .then(response => {
+            console.log(response);
+          });
+      },
+
       phoneChose () {
+        this.categoryVisible = false;
+        this.serverVisible = false;
+        this.sortVisible = false;
         this.phoneVisible = !this.phoneVisible;
       },
       categoryChose () {
+        this.phoneVisible = false;
+        this.serverVisible = false;
+        this.sortVisible = false;
         this.categoryVisible = !this.categoryVisible;
       },
       serverChose () {
+        this.phoneVisible = false;
+        this.categoryVisible = false;
+        this.sortVisible = false;
         this.serverVisible = !this.serverVisible;
       },
       sortChose () {
+        this.phoneVisible = false;
+        this.categoryVisible = false;
+        this.serverVisible = false;
         this.sortVisible = !this.sortVisible;
       }
+    },
+
+    created () {
+      const query = this.$route.query;
+      if (!query.gameId) {
+        this.$Dialog.error('游戏ID不存在, 请重新选择游戏');
+        this.$router.push({path: '/'});
+        return false;
+      }
+      this.query.gameId = parseInt(this.$route.query);
+      this.getGoods();
     }
   }
 </script>

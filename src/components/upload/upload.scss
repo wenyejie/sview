@@ -16,16 +16,31 @@
     position: relative;
     padding: .2rem .44rem;
     background-color: #fff;
-    border-top: .01rem solid #E5E5E5;
+    border-top: .01rem solid #e5e5e5;
   }
 
   &-item {
-    background: #F8F8F8;
+    background: #f8f8f8;
     border-radius: .04rem;
     width: 1.2rem;
     height: 1.2rem;
     margin-right: .2rem;
+    position: relative;
 
+  }
+
+  &-close {
+    position: absolute;
+    line-height: 1;
+    left: -.1rem;
+    top: -.1rem;
+    width: .32rem;
+    height: .32rem;
+    color: #fd802c;
+    font-size: .3rem;
+    padding: .01rem;
+    background-color: #fff;
+    border-radius: 50%;
   }
 
   &-img {

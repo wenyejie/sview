@@ -36,8 +36,6 @@ Vue.http.interceptors.push(function (request, next) {
 
     console.log(response);
 
-    //debugger;
-
     // 移除loading
     loading && loading.remove();
 
@@ -46,7 +44,7 @@ Vue.http.interceptors.push(function (request, next) {
       let message = '';
       switch (response.status) {
         case 0:
-          message = '网络错误, 连接被拒绝!';
+          message = '网络错误, 请稍后重试！';
           break;
 
         default:

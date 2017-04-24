@@ -17,13 +17,13 @@
         <s-cell>
           <span class="c-primary">*&nbsp;</span>
           <span>上传图片</span>
-          <s-radio-group v-model="showType" slot="right">
+          <s-radio-group v-model="releaseInfo.showType" slot="right">
             <s-radio :label="2" name="showType">有图</s-radio>
             <s-radio :label="1" name="showType">无图</s-radio>
           </s-radio-group>
         </s-cell>
 
-        <s-upload v-model="picUrls" v-if="showType === 2"></s-upload>
+        <s-upload v-model="releaseInfo.picUrls" v-if="releaseInfo.showType === 2"></s-upload>
 
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
@@ -36,17 +36,17 @@
 
         </s-form-control>
 
-        <s-form-make v-for="item in formAttrs"
-                     v-model="modelAttrs"
+        <s-form-make v-for="(item, index) in formAttrs"
+                     v-model="releaseInfo.attrs[index]"
                      :key="item.attrId"
-                     v-if="item.attrRule[0].showType === showType || item.attrRule[0].showType === 3"
+                     v-if="item.attrRule[0].showType === releaseInfo.showType || item.attrRule[0].showType === 3"
                      :options="item"></s-form-make>
 
 
         <!-- 库存，价格 -->
         <s-form-control label="商品库存" required>
           <input type="number"
-                 v-if="goodsClassId !==1"
+                 v-if="releaseInfo.goodsClassId !==1"
                  :max="titleAttr.store"
                  min="1"
                  v-model.number="releaseInfo.storage" placeholder="请输入商品库存">
@@ -57,7 +57,7 @@
                  :max="titleAttr.maxPrice"
                  :min="titleAttr.minPrice"
                  v-model.number="releaseInfo.price"
-                 placeholder="请输入商品价格">
+                 :placeholder="`商品价格不能小于${titleAttr.minPrice}`">
         </s-form-control>
 
 
@@ -91,12 +91,6 @@
     props: {},
     data () {
       return {
-        gameId: null,
-        goodsClassId: null,
-        goodsSubClassId: null,
-        clientId: null,
-        domainId: null,
-        serverId: null,
 
         getAttrsLoading: null,
 
@@ -104,16 +98,18 @@
 
         formAttrs: [],
 
-        modelAttrs: [],
-
-        showType: 1,
-
-        picUrls: '',
-
         releaseInfo: {
+          clientId: null,
+          domainId: null,
+          serverId: null,
+          goodsClassId: null,
+          subClassId: null,
+          attrs: [],
           title: '',
-          storage: 0,
-          price: 0
+          storage: null,
+          price: null,
+          showType: 1,
+          picUrls: []
         },
 
         // 标题属性
@@ -122,27 +118,9 @@
     },
     methods: {
 
-      // 获取发布信息
-      getInfo () {
-        this.releaseInfo = Object.assign({}, this.releaseInfo, {
-          clientId: this.clientId,
-          domainId: this.domainId,
-          showType: this.showType,
-          serverId: this.serverId,
-          goodsClassId: this.goodsClassId,
-          subClassId: this.goodsSubClassId,
-          attrs: this.modelAttrs
-        });
-
-        this.releaseInfo.picUrls = this.picUrls !== '' ? this.picUrls : undefined;
-
-      },
-
       // 下一步
       nextStep () {
-        this.getInfo();
         local.set('releaseInfo', this.releaseInfo);
-        this.$store.dispatch('setReleaseInfo', this.releaseInfo);
 
         this.getAccountType();
       },
@@ -156,7 +134,7 @@
         this
           .$http
           .post('/h5/seller/publish/queryAccountTypeInfo', {
-            clientId: this.clientId
+            clientId: this.releaseInfo.clientId
           }, {
             loading: true
           })
@@ -192,12 +170,12 @@
       // 获取链接中所带参数
       getQuery () {
         const query = this.$route.query;
-        this.gameId = parseInt(query.gameId);
-        this.goodsClassId = parseInt(query.goodsClassId);
-        this.goodsSubClassId = parseInt(query.goodsSubClassId);
-        this.clientId = parseInt(query.clientId);
-        this.domainId = parseInt(query.domainId) || undefined;
-        this.serverId = parseInt(query.serverId);
+        this.releaseInfo.gameId = parseInt(query.gameId);
+        this.releaseInfo.goodsClassId = parseInt(query.goodsClassId);
+        this.releaseInfo.subClassId = parseInt(query.goodsSubClassId);
+        this.releaseInfo.clientId = parseInt(query.clientId);
+        this.releaseInfo.domainId = parseInt(query.domainId) || undefined;
+        this.releaseInfo.serverId = parseInt(query.serverId);
       },
 
       /**
@@ -213,7 +191,7 @@
           .$http
           .post('/h5/seller/publish/queryAttrByType', {
               attrType: 1,
-              subClassId: this.goodsSubClassId
+              subClassId: this.releaseInfo.subClassId
             },
             {
               loading: true
@@ -233,6 +211,13 @@
       // 数据同步
       dataSync (list) {
         list.forEach(item => {
+          this.releaseInfo.attrs.push({
+            attrId: item.subClassAttrId,
+            attrName: item.subClassAttrName,
+            attrType: item.subClassAttrType,
+            attrValue: null,
+            ruleId: null,
+          });
           this.formAttrs.push({
             attrSeq: item.subClassAttrSeq,
             attrRule: item.subClassAttrRule,

@@ -148,21 +148,18 @@
     content: "\e62c";
   }
 
-  &-picfill:before {
-    content: '\e72c';
-  }
-
-  &-pic:before {
-    content: '\e69b';
-  }
-
   &-loading,
-  &-notification {
+  &-notification,
+  &-picfill {
     width: 1em;
     height: 1em;
     display: inline-block;
     vertical-align: -.1em;
     background-size: 100%;
+  }
+
+  &-picfill {
+    background-image: url(../../assets/image.png);
   }
 
   &-notification {

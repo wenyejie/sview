@@ -14,16 +14,16 @@
         <input v-if="type(formData.attrRule[0]) === 'password'"
                type="password"
                :maxlength="length(formData.attrRule[0])"
-               v-model.trim.number="formData.modelValue"
-               @input="inputChange(formData, $event)"
+               v-model.trim="modelValue.attrValue"
+               @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
 
         <input v-if="type(formData.attrRule[0]) === 'number'"
                type="number"
                :maxlength="length(formData.attrRule[0])"
                :min="min(formData.attrRule[0])"
-               v-model.trim.number="formData.modelValue"
-               @input="inputChange(formData, $event)"
+               v-model.trim.number="modelValue.attrValue"
+               @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
 
         <input v-if="type(formData.attrRule[0]) === 'tel'"
@@ -31,22 +31,22 @@
                maxlength="11"
                minlength="11"
                :min="min(formData.attrRule[0])"
-               v-model.trim.number="formData.modelValue"
-               @input="inputChange(formData, $event)"
+               v-model.trim.number="modelValue.attrValue"
+               @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
 
         <input v-if="type(formData.attrRule[0]) === 'email'"
                type="email"
                :maxlength="length(formData.attrRule[0])"
-               v-model.trim="formData.modelValue"
-               @input="inputChange(formData, $event)"
+               v-model.trim="modelValue.attrValue"
+               @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
 
         <input v-if="type(formData.attrRule[0]) === 'text'"
                type="text"
                :maxlength="length(formData.attrRule[0])"
-               v-model.trim="formData.modelValue"
-               @input="inputChange(formData, $event)"
+               v-model.trim="modelValue.attrValue"
+               @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
       </s-form-control>
       <s-cell-intro v-if="formData.attrRule[0].showDesc">{{formData.attrRule[0].showDesc}}</s-cell-intro>
@@ -58,7 +58,7 @@
                      name="ruleDefaultValue"
                      val="ruleId"
                      :options="formData.attrRule"
-                     v-model="selectModel"
+                     v-model="modelValue.ruleId"
                      @on-change="selectChange(formData, $event)"
                      :required="required(formData.attrRule[0])"></s-form-select>
       <s-cell-intro v-if="formData.attrRule[0].showDesc">{{formData.attrRule[0].showDesc}}</s-cell-intro>
@@ -70,51 +70,52 @@
                      placeholder="请选择"
                      name="ruleDefaultValue"
                      val="ruleId"
-                     v-model="hybridModelValue"
+                     v-model="modelValue.ruleId"
+                     @on-change="hybrideSelect($event)"
                      :options="formData.attrRule"
                      :required="required(formData.attrRule[0])"></s-form-select>
 
       <template v-for="item in formData.attrRule">
         <s-form-control :label="item.ruleDefaultValue"
                         :key="item.ruleId"
-                        v-if="item.ruleId === hybridModelValue"
+                        v-if="item.ruleId === modelValue.ruleId"
                         :required="required(item)">
 
           <input v-if="type(item) === 'password'"
                  type="password"
                  :maxlength="length(item)"
-                 v-model.trim.number="formData.modelValue"
-                 @input="hybridChange(formData, item, $event.target)"
+                 v-model.trim="modelValue.attrValue"
+                 @input="hybridChange()"
                  :placeholder="`请输入${formData.attrName}`">
 
           <input v-if="type(item) === 'number'"
                  type="number"
                  :maxlength="length(item)"
                  :min="min(item)"
-                 v-model.trim.number="formData.modelValue"
-                 @input="hybridChange(formData, item, $event.target)"
+                 v-model.trim.number="modelValue.attrValue"
+                 @input="hybridChange()"
                  :placeholder="`请输入${formData.attrName}`">
 
           <input v-if="type(item) === 'tel'"
                  type="tel"
                  maxlength="11"
                  minlength="11"
-                 v-model.trim="formData.modelValue"
-                 @input="hybridChange(formData, item, $event.target)"
+                 v-model.trim.number="modelValue.attrValue"
+                 @input="hybridChange()"
                  :placeholder="`请输入${formData.attrName}`">
 
           <input v-if="type(item) === 'email'"
                  type="email"
                  :maxlength="length(item)"
-                 v-model.trim="formData.modelValue"
-                 @input="hybridChange(formData, item, $event.target)"
+                 v-model.trim="modelValue.attrValue"
+                 @input="hybridChange()"
                  :placeholder="`请输入${formData.attrName}`">
 
           <input v-if="type(item) === 'text'"
                  type="text"
                  :maxlength="length(item)"
-                 v-model.trim="formData.modelValue"
-                 @input="hybridChange(formData, item, $event.target)"
+                 v-model.trim="modelValue.attrValue"
+                 @input="hybridChange()"
                  :placeholder="`请输入${formData.attrName}`">
         </s-form-control>
         <s-cell-intro v-if="item.showDesc && item.selected">{{item.showDesc}}</s-cell-intro>
@@ -139,9 +140,9 @@
         type: String
       },
       value: {
-        type: Array,
+        type: Object,
         default () {
-          return [];
+          return {};
         }
       }
     },
@@ -150,8 +151,7 @@
         model: null,
         selectModel: null,
         modelValue: this.value,
-        formData: this.options,
-        hybridModelValue: null
+        formData: this.options
       }
     },
     computed: {},
@@ -164,42 +164,29 @@
       }
     },
     methods: {
-      saveValue (options, value, ruleId) {
-        const result = this.modelValue.find(item => item.attrId === options.attrId);
 
-        if (result) {
-          result.attrValue = value;
-        } else {
-          this.modelValue.push({
-            attrId: options.attrId,
-            attrName: options.attrName,
-            attrType: options.attrType,
-            attrValue: value,
-            ruleId: ruleId
-          });
-        }
+      // 混合选择框
+      hybridChange () {
         this.$emit('input', this.modelValue);
       },
 
-      // 混合选择框
-      hybridChange (formData, item, $target) {
-        const value = $target.type !== 'number' ? $target.value : parseInt($target.value);
-        this.saveValue(formData, value, item.ruleId);
+      hybrideSelect ($event) {
+        this.modelValue.ruleId = $event;
+        this.modelValue.attrValue = '';
+        this.$emit('input', this.modelValue);
       },
 
       // 选择框
       selectChange (formData, ruleId) {
         let value = formData.attrRule.find(item => item.ruleId === ruleId);
-        value = value.ruleDefaultValue;
-        this.saveValue(formData, value, ruleId);
+        this.modelValue.attrValue = value.ruleDefaultValue;
+        this.$emit('input', this.modelValue);
       },
 
       // 输入框
-      inputChange (formData, $event) {
-
-        const value = $event.target.type !== 'number' ? $event.target.value : parseInt($event.target.value);
-
-        this.saveValue(formData, value, formData.attrRule[0].ruleId);
+      inputChange (formData) {
+        this.modelValue.ruleId = formData.attrRule[0].ruleId;
+        this.$emit('input', this.modelValue);
 
       },
 

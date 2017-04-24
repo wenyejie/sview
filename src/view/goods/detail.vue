@@ -21,7 +21,7 @@
         <swiper-slide><img src="//img.la/640x400?s=demo0"></swiper-slide>
         <swiper-slide><img src="//img.la/640x400?s=demo1"></swiper-slide>
         <swiper-slide><img src="//img.la/640x400?s=demo2"></swiper-slide>
-        <div class="swiper-pagination"  slot="pagination"></div>
+        <div class="swiper-pagination" slot="pagination"></div>
       </swiper>
 
       <header class="goodsDetail-header">
@@ -49,7 +49,8 @@
         看图，诚心买的拍看图，诚心买的拍
         看图，诚心买的拍看图，诚心买的拍
         看图，诚心买的拍看图，诚心买的拍
-        看图，诚心买的拍看图，诚心买的拍</s-attr>
+        看图，诚心买的拍看图，诚心买的拍
+      </s-attr>
 
       <s-panel class="s-panel-article goodsDetail-notify" title="免责声明" icon="notification">
         <p>1.所展示的商品供求信息由买卖双方自行提供，其真实性、准确性和合法性由信息发布人负责</p>
@@ -84,9 +85,35 @@
       return {
         swiperOpts: {
           pagination: '.swiper-pagination'
-        }
+        },
+
+        loading: null,
+
+        goodsId: null
       }
     },
-    methods: {}
+    methods: {
+
+      /**
+       * 获取商品详情
+       */
+      getDetail () {
+        if (this.loading) return false;
+        this.loading = true;
+        this
+          .$http
+          .post('/h5/goods/showGoodsInfo', {goodsId: this.goodsId})
+          .then(response => {
+            if (response.body.code !== '000') return false;
+            this.goods = response.body.data;
+          })
+          .finally(() => this.loading = false);
+      }
+    },
+
+    created () {
+      this.goodsId = parseInt(this.$route.query.goodsId);
+      this.getDetail();
+    }
   }
 </script>

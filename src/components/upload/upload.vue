@@ -8,7 +8,8 @@
 <template>
   <div class="s-upload-wrap">
     <ul class="s-upload" :style="styles">
-      <li class="s-upload-item" v-for="item in imagesList" :class="{'s-upload-loading': !item.url}">
+      <li class="s-upload-item" v-for="(item, index) in imagesList" :class="{'s-upload-loading': !item.url}">
+        <a href="javascript:;" class="s-upload-close" @click="remove(index)"><s-icon type="roundclosefill"></s-icon></a>
         <img class="s-upload-img" :src="item.thumb">
       </li>
       <li class="s-upload-item s-upload-button">
@@ -32,7 +33,10 @@
     name: 'name',
     props: {
       value: {
-        type: String
+        type: Array,
+        default () {
+          return [];
+        }
       },
 
       accept: {
@@ -91,7 +95,8 @@
       }
     },
     watch: {
-      value (val) {
+      value (val, oldVal) {
+        if (val === this.modelValue || val === oldVal) return false;
         this.modelValue = val;
         this.render();
       },
@@ -108,13 +113,22 @@
     methods: {
 
       /**
+       * 移除当前图片
+       * @param index 图片列表的下标
+       */
+      remove (index) {
+        this.imagesList.splice(index, 1);
+        this.$emit('input', this.modelValue);
+        console.log(this.imagesList, this.modelValue);
+      },
+
+      /**
        * 根据model值重新渲染上传列表
        */
       render () {
         if (!this.modelValue) return false;
-        const modelList = this.modelValue.split(',');
 
-        modelList.forEach(url => {
+        this.modelValue.forEach(url => {
           this
             .getDataURL(url, this.thumbWidth, this.thumbHeight, this.format, this.thumbQuality)
             .then(thumb => {
@@ -200,9 +214,6 @@
           const canvas = document.createElement('canvas');
           canvas.width = width;
           canvas.height = height;
-
-          document.body.appendChild(images);
-          document.body.appendChild(canvas);
 
           // 生成画布工作区
           let context = canvas.getContext('2d');
@@ -306,8 +317,7 @@
               .then(response => {
                 if (response && response.body.key) {
                   obj.url = `//${this.domain}/${response.body.key}`;
-                  this.modelValue += this.modelValue ? ',' : '';
-                  this.modelValue += obj.url;
+                  this.modelValue.push(obj.url);
                   this.$emit('input', this.modelValue);
                 }
               })

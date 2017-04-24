@@ -19,12 +19,12 @@
       </s-steps>
 
       <s-panel>
-        <p>每日发布商品数： <span style="color: #ff9616">1</span> / 10</p>
+        <p>每日发布商品数： <span style="color: #ff9616">{{surplusTimes}}</span> / 10</p>
 
         <template slot="footer">
           <s-row gutter=".1rem">
             <s-col span="12">
-              <s-button block>继续发布同类商品</s-button>
+              <s-button block @click="continueRelease">继续发布同类商品</s-button>
             </s-col>
             <s-col span="12">
               <s-button block outline>查看同类商品</s-button>
@@ -96,9 +96,19 @@
         this.$router.push('/');
       },
 
+      // 继续发布同类商品
+      continueRelease () {
+        this.$router.go(-1);
+      },
+
       // http://caniuse.com/#search=clipboard
       copyLink() {
         this.$Message.success('复制成功！');
+      }
+    },
+    watch: {
+      $route () {
+        this.surplusTimes = this.$route.query.surplusTimes;
       }
     },
     created () {

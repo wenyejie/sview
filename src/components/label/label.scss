@@ -18,15 +18,15 @@
   padding: .16666666666666666em .47619047619047616em;
 
   &-primary {
-    background-color: #ff9947;
+    background-image: linear-gradient(to left, #F9A567 0%, #FD684C 100%);
   }
 
   &-warning {
-    background-color: #ffca37;
+    background-image: linear-gradient(to right, #FFA931 0%, #FFD550 100%);
   }
 
   &-info {
-    background-color: #b3c2ec;
+    background-image: linear-gradient(to right, #928AFC 0%, #BD96F9 100%);
   }
 
   &-android,
@@ -40,15 +40,15 @@
   }
 
   &-android {
-    background-image: linear-gradient(-90deg, #0BC1B5 0%, #1AE5B5 100%);
+    background-image: linear-gradient(to left, #0BC1B5 0%, #1AE5B5 100%);
   }
 
   &-ios {
-    background-image: linear-gradient(-90deg, #62BEFF 0%, #67DDF3 100%);
+    background-image: linear-gradient(to left, #62BEFF 0%, #67DDF3 100%);
   }
 
   &-jailbreak {
-    background-image: linear-gradient(-90deg, #928AFC 0%, #BD96F9 100%);
+    background-image: linear-gradient(to left, #928AFC 0%, #BD96F9 100%);
   }
 
   &-outline {

@@ -15,8 +15,8 @@
       <form novalidate>
 
         <s-cell-intro icon="warning"><span class="c-primary">谨防受骗：请勿向任何人泄露您的账号密码！</span></s-cell-intro>
-        <s-form-make v-for="item in formAttrs"
-                     v-model="modelAttrs"
+        <s-form-make v-for="(item, index) in formAttrs"
+                     v-model="modelAttrs[index]"
                      :key="item.attrId"
                      :options="item"></s-form-make>
 
@@ -117,6 +117,19 @@
 
       },
 
+      // 同步model数据
+      modelSync (data) {
+        data.forEach(item => {
+          this.modelAttrs.push({
+            attrId: item.attrId,
+            attrName: item.attrName,
+            attrType: item.attrType,
+            attrValue: null,
+            ruleId: null,
+          });
+        });
+      },
+
       // 获取卖家表单数据
       getFormAttrs () {
         if (this.getFormAttrsLoading) return false;
@@ -126,6 +139,7 @@
           .then(([attrTemps, accounts]) => {
             accounts = this.dataSync(accounts);
             this.formAttrs = attrTemps.concat(accounts);
+            this.modelSync(this.formAttrs);
           })
       },
 

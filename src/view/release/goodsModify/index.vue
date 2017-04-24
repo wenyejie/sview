@@ -28,21 +28,20 @@
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
         <!-- 当用户需要输入标题时展示商品标题输入框 -->
-        <s-form-control label="商品标题" v-if="titleAttr.goodsSubClassTitleRule !== 1">
+        <s-form-control label="商品标题" v-if="goodsModifyConfig.subClass.titleRule !== 1">
           <input type="text"
                  v-model="goods.title"
-                 :maxlength="titleAttr.goodsSubClassMaxTitleLen"
+                 :maxlength="goodsModifyConfig.subClass.maxTitleLen"
                  placeholder="请输入商品标题">
 
         </s-form-control>
 
-        <s-form-make v-for="item in goods.goodsAttrs"
+        <s-form-make v-for="(item, index) in goodsModifyConfig.goodsAttrs"
                      prefix="goods"
-                     v-model="item.attrValue"
+                     v-model="goods.goodsAttrs[index]"
                      :key="item.attrId"
                      v-if="item.attrRule[0].showType === goods.showType || item.attrRule[0].showType === 3"
                      :options="item"></s-form-make>
-
 
         <!-- 库存，价格 -->
         <s-form-control label="商品库存" required>
@@ -102,7 +101,14 @@
           storage: 0,
           price: 0,
           showType: 1,
-          picUrls: '//img.youximao.tv/FiFq7r48kcHq21lB-m2ycEKn4res'
+          pics: [],
+          goodsAttrs: [],
+          sellerAttrs: [],
+          sellerTempAttrs: []
+        },
+
+        goodsModifyConfig: {
+          subClass: {}
         },
 
         // 加载模版信息loading
@@ -118,7 +124,36 @@
 
       // 下一步
       nextStep () {
+        local.set('goodsModifyValue', this.goods);
+        this.$router.push({path: 'accountModify'});
+      },
 
+      /**
+       * 数据同步
+       */
+      dataSync (obj) {
+        for (let key in obj) {
+          if (!obj.hasOwnProperty(key)) continue;
+          if (key === 'pics') {
+            this.goods[key] = obj[key].join();
+            continue;
+          }
+          if (key !== 'sellerAttrs' && key !== 'goodsAttrs' && key !== 'sellerTempAttrs') {
+            this.goods[key] = obj[key];
+            continue;
+          }
+
+          obj[key].forEach((value, index) => {
+            this.goods[key][index] = {
+              attrId: value.attrId,
+              attrName: value.attrName,
+              attrType: value.attrType,
+              attrValue: value.attrValue,
+              ruleId: value.attrRuleId,
+            }
+
+          });
+        }
       },
 
       // 获取链接中所带参数
@@ -143,7 +178,9 @@
           })
           .then(response => {
             if (response.body.code !== '000') return false;
-            //this.goods = response.body.data;
+            this.goodsModifyConfig = response.body.data;
+            this.dataSync(this.goodsModifyConfig);
+            local.set('goodsModifyConfig', response.body.data);
           })
           .finally(() => this.getTemplateLoading = false);
 

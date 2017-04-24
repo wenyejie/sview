@@ -31,6 +31,15 @@ export default {
       }
     },
 
+    // 修改寄售账号信息
+    {
+      path: 'accountModify',
+      name: 'accountModifyRelease',
+      component: resolve => {
+        require(['@/view/release/accountModify'], resolve);
+      }
+    },
+
     // 商品分类详情
     {
       path: 'goodsClass',
