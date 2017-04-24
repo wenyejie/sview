@@ -161,7 +161,7 @@
       <section class="s-goodsList-wrap">
         <s-goods-list v-for="item in goods"
                       :key="item.goodsId"
-                      @click="chosenGoods(item)"
+                      @click="chosenGoods(item.goodsId)"
                       :goods="item"></s-goods-list>
       </section>
       <!-- /商品列表 -->
@@ -234,6 +234,13 @@
       }
     },
     methods: {
+
+      chosenGoods (goodsId) {
+        this.$router.push({
+          path: 'detail',
+          query: {goodsId}
+        });
+      },
 
       /**
        * 清空筛选条件
