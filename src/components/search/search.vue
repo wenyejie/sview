@@ -53,6 +53,11 @@
         }
       }
     },
+    watch: {
+      searchKey () {
+        this.$emit('input', this.searchKey);
+      }
+    },
     methods: {
       handleInput () {
         this.$emit('on-input', this.searchKey);

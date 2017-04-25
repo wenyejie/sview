@@ -85,7 +85,7 @@
 
             <s-search placeholder="服务器名称/数字" text="搜索" v-model="searchKey"></s-search>
 
-            <s-cell v-for="item in serverAllItem"
+            <s-cell v-for="item in filterServerAllItem"
                     :key="item.serverId"
                     :class="{'on': query.domainId === undefined && query.serverId === item.serverId}"
                     @click="serverSelect(undefined, item)">{{item.serverName}}</s-cell>

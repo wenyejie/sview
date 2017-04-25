@@ -43,7 +43,6 @@
         clientId: null,
         domainId: null,
         searchKey: '',
-        filterServers: []
       }
     },
     computed: {

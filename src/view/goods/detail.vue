@@ -39,13 +39,29 @@
       </header>
 
       <s-attr label="服务保障" link>寄售交易</s-attr>
+
+      <s-popup v-model="guarantee" class="guarantee">
+        <s-cell size="md">服务保障</s-cell>
+        <s-cell>
+          <h3>寄售交易</h3>
+          <p>货在闪电虎，付款后由客服发货。</p>
+        </s-cell>
+        <s-cell>
+          <h3>寄售交易</h3>
+          <p>货在闪电虎，付款后由客服发货。</p>
+        </s-cell>
+        <div class="guarantee-bottom">
+          <s-button>完成</s-button>
+        </div>
+      </s-popup>
+
       <s-attr label="基本信息">{{goods.plantform}}系统-{{goods.clientName}}-{{goods.domainName}}</s-attr>
 
       <s-attr v-for="(item, index) in goods.goodsExtInfoList"
               :key="index"
               :label="item.name">{{item.value}}</s-attr>
 
-      <s-attr label="密保绑定">{{goods.sellerTradeInfoList.split('、')}}</s-attr>
+      <s-attr label="密保绑定"></s-attr>
 
       <s-panel class="s-panel-article goodsDetail-notify" title="免责声明" icon="notification">
         <p>1.所展示的商品供求信息由买卖双方自行提供，其真实性、准确性和合法性由信息发布人负责</p>
@@ -66,6 +82,7 @@
   import attr from '@/components/attr';
   import suspension from '@/components/suspension';
   import goodsClass from '@/filters/goodsClass';
+  import popup from '@/components/popup';
   import './detail.scss';
   export default {
     name: 'detail',
@@ -74,7 +91,8 @@
       swiperSlide,
       sLabel: label,
       sAttr: attr,
-      sSuspension: suspension
+      sSuspension: suspension,
+      sPopup: popup
     },
     props: {},
     data () {
@@ -83,12 +101,16 @@
           pagination: '.swiper-pagination'
         },
 
+        // 服务保障
+        guarantee: null,
+
         loading: null,
 
         goodsId: null,
 
         goods: {
-          picUrls: []
+          picUrls: [],
+          sellerTradeInfoList: []
         }
       }
     },
