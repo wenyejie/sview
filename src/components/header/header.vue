@@ -35,13 +35,14 @@
         type: String,
         default: 'default',
         validator (val) {
-          return ['default', 'white'].includes(val)
+          return ['default', 'white', 'transparent'].includes(val)
         }
       },
       left: {
         type: Boolean,
         default: true
-      }
+      },
+      title: String
     },
     data () {
       return {
@@ -64,6 +65,8 @@
       setTitle () {
         if (this.$slots.default) {
           document.title = this.$slots.default[0].text + ' - 闪电虎';
+        } else if (this.title) {
+          document.title = this.title + ' - 闪电虎';
         } else {
           document.title = '闪电虎';
         }

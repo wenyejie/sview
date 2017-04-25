@@ -1,0 +1,20 @@
+@charset "utf-8";
+/**
+ * 个人中心
+ *
+ * author: Storm
+ * date: 2017/04/26
+ */
+
+.personal {
+
+  background-image: linear-gradient(to left, #FD8A12 0%, #FDA812 100%), url(../../assets/personal-header-bgi.png);
+  background-repeat: no-repeat;
+  background-size: 6.4rem 2.8rem;
+
+  &-header {
+    height: 1.92rem;
+
+  }
+
+}

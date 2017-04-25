@@ -3,6 +3,7 @@ import Router from 'vue-router';
 // import Example from './example';
 import Release from './release';
 import Goods from './goods';
+import Personal from './personal';
 
 Vue.use(Router);
 
@@ -34,6 +35,8 @@ export default new Router({
     Release,
 
     Goods,
+
+    Personal,
 
     {
       path:'*',

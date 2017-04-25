@@ -24,6 +24,18 @@
 
   }
 
+  &-transparent {
+    background-color: transparent;
+
+    .header-back {
+      color: #fff;
+    }
+
+    a {
+      color: #fff;
+    }
+  }
+
   &-white {
     background-color: #fff;
     color: #333;

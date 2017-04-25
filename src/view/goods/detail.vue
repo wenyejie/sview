@@ -138,7 +138,7 @@
           .post('/h5/goods/showGoodsInfo', {goodsId: this.goodsId})
           .then(response => {
             if (response.body.code !== '000') return false;
-            this.goods = response.body.data;
+            this.goods = Object.assign({}, this.goods, response.body.data);
           })
           .finally(() => this.loading = false);
       }
