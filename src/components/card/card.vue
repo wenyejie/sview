@@ -15,7 +15,7 @@
     <s-link to="javascript:;" class="s-card-body" size="lg">
       <div class="s-card-left">
         <h4 class="s-card-title">
-          <s-icon v-if="goods.showType !== 1" type="picfill" size="34" color="#81C8E4" class="text-middle"></s-icon>
+          <s-icon v-if="goods.showType !== 1" type="picfill" class="text-middle"></s-icon>
           <s-label :type="classType">{{goods.className}}</s-label>
           <span class="s-card-title-inner">{{goods.showTitle}}</span>
         </h4>

@@ -27,13 +27,13 @@
       <header class="goodsDetail-header">
 
         <h3>
-          <s-label :type="goodsType">360账号</s-label>
+          <s-label :type="goodsType">{{goods.subClassName}}</s-label>
           {{goods.title}}
         </h3>
 
         <s-row justify="between" align="center">
           <s-col class="goodsDetail-price">￥{{goods.price}}</s-col>
-          <s-col class="goodsDetail-first">首次出售</s-col>
+          <s-col class="goodsDetail-first" v-if="goods.goodsClassId === 1">首次出售</s-col>
         </s-row>
 
       </header>
