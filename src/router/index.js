@@ -30,6 +30,14 @@ export default new Router({
       }
     },
 
+    {
+      path: '/search',
+      name: 'Search',
+      component: resolve => {
+        require(['@/view/search.vue'], resolve);
+      }
+    },
+
     //Example,
 
     Release,

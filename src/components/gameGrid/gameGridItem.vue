@@ -7,10 +7,10 @@
 
 <template>
   <li class="s-gameGrid-item">
-    <a class="s-gameGrid-link" href="/goods?gameId=27&gameName=阴阳师">
-    <img class="s-gameGrid-icon" src="http://img.la/100x100?s=demo">
-    <p class="s-gameGrid-name">阴阳师</p>
-    </a>
+    <router-link class="s-gameGrid-link" to="/goods?gameId=27&gameName=阴阳师">
+      <img class="s-gameGrid-icon" src="http://img.la/100x100?s=demo">
+      <p class="s-gameGrid-name">阴阳师</p>
+    </router-link>
   </li>
 </template>
 

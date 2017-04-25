@@ -15,6 +15,8 @@
       <header class="personal-header">
       </header>
 
+      <s-link to="/release">全部商品</s-link>
+
     </s-main>
   </s-app>
 

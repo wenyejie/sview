@@ -1,5 +1,5 @@
 <!--
- - 选择游戏
+ - 搜索游戏
  -
  - author: Storm
  - date: 2017/04/17
@@ -8,11 +8,14 @@
 <template>
 
   <s-app>
-    <s-header>选择游戏</s-header>
 
     <s-main bgc="white">
 
-      <s-search placeholder="请输入游戏名称" v-model="searchKey" text="搜索"></s-search>
+      <s-search placeholder="请输入游戏名称"
+                type="primary"
+                v-model="searchKey"
+                @on-button-click="searchCancel"
+                text="取消"></s-search>
 
       <div class="content-lg">
 
@@ -51,7 +54,7 @@
 <script>
   import Search from '@/components/search';
   import {gameGrid, gameGridItem} from '@/components/gameGrid';
-  import '../release.scss';
+  import '@/view/release/release.scss';
 
   let searchTimer = null;
 
@@ -68,12 +71,12 @@
     data () {
       return {
         games: [
-          {gameId:27, gameName: '阴阳师'},
-          {gameId:28, gameName: '九阴真经3D'}
+          {gameId: 27, gameName: '阴阳师'},
+          {gameId: 28, gameName: '九阴真经3D'}
         ],
         hotGames: [
-          {gameId:27, gameName: '阴阳师'},
-          {gameId:28, gameName: '九阴真经3D'}
+          {gameId: 27, gameName: '阴阳师'},
+          {gameId: 28, gameName: '九阴真经3D'}
         ],
         searchKey: '',
         searching: null
@@ -90,11 +93,15 @@
       }
     },
     methods: {
+
+      searchCancel () {
+        this.$router.go(-1);
+      },
       choseGame (item) {
         // 阴阳师
         this.$router.push({
-          name: 'selectClassRelease',
-          query: {gameId: item.gameId}
+          path: 'goods',
+          query: {gameId: item.gameId, gameName: item.gameName}
         });
       },
       searchGame () {
@@ -114,10 +121,14 @@
       selectGame (item) {
         // 阴阳师
         this.$router.push({
-          name: 'selectClassRelease',
-          query: {gameId: item.id}
+          path: 'goods',
+          query: {gameId: item.gameId, gameName: item.gameName}
         });
       }
+    },
+    created () {
+      document.title = '搜索游戏 - 闪电虎';
     }
   }
 </script>
+

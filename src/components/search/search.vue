@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <form class="s-search" @submit.prevent="handleSubmit" :class="classes">
+  <form class="s-search" @submit.prevent="handleSubmit" :class="classes" @click="handleClick">
     <label class="s-search-label">
       <s-icon type="search" class="s-search-icon"></s-icon>
       <input type="search"
@@ -70,6 +70,9 @@
       },
       handleButtonClick ($event) {
         this.$emit('on-button-click', $event);
+      },
+      handleClick ($event) {
+        this.$emit('on-click', $event);
       }
     }
   }

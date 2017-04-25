@@ -27,7 +27,7 @@
         </a>
       </div>
 
-      <s-search text="搜索"></s-search>
+      <s-search text="搜索" @on-click="searchGame"></s-search>
 
       <s-row class="index-menu">
         <s-col span="6">
@@ -106,6 +106,13 @@
         swiperOpts: {
           pagination: '.swiper-pagination'
         },
+      }
+    },
+    methods: {
+      searchGame () {
+        this.$router.push({
+          path: '/search'
+        })
       }
     }
   }
