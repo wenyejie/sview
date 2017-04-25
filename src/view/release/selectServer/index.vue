@@ -11,11 +11,11 @@
 
     <s-main>
 
-      <s-search placeholder="请输入游戏名称"></s-search>
+      <s-search placeholder="请输入游戏名称" v-model="searchKey"></s-search>
 
       <section>
         <s-cell-intro>请选择商品所在服务器：</s-cell-intro>
-        <s-link v-for="item in servers"
+        <s-link v-for="item in filterServers"
                 :key="item.domainId"
                 :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${domainId}&serverId=${item.serverId}`">{{item.serverName}}</s-link>
       </section>
@@ -41,7 +41,18 @@
         goodsClassId: null,
         goodsSubClassId: null,
         clientId: null,
-        domainId: null
+        domainId: null,
+        searchKey: '',
+        filterServers: []
+      }
+    },
+    computed: {
+
+      // 过滤服务器
+      filterServers () {
+        return this.servers.filter(item => {
+           return item.serverName.indexOf(this.searchKey.trim()) >= 0;
+        });
       }
     },
     methods: {

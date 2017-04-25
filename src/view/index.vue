@@ -9,7 +9,11 @@
       </div>
     </s-header>
 
-    <s-main bgc="gray">
+    <s-main>
+
+      <s-link to="/release">全部商品</s-link>
+      <s-link to="/goods?gameId=27&gameName=阴阳师">阴阳师</s-link>
+      <s-link to="/goods?gameId=28&gameName=九阴真经3D">九阴真经3D</s-link>
 
     </s-main>
   </div>

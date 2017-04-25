@@ -11,9 +11,10 @@
       <s-icon type="search" class="s-search-icon"></s-icon>
       <input type="search"
              class="s-search-input"
-             :value="val"
              :placeholder="placeholder"
              :name="name"
+             v-model="searchKey"
+             @input="handleInput"
              @keyup.enter="handleEnter">
     </label>
     <button class="s-search-btn"
@@ -42,7 +43,7 @@
     },
     data () {
       return {
-        val: this.value
+        searchKey: this.value
       }
     },
     computed: {
@@ -53,6 +54,9 @@
       }
     },
     methods: {
+      handleInput () {
+        this.$emit('on-input', this.searchKey);
+      },
       handleSubmit ($event) {
         this.$emit('on-submit', $event);
       },

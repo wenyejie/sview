@@ -13,8 +13,9 @@
 
     <s-main>
 
-      <s-card v-for="item in goodsList"
+      <s-card v-for="(item, index) in goodsList"
               :key="item.goodsId"
+              @on-remove="remove(index)"
               :goods="item"></s-card>
 
       <s-nothing v-if="goodsList.length === 0 && loading === false"
@@ -63,6 +64,11 @@
       }
     },
     methods: {
+
+      remove (index) {
+        // 删除当前数据
+        this.goodsList.splice(index, 1);
+      },
 
       init () {
         this.status = parseInt(this.$route.query.status);

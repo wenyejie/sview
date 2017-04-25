@@ -9,7 +9,7 @@
 
   <s-app>
 
-    <s-header>选择服务器</s-header>
+    <s-header>全部商品</s-header>
 
     <s-main>
 

@@ -12,14 +12,14 @@
 
     <s-main>
 
-      <form name="goodsInfo" novalidate>
+      <form name="goodsInfo" novalidate v-model="demo">
         <s-cell-intro icon="warning">请认真填写您出售的商品信息，让买家快速了解并下单，可大大提高成功交易机会。</s-cell-intro>
         <s-cell>
           <span class="c-primary">*&nbsp;</span>
           <span>上传图片</span>
           <s-radio-group v-model="releaseInfo.showType" slot="right">
-            <s-radio :label="2" name="showType">有图</s-radio>
-            <s-radio :label="1" name="showType">无图</s-radio>
+            <s-radio :label="2" required name="showType">有图</s-radio>
+            <s-radio :label="1" required name="showType">无图</s-radio>
           </s-radio-group>
         </s-cell>
 
@@ -28,9 +28,14 @@
         <s-cell-intro>单张图片不能超过10MB，最多可以上传10张图片</s-cell-intro>
 
         <!-- 当用户需要输入标题时展示商品标题输入框 -->
-        <s-form-control label="商品标题" v-if="titleAttr.goodsSubClassTitleRule !== 1">
+        <s-form-control label="商品标题"
+                        v-if="titleAttr.goodsSubClassTitleRule !== 1"
+                        required>
           <input type="text"
-                 v-model="releaseInfo.title"
+                 name="title"
+                 required
+                 title=""
+                 v-model.trim="releaseInfo.title"
                  :maxlength="titleAttr.goodsSubClassMaxTitleLen"
                  placeholder="请输入商品标题">
 
@@ -44,9 +49,10 @@
 
 
         <!-- 库存，价格 -->
-        <s-form-control label="商品库存" required>
+        <s-form-control label="商品库存"
+                        required
+                        v-if="releaseInfo.goodsClassId !==1">
           <input type="number"
-                 v-if="releaseInfo.goodsClassId !==1"
                  :max="titleAttr.store"
                  min="1"
                  v-model.number="releaseInfo.storage" placeholder="请输入商品库存">
@@ -57,8 +63,9 @@
                  :max="titleAttr.maxPrice"
                  :min="titleAttr.minPrice"
                  v-model.number="releaseInfo.price"
-                 :placeholder="`商品价格不能小于${titleAttr.minPrice}`">
+                 :placeholder="`请输入商品价格`">
         </s-form-control>
+        <s-cell-intro>商品价格必须大于{{titleAttr.minPrice || 0}}</s-cell-intro>
 
 
       </form>
@@ -113,10 +120,39 @@
         },
 
         // 标题属性
-        titleAttr: {}
+        titleAttr: {
+          minPrice: 0
+        },
+
+        demo: {}
+      }
+    },
+
+    computed: {
+
+      validation () {
+        return {
+          picUrls: {
+            title: '上传图片',
+            required: this.releaseInfo.showType === 2,
+            custom: this.releaseInfo.picUrls.length >= 1
+          },
+          title: {
+            title: '商品标题',
+            required: this.titleAttr.goodsSubClassTitleRule !== 1
+          },
+          storage: {
+            title: '商品库存',
+            type: 'number',
+            required: this.releaseInfo.goodsClassId !==1,
+            max: this.titleAttr.maxPrice,
+            min: this.titleAttr.minPrice
+          }
+        }
       }
     },
     methods: {
+
 
       // 下一步
       nextStep () {
@@ -199,7 +235,7 @@
           )
           .then(response => {
             if (response.body.code !== '000') return false;
-             this.dataSync(response.body.data.list);
+            this.dataSync(response.body.data.list);
           })
           .finally(() => {
             this.getAttrsLoading = false;
@@ -234,8 +270,7 @@
     created () {
 
       // 获取到在选择商品类型中保存的标题属性信息
-
-      this.titleAttr = local.get('releaseTitleAttr');
+      this.titleAttr = local.get('releaseTitleAttr') || {};
       this.getQuery();
       this.getAttrs();
     }

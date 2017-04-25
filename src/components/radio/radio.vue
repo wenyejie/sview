@@ -11,6 +11,7 @@
       :name="name"
       :disabled="disabled"
       :checked="val"
+      :value="label"
       @change="change"
     ><span class="s-radio-text"><slot>{{label}}</slot></span>
   </label>

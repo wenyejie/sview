@@ -40,29 +40,9 @@
           <h3 class="section-title">热门游戏</h3>
 
           <ul class="game game-grid">
-            <li class="game-item" @click="selectGame">
+            <li class="game-item" v-for="item in games" @click="selectGame(item)">
               <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
-            </li>
-            <li class="game-item">
-              <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
-            </li>
-            <li class="game-item">
-              <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
-            </li>
-            <li class="game-item">
-              <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
-            </li>
-            <li class="game-item">
-              <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
-            </li>
-            <li class="game-item">
-              <img class="game-icon" src="http://img.la/100x100?s=demo">
-              <p class="game-name">时空猎人</p>
+              <p class="game-name">{{item.name}}</p>
             </li>
           </ul>
 
@@ -85,14 +65,18 @@
     },
     props: {},
     data () {
-      return {}
+      return {
+        games: [
+          {id:27, name: '阴阳师'}
+        ]
+      }
     },
     methods: {
-      selectGame () {
+      selectGame (item) {
         // 阴阳师
         this.$router.push({
           name: 'selectClassRelease',
-          query: {gameId: 6}
+          query: {gameId: item.id}
         });
       }
     }

@@ -83,7 +83,7 @@
         <s-tabs direction="vertical">
           <s-tabs-panel label="全部">
 
-            <s-search placeholder="服务器名称/数字" text="搜索"></s-search>
+            <s-search placeholder="服务器名称/数字" text="搜索" v-model="searchKey"></s-search>
 
             <s-cell v-for="item in serverAllItem"
                     :key="item.serverId"
@@ -229,7 +229,9 @@
           minPrice: undefined
         },
 
-        goods: []
+        goods: [],
+
+        searchKey: ''
       }
     },
     methods: {
@@ -449,6 +451,13 @@
     },
 
     computed: {
+
+      // 过滤服务器
+      filterServerAllItem () {
+        return this.serverAllItem.filter(item => {
+          return item.serverName.indexOf(this.searchKey.trim()) >= 0;
+        });
+      },
       sortText () {
         switch (this.query.sortRule) {
           case 2:

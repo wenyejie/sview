@@ -113,7 +113,7 @@
       },
 
       /**
-       * 商品赏析家
+       * 商品上下架
        * @param goodsStatus 3-up 4-down
        */
       shelf (goodsStatus) {
@@ -139,6 +139,7 @@
           .shelf(3)
           .then(() => {
             this.$Message.success('商品上架成功！');
+            this.$emit('on-remove');
           })
           .finally(() => this.uping = false);
       },
@@ -151,6 +152,7 @@
           .shelf(4)
           .then(() => {
             this.$Message.success('商品下架成功！');
+            this.$emit('on-remove');
           })
           .finally(() => this.downing = false);
       }

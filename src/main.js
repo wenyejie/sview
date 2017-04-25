@@ -25,9 +25,11 @@ Vue.http.interceptors.push(function (request, next) {
     // mock
     //request.url = 'http://mock.youximao.cn/mockjsdata/58' + request.url;
 
-
     // 文斐
-    request.url = 'http://192.168.2.133:8081' + request.url;
+    // request.url = 'http://192.168.2.133:8081' + request.url;
+
+    // test
+    request.url = 'http://192.168.50.155:8080' + request.url;
   }
   if (request.loading) {
     //loading = this.$Message.loading(typeof request.loading === 'string' ? request.loading : '加载中');
