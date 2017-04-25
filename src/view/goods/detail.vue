@@ -38,22 +38,28 @@
 
       </header>
 
-      <s-attr label="服务保障" link>寄售交易</s-attr>
-
-      <s-popup v-model="guarantee" class="guarantee">
+      <s-popup v-model="guarantee" class="goodsDetail-guarantee" position="fixed">
         <s-cell size="md">服务保障</s-cell>
-        <s-cell>
-          <h3>寄售交易</h3>
-          <p>货在闪电虎，付款后由客服发货。</p>
+        <s-cell size="md">
+          <div class="goodsDetail-consignment"></div>
+          <div>
+            <h5>寄售交易</h5>
+            <p>货在闪电虎，付款后由客服发货。</p>
+          </div>
         </s-cell>
-        <s-cell>
-          <h3>寄售交易</h3>
-          <p>货在闪电虎，付款后由客服发货。</p>
+        <s-cell size="md">
+          <div class="goodsDetail-service"></div>
+          <div>
+            <h5>寄售交易</h5>
+            <p>货在闪电虎，付款后由客服发货。</p>
+          </div>
         </s-cell>
-        <div class="guarantee-bottom">
-          <s-button>完成</s-button>
+        <div class="goodsDetail-guarantee-bottom">
+          <s-button type="primary" block @click="guarantee = false" shape="angle">完成</s-button>
         </div>
       </s-popup>
+
+      <s-attr label="服务保障" link @click="guarantee = true">寄售交易</s-attr>
 
       <s-attr label="基本信息">{{goods.plantform}}系统-{{goods.clientName}}-{{goods.domainName}}</s-attr>
 

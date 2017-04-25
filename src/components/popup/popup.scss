@@ -16,6 +16,7 @@
 .s-popup {
   position: absolute;
   transition: all .3s ease;
+  z-index: 2;
 
   &-mask {
     position: absolute;
@@ -33,8 +34,9 @@
 
     .s-popup-content {
       bottom: 0;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      margin-left: -3.2rem;
+      width: 6.4rem;
     }
 
     &-enter,
@@ -52,8 +54,9 @@
 
     .s-popup-content {
       top: 0;
-      left: 0;
-      width: 100%;
+      left: 50%;
+      margin-left: -3.2rem;
+      width: 6.4rem;
     }
 
     &-enter,
