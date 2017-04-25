@@ -27,7 +27,7 @@
                :placeholder="`请输入${formData.attrName}`">
 
         <input v-if="type(formData.attrRule[0]) === 'tel'"
-               type="number"
+               type="tel"
                maxlength="11"
                minlength="11"
                :min="min(formData.attrRule[0])"

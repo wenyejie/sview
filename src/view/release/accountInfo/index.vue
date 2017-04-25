@@ -164,6 +164,8 @@
       release () {
         this.releaseInfo.attrs = this.releaseInfo.attrs.concat(this.modelAttrs);
 
+
+
         this
           .getFormToken()
           .then(formToken => {

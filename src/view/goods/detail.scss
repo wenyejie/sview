@@ -11,11 +11,8 @@
   font-size: .24rem;
 
   &-swiper {
-    background-color: #ccc;
 
     img {
-      display: block;
-      width: 6.4rem;
       height: 4rem;
     }
 
@@ -93,7 +90,4 @@
     }
   }
 
-}
-.swiper-pagination-bullet-active {
-  background-color: #fff;
 }

@@ -156,6 +156,13 @@
 
       // 下一步
       nextStep () {
+        const attrs = this.releaseInfo.attrs;
+        this.formAttrs.forEach((item, index) => {
+          if (item.attrRule[0].showType !== this.releaseInfo.showType && item.attrRule[0].showType !== 3) {
+            attrs.splice(index, 1);
+          }
+        });
+        this.releaseInfo.attrs = attrs;
         local.set('releaseInfo', this.releaseInfo);
 
         this.getAccountType();

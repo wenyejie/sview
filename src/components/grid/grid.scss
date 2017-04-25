@@ -1,0 +1,26 @@
+@charset "utf-8";
+/**
+ * grid
+ *
+ * author: Storm
+ * date: 2017/04/25
+ */
+
+.s-grid {
+  overflow: hidden;
+
+
+
+  & > li {
+    text-align: center;
+  }
+
+  &-3 > li {
+    width: 33.333333333333336%;
+  }
+
+  &-4 > li {
+    width: 25%;
+  }
+
+}
