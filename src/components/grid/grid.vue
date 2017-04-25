@@ -6,7 +6,7 @@
  -->
 
 <template>
-  <ul class="s-grid" :class="classes"><solt></solt></ul>
+  <ul class="s-grid" :class="classes"><slot></slot></ul>
 </template>
 
 <script>

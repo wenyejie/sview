@@ -67,7 +67,7 @@
               :key="index"
               :label="item.name">{{item.value}}</s-attr>
 
-      <s-attr label="密保绑定"></s-attr>
+      <s-attr label="密保绑定" v-if="goods.sellerTradeInfoList.length > 0">{{goods.sellerTradeInfoList.join('、')}}</s-attr>
 
       <s-panel class="s-panel-article goodsDetail-notify" title="免责声明" icon="notification">
         <p>1.所展示的商品供求信息由买卖双方自行提供，其真实性、准确性和合法性由信息发布人负责</p>

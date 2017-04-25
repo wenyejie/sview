@@ -104,6 +104,7 @@
 
       // 修改
       modify () {
+        this.$emit('on-remove');
         this.$router.push({
           path: 'goodsModify',
           query: {

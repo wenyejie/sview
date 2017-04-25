@@ -9,3 +9,127 @@
 .index-swiper img {
   height: 3rem;
 }
+
+.index-message {
+  font-size: .22rem;
+  line-height: 1;
+  padding: .2rem .24rem;
+
+  a {
+    background-color: #fff;
+    display: block;
+    padding: .38rem .18rem .4rem;
+    color: #333;
+  }
+
+  span {
+    color: #FF7653;
+  }
+
+  img {
+    vertical-align: -.155em;
+  }
+}
+
+.index-title {
+  text-align: center;
+  line-height: 1;
+  font-weight: bold;
+
+  span {
+    width: 1.52rem;
+    display: inline-block;
+    position: relative;
+
+    &:after,
+    &:before {
+      content: '';
+      background-color: #979797;
+      width: .2rem;
+      height: .01rem;
+      position: absolute;
+      top: 50%;
+      margin-top: -.005rem;
+    }
+
+    &:before {
+      left: -.2rem;
+    }
+
+    &:after {
+      right: -.2rem;
+    }
+
+  }
+}
+
+.index-menu {
+  text-align: center;
+  font-size: .24rem;
+  line-height: 1;
+  background-color: #fff;
+  padding-bottom: .4rem;
+  border-bottom: .01rem solid #E5E5E5;
+
+  &-link {
+    display: block;
+    color: #666;
+    padding: .1rem;
+    transition: all .3s ease;
+    border-radius: .05rem;
+
+    &:hover,
+    &:focus {
+      background-color: #eee;
+    }
+
+  }
+
+  &-icon {
+    width: .8rem;
+    height: .8rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &-name {
+    margin-top: .18rem;
+  }
+
+}
+
+.index-hotGame {
+  padding: .36rem 0 .28rem;
+  background-color: #fff;
+  margin-top: .2rem;
+  border-bottom: .01rem solid #E5E5E5;
+}
+
+.index-notice {
+  margin-top: .2rem;
+  padding: .36rem;
+  background-color: #fff;
+  border-bottom: .01rem solid #E5E5E5;
+  font-size: .24rem;
+  line-height: .3rem;
+  color: #666;
+
+  ul {
+    margin-top: .33rem;
+    list-style: inside decimal;
+  }
+
+  li + li {
+    margin-top: .14rem;
+  }
+
+}
+
+.index-copyright {
+  text-align: center;
+  padding: .65rem 0 .75rem;
+  font-size: .22rem;
+  line-height: .32rem;
+  color: #B1B1B1;
+}

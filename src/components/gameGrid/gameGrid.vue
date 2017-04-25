@@ -6,7 +6,7 @@
  -->
 
 <template>
-
+  <s-grid class="s-gameGrid"><slot></slot></s-grid>
 </template>
 
 <script>

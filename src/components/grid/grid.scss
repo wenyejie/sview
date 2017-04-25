@@ -8,11 +8,12 @@
 
 .s-grid {
   overflow: hidden;
-
+  font-size: .24rem;
 
 
   & > li {
     text-align: center;
+    float: left;
   }
 
   &-3 > li {

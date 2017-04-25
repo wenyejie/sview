@@ -124,6 +124,13 @@
 
       // 下一步
       nextStep () {
+        const attrs = this.goods.goodsAttrs;
+        this.goodsModifyConfig.goodsAttrs.forEach((item, index) => {
+          if (item.attrRule[0].showType !== this.goods.showType && item.attrRule[0].showType !== 3) {
+            attrs.splice(index, 1);
+          }
+        });
+        this.goods.goodsAttrs = attrs;
         local.set('goodsModifyValue', this.goods);
         this.$router.push({path: 'accountModify'});
       },
