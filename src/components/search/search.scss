@@ -20,8 +20,11 @@
   }
 
   &-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
-    border: .01rem solid #F67B29;
+    border: 1px solid #F67B29;
     height: .6rem;
     padding: 0 .36rem 0 .53rem;
     border-radius: .3rem 0 0 .3rem;

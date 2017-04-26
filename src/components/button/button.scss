@@ -25,7 +25,7 @@
 
   &-lg {
     height: .8rem;
-    letter-spacing: .01rem;
+    letter-spacing: 1px;
     border-radius: .1rem;
   }
 
@@ -97,7 +97,7 @@
   }
 
   &-shadow {
-    box-shadow: 0 .01rem .16rem 0 rgba(255, 178, 178, .6);
+    box-shadow: 0 1px .16rem 0 rgba(255, 178, 178, .6);
   }
 
 }

@@ -15,6 +15,7 @@
              :name="name"
              v-model="searchKey"
              @input="handleInput"
+             :autofocus="autofocus"
              @keyup.enter="handleEnter">
     </label>
     <button class="s-search-btn"
@@ -39,7 +40,8 @@
         validator (val) {
           return ['primary'].includes(val);
         }
-      }
+      },
+      autofocus: Boolean
     },
     data () {
       return {

@@ -30,7 +30,7 @@
   &-list {
     background-color: #fdfdfd;
     color: #666;
-    border-top: .01rem solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
     padding: .14rem 0;
     transition: height .3s ease-in-out, padding .3s ease-in-out;
     overflow: hidden;
@@ -86,7 +86,7 @@
   }
 
   + & {
-    border-top: .01rem solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
   }
 }
 .s-cell + .s-form-select,
@@ -94,5 +94,5 @@
 .s-form-make + .s-form-make,
 .s-form-make + .s-form-control,
 .s-form-control + .s-form-make {
-  border-top: .01rem solid #e5e5e5;
+  border-top: 1px solid #e5e5e5;
 }

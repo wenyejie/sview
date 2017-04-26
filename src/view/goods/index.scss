@@ -16,7 +16,7 @@
   font-size: .24rem;
   z-index: 3;
   position: relative;
-  border-bottom: .01rem solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
 
   &-item {
     width: 25%;
@@ -106,7 +106,7 @@
 
   a {
     display: block;
-    border: .01rem solid #e5e5e5;
+    border: 1px solid #e5e5e5;
     border-radius: .04rem;
     color: #666;
     text-align: center;
@@ -170,7 +170,7 @@
     height: .5rem;
     text-align: center;
     line-height: .48rem;
-    border: .01rem solid #F2F2F2;
+    border: 1px solid #F2F2F2;
     background-color: #fafafa;
 
     &:first-child {

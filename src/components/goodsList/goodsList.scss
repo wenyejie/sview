@@ -32,15 +32,25 @@
 
   &-tags {
     font-size: .24rem;
+    line-height: 1;
+  }
+
+  .s-label {
+    vertical-align: middle;
   }
 
   .s-icon {
-    vertical-align: -.175em;
+    //vertical-align: -.175em;
+    vertical-align: middle;
+    width: .24rem;
+    height: .24rem;
   }
 
   &-area {
     color: #999;
     margin-left: .13rem;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   &-title {

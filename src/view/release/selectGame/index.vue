@@ -12,7 +12,10 @@
 
     <s-main bgc="white">
 
-      <s-search placeholder="请输入游戏名称" v-model="searchKey" text="搜索"></s-search>
+      <s-search placeholder="请输入游戏名称"
+                v-model="searchKey"
+                autofocus
+                text="搜索"></s-search>
 
       <div class="content-lg">
 
@@ -25,6 +28,11 @@
             <s-icon type="timefill"></s-icon>
             <span>{{item.gameName}}</span>
             <span slot="right"><s-icon type="close"></s-icon></span>
+          </s-cell>
+          <s-cell padding="0"
+                  v-if="games.length <= 0">
+            <s-icon type="timefill"></s-icon>
+            <span>暂无数据...</span>
           </s-cell>
         </section>
 
@@ -51,6 +59,7 @@
 <script>
   import Search from '@/components/search';
   import {gameGrid, gameGridItem} from '@/components/gameGrid';
+  import local from '@/untils/local';
   import '../release.scss';
 
   let searchTimer = null;
@@ -89,8 +98,23 @@
 
       }
     },
+    created () {
+      this.games = local.get('gameSearchHistory') || [];
+    },
     methods: {
       choseGame (item) {
+        let games = local.get('gameSearchHistory') || [];
+        const duplication = games.find(hItem => hItem.gameId === item.gameId);
+        if (duplication !== undefined) {
+          const index = games.indexOf(duplication);
+          games.splice(index, 1);
+        }
+        games.push({
+          gameId: item.gameId,
+          gameName: item.gameName
+        });
+        local.set('gameSearchHistory', games);
+
         // 阴阳师
         this.$router.push({
           name: 'selectClassRelease',

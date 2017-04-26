@@ -15,6 +15,7 @@
                 type="primary"
                 v-model="searchKey"
                 @on-button-click="searchCancel"
+                autofocus
                 text="取消"></s-search>
 
       <div class="content-lg">
@@ -27,7 +28,12 @@
                   @click="choseGame(item)">
             <s-icon type="timefill"></s-icon>
             <span>{{item.gameName}}</span>
-            <span slot="right"><s-icon type="close"></s-icon></span>
+            <span slot="right" v-if="!searchKey"><s-icon type="close"></s-icon></span>
+          </s-cell>
+          <s-cell padding="0"
+                  v-if="games.length <= 0">
+            <s-icon type="timefill"></s-icon>
+            <span>暂无数据...</span>
           </s-cell>
         </section>
 
@@ -54,6 +60,7 @@
 <script>
   import Search from '@/components/search';
   import {gameGrid, gameGridItem} from '@/components/gameGrid';
+  import local from '@/untils/local';
   import '@/view/release/release.scss';
 
   let searchTimer = null;
@@ -61,7 +68,7 @@
   let oldSearch = '';
 
   export default {
-    name: 'SelectGame',
+    name: 'Search',
     components: {
       sSearch: Search,
       sGameGrid: gameGrid,
@@ -92,12 +99,26 @@
 
       }
     },
+    created () {
+      this.games = local.get('gameSearchHistory') || [];
+    },
     methods: {
 
       searchCancel () {
         this.$router.go(-1);
       },
       choseGame (item) {
+        let games = local.get('gameSearchHistory') || [];
+        const duplication = games.find(hItem => hItem.gameId === item.gameId);
+        if (duplication !== undefined) {
+          const index = games.indexOf(duplication);
+          games.splice(index, 1);
+        }
+        games.push({
+          gameId: item.gameId,
+          gameName: item.gameName
+        });
+        local.set('gameSearchHistory', games);
         // 阴阳师
         this.$router.push({
           path: 'goods',
