@@ -17,6 +17,19 @@
     position: relative;
     flex: 1;
     display: block;
+
+    &:before {
+      content: '';
+      background: url(../../assets/icon-search.png) no-repeat center;
+      background-size: 100%;
+      width: .24rem;
+      height: .24rem;
+      position: absolute;
+      left: .2rem;
+      top: 50%;
+      margin-top: -.12rem;
+    }
+
   }
 
   &-input {
@@ -31,15 +44,6 @@
     color: #333;
     font-size: .24rem;
     background-color: #fff;
-  }
-
-  &-icon {
-    color: #EB7A26;
-    position: absolute;
-    left: .2rem;
-    font-size: .23rem;
-    top: 50%;
-    margin-top: -.5em;
   }
 
   &-btn {

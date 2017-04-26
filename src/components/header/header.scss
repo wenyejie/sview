@@ -8,15 +8,16 @@
 
 .header {
   height: .88rem;
-  position: relative;
+  position: fixed;
+  z-index: 1024;
+  width: 6.4rem;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
 
   &-default {
     background-image: linear-gradient(to left, #f25200 0%, #ff9616 100%);
     color: #fff;
-
-    .header-back {
-      color: #fff;
-    }
 
     a {
       color: #fff;
@@ -26,10 +27,6 @@
 
   &-transparent {
     background-color: transparent;
-
-    .header-back {
-      color: #fff;
-    }
 
     a {
       color: #fff;
@@ -49,6 +46,8 @@
   &-r {
     position: absolute;
     top: 0;
+    line-height: .88rem;
+    height: .88rem;
   }
 
   &-l {
@@ -57,7 +56,6 @@
 
   &-r {
     right: 0;
-    line-height: .88rem;
     font-size: .28rem;
 
     a {
@@ -76,11 +74,14 @@
   }
 
   &-back {
+    box-sizing: content-box;
     display: inline-block;
-    line-height: .88rem;
-    font-size: .36rem;
-    padding: 0 .16rem;
+    height: .88rem;
+    padding: 0 .24rem;
+    width: .2rem;
     cursor: pointer;
+    background: url(../../assets/icon-back.png) no-repeat center;
+    background-size: .2rem .36rem;
   }
 
   &-title {

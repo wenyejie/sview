@@ -7,10 +7,6 @@
  */
 
 .s-main {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
   position: relative;
 
   &-white {
@@ -21,6 +17,11 @@
     position: relative;
     padding-bottom: .24rem;
     min-height: 100%;
+    min-height: 100vh;
   }
 
+}
+
+.header + .s-main .s-main-content {
+  padding-top: .88rem;
 }

@@ -2,11 +2,12 @@
 
   <div id="app">
     <s-header>
-      <div slot="right">
+      <template slot="left"></template>
+      <template slot="right">
         <router-link to="/personal">个人中心</router-link>
         <span class="header-line">|</span>
         <router-link to="/release/selectGame">我要卖</router-link>
-      </div>
+      </template>
     </s-header>
 
     <s-main>

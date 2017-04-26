@@ -73,11 +73,11 @@
   z-index: 2;
 
   .s-popup-content {
-    top: .8rem;
+    top: 1.68rem;
   }
 
   .s-tabs-panel {
-    max-height: 5.6rem;
+    height: 5.7rem;
     overflow-y: auto;
   }
 }
@@ -89,6 +89,7 @@
   float: left;
   width: 50%;
   padding: .08rem;
+  font-size: .24rem;
 
   &.on {
 
@@ -113,6 +114,9 @@
     height: .5rem;
     line-height: .48rem;
     transition: all .3s ease;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 
     &:hover,
     &:focus {

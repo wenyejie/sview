@@ -13,10 +13,11 @@
 .index-message {
   font-size: .22rem;
   line-height: 1;
-  padding: .2rem .24rem;
+  padding: .2rem .16rem;
 
   a {
     background-color: #fff;
+    border-radius: .06rem;
     display: block;
     padding: .38rem .18rem .4rem;
     color: #333;
@@ -76,7 +77,7 @@
   &-link {
     display: block;
     color: #666;
-    padding: .1rem;
+    padding: .2rem .1rem .1rem;
     transition: all .3s ease;
     border-radius: .05rem;
 
@@ -110,16 +111,16 @@
 
 .index-notice {
   margin-top: .2rem;
-  padding: .36rem;
+  padding: .36rem .36rem .56rem;
   background-color: #fff;
   border-bottom: 1px solid #E5E5E5;
   font-size: .24rem;
   line-height: .3rem;
-  color: #666;
 
   ul {
     margin-top: .33rem;
     list-style: inside decimal;
+    color: #666;
   }
 
   li + li {

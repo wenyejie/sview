@@ -10,9 +10,7 @@
   <header class="header" :class="classes">
     <div class="header-l" v-if="left">
       <slot name="left">
-        <div @click="back()" class="header-back">
-          <s-icon type="back"></s-icon>
-        </div>
+        <div @click="back()" class="header-back"></div>
       </slot>
     </div>
     <div class="header-c" v-if="center">
