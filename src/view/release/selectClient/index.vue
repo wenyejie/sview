@@ -37,6 +37,7 @@
         goodsSubClassEnableServer: null,
         getClientLoading: null,
         getAreaListLoading: null,
+        goodsSubClassName: null,
         clientList: []
       }
     },
@@ -49,6 +50,7 @@
         this.goodsClassId = parseInt(query.goodsClassId);
         this.goodsSubClassId = parseInt(query.goodsSubClassId);
         this.goodsSubClassEnableServer = parseInt(query.goodsSubClassEnableServer);
+        this.goodsSubClassName = query.goodsSubClassName;
       },
 
       // 获取客户端列表
@@ -134,6 +136,7 @@
                     goodsClassId: this.goodsClassId,
                     goodsSubClassId: this.goodsSubClassId,
                     clientId: item.gameClientId,
+                    goodsSubClassName: this.goodsSubClassName
                   }
                 }),
 
@@ -144,7 +147,8 @@
                     gameId: this.gameId,
                     goodsClassId: this.goodsClassId,
                     goodsSubClassId: this.goodsSubClassId,
-                    clientId: item.gameClientId
+                    clientId: item.gameClientId,
+                    goodsSubClassName: this.goodsSubClassName
                   }
                 })
               );
@@ -159,7 +163,8 @@
                 goodsClassId: this.goodsClassId,
                 goodsSubClassId: this.goodsSubClassId,
                 clientId: item.gameClientId,
-                serverId: -1
+                serverId: -1,
+                goodsSubClassName: this.goodsSubClassName
               }
             });
             break;

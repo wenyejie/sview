@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-// import Example from './example';
+import Example from './example';
 import Release from './release';
 import Goods from './goods';
 import Personal from './personal';
+import User from './user';
 
 Vue.use(Router);
 
@@ -38,11 +39,13 @@ export default new Router({
       }
     },
 
-    //Example,
+    Example,
 
     Release,
 
     Goods,
+
+    User,
 
     Personal,
 

@@ -28,7 +28,7 @@
 
         <h3>
           <s-label :type="goodsType">{{goods.subClassName}}</s-label>
-          {{goods.title}}
+          {{goods.title}}<template v-if="goods.goodsClassId === 3"> (1元={{goods.singlePrice}}{{goods.subClassName}})</template>
         </h3>
 
         <s-row justify="between" align="center">

@@ -30,7 +30,6 @@
                type="tel"
                maxlength="11"
                minlength="11"
-               :min="min(formData.attrRule[0])"
                v-model.trim.number="modelValue.attrValue"
                @input="inputChange(formData)"
                :placeholder="`请输入${formData.attrName}`">
@@ -163,9 +162,15 @@
       },
       options (val) {
         this.formData = val;
+      },
+
+      'modelValue.attrValue' (val) {
+
       }
     },
     methods: {
+
+
 
       // 混合选择框
       hybridChange () {
@@ -176,6 +181,7 @@
         this.modelValue.ruleId = $event;
         this.modelValue.attrValue = '';
         this.$emit('input', this.modelValue);
+        this.$emit('on-change', this.modelValue);
       },
 
       // 选择框
@@ -183,12 +189,35 @@
         let value = formData.attrRule.find(item => item.ruleId === ruleId);
         this.modelValue.attrValue = value.ruleDefaultValue;
         this.$emit('input', this.modelValue);
+        this.$emit('on-change', this.modelValue);
+      },
+
+      // 输入框验证
+      inputVali (rule) {
+        const attrValue = this.modelValue.attrValue;
+        const type = this.type(rule);
+        const isRequired = this.required(rule);
+        const min = this.min(rule);
+
+        if (isRequired) return rule.attrName + '不能为空';
+        if (type === 'number') {
+          if (min !== undefined && attrValue < min) return rule.attrName + '不能小于' + min;
+        }
+        if (type === 'tel') {
+          if (attrValue.length < 11) return rule.attrName + '不足11位';
+          if (!/^1[\d]{10}$/.test(attrValue)) return rule.attrName + '格式错误';
+        }
+
+
+        return true;
+
       },
 
       // 输入框
       inputChange (formData) {
         this.modelValue.ruleId = formData.attrRule[0].ruleId;
         this.$emit('input', this.modelValue);
+        this.$emit('on-change', this.modelValue);
 
       },
 

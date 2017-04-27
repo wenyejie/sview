@@ -11,10 +11,10 @@
 
     <s-main>
 
-      <s-cell-intro>目前【热血传奇手机版】支持出售的商品类别如下：</s-cell-intro>
+      <s-cell-intro>目前【{{gameName}}】支持出售的商品类别如下：</s-cell-intro>
       <s-link v-for="cls in goodsClassList"
               :key="cls.classId"
-              :to="`/release/selectType?gameId=${gameId}&goodsClassId=${cls.classId}`">{{cls.className}}
+              :to="`/release/selectType?gameId=${gameId}&goodsClassId=${cls.classId}&gameName=${gameName}`">{{cls.className}}
       </s-link>
 
     </s-main>
@@ -35,7 +35,10 @@
         getGoodsClassLoading: null,
 
         // 游戏ID
-        gameId: null
+        gameId: null,
+
+        // 游戏名称
+        gameName: null
       }
     },
     methods: {
@@ -44,7 +47,9 @@
        * 获取链接中的游戏ID
        */
       getQuery () {
-        this.gameId = parseInt(this.$route.query.gameId);
+        const query = this.$route.query;
+        this.gameId = parseInt(query.gameId);
+        this.gameName = query.gameName;
       },
 
       /**

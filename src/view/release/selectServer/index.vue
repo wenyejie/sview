@@ -11,13 +11,13 @@
 
     <s-main>
 
-      <s-search placeholder="请输入游戏名称" v-model="searchKey"></s-search>
+      <s-search placeholder="请输入游戏名称" v-model="searchKey" text="搜索"></s-search>
 
       <section>
         <s-cell-intro>请选择商品所在服务器：</s-cell-intro>
         <s-link v-for="item in filterServers"
                 :key="item.domainId"
-                :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${domainId}&serverId=${item.serverId}`">{{item.serverName}}</s-link>
+                :to="`/release/goodsInfo?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${domainId}&serverId=${item.serverId}&goodsSubClassName=${goodsSubClassName}`">{{item.serverName}}</s-link>
       </section>
 
     </s-main>
@@ -42,6 +42,7 @@
         goodsSubClassId: null,
         clientId: null,
         domainId: null,
+        goodsSubClassName: null,
         searchKey: '',
       }
     },
@@ -64,6 +65,7 @@
         this.goodsSubClassId = parseInt(query.goodsSubClassId);
         this.clientId = parseInt(query.clientId);
         this.domainId = parseInt(query.domainId);
+        this.goodsSubClassName = query.goodsSubClassName;
       },
 
       /**

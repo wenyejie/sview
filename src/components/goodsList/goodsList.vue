@@ -23,7 +23,7 @@
       <span class="s-goodsList-area">{{goods.domainName || goods.serverName || '全服通用'}}</span>
     </div>
 
-    <h3 class="s-goodsList-title text-ellipsis" :style="styles">{{goods.showTitle}}</h3>
+    <h3 class="s-goodsList-title text-ellipsis" :style="styles">{{goods.showTitle}}<template v-if="goods.classId === 3"> (1元={{goods.singlePrice}}{{goods.subClassName}})</template></h3>
 
     <div class="s-goodsList-price">¥ {{goods.price}}</div>
 

@@ -43,6 +43,7 @@
 
         <s-form-make v-for="(item, index) in formAttrs"
                      v-model="releaseInfo.attrs[index]"
+                     @on-change="customFormChange($event)"
                      :key="item.attrId"
                      v-if="item.attrRule[0].showType === releaseInfo.showType || item.attrRule[0].showType === 3"
                      :options="item"></s-form-make>
@@ -63,9 +64,12 @@
                  :max="titleAttr.maxPrice"
                  :min="titleAttr.minPrice"
                  v-model.number="releaseInfo.price"
-                 :placeholder="`请输入商品价格`">
+                 :placeholder="`商品价格不能小于${titleAttr.minPrice}`">
         </s-form-control>
-        <s-cell-intro>商品价格必须大于{{titleAttr.minPrice || 0}}</s-cell-intro>
+
+        <s-form-control label="价格比例" v-if="releaseInfo.goodsClassId === 3">
+          <template>1元={{priceRatio}}{{goodsSubClassName}}</template>
+        </s-form-control>
 
 
       </form>
@@ -87,6 +91,8 @@
   import Upload from '@/components/upload';
   import local from '@/untils/local';
 
+  // 游戏币属性ID
+  let gameCurrencyAttrId;
   export default {
     name: 'goodsInfo',
     components: {
@@ -104,6 +110,11 @@
         getAccountTypeLoading: null,
 
         formAttrs: [],
+
+        goodsSubClassName: null,
+
+        // 价格比例
+        priceRatio: '?',
 
         releaseInfo: {
           clientId: null,
@@ -151,7 +162,29 @@
         }
       }
     },
+
+    watch: {
+      'releaseInfo.price' () {
+        const attr = this.releaseInfo.attrs.find(item => item.attrId === gameCurrencyAttrId);
+        this.customFormChange(attr);
+      }
+    },
     methods: {
+
+      // 自定义表单更改
+      customFormChange (attr) {
+        if (attr.attrId === gameCurrencyAttrId && this.releaseInfo.price) {
+          let price = (attr.attrValue / this.releaseInfo.price);
+          if (price >= 10000) {
+            price = Math.floor(price / 10000 * 100) / 100 + '万';
+          } else if (price < 1) {
+            price = price.toFixed(1);
+          } else {
+            price = Math.floor(price);
+          }
+          this.priceRatio = price;
+        }
+      },
 
 
       // 下一步
@@ -219,6 +252,7 @@
         this.releaseInfo.clientId = parseInt(query.clientId);
         this.releaseInfo.domainId = parseInt(query.domainId) || undefined;
         this.releaseInfo.serverId = parseInt(query.serverId);
+        this.goodsSubClassName = query.goodsSubClassName;
       },
 
       /**
@@ -254,6 +288,9 @@
       // 数据同步
       dataSync (list) {
         list.forEach(item => {
+          if (this.releaseInfo.goodsClassId === 3 && item.subClassAttrRule[0].attrValueType === 15) {
+            gameCurrencyAttrId = item.subClassAttrId;
+          }
           this.releaseInfo.attrs.push({
             attrId: item.subClassAttrId,
             attrName: item.subClassAttrName,

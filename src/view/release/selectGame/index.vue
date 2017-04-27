@@ -118,7 +118,7 @@
         // 阴阳师
         this.$router.push({
           name: 'selectClassRelease',
-          query: {gameId: item.gameId}
+          query: {gameId: item.gameId, gameName: item.gameName}
         });
       },
       searchGame () {
@@ -139,7 +139,7 @@
         // 阴阳师
         this.$router.push({
           name: 'selectClassRelease',
-          query: {gameId: item.id}
+          query: {gameId: item.gameId, gameName: item.gameName}
         });
       }
     }

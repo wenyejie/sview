@@ -11,7 +11,7 @@
 
     <s-main>
 
-      <s-cell-intro>目前【热血传奇手机版】支持出售的商品类型如下：</s-cell-intro>
+      <s-cell-intro>目前【{{gameName}}】支持出售的商品类型如下：</s-cell-intro>
 
       <s-cell v-for="item in goodsTypeList"
               @click="selectType(item)"
@@ -36,6 +36,9 @@
         // 游戏ID
         gameId: null,
 
+        // 游戏名称
+        gameName: null,
+
         // 游戏分类ID
         goodsClassId: null,
 
@@ -56,7 +59,8 @@
             goodsSubClassEnableServer: item.goodsSubClassEnableServer,
             gameId: this.gameId,
             goodsClassId: this.goodsClassId,
-            goodsSubClassId: item.goodsSubClassId
+            goodsSubClassId: item.goodsSubClassId,
+            goodsSubClassName: item.goodsSubClassName
           }
         })
       },
@@ -66,6 +70,7 @@
         const query = this.$route.query;
         this.gameId = parseInt(query.gameId);
         this.goodsClassId = parseInt(query.goodsClassId);
+        this.gameName = query.gameName;
       },
 
       /**

@@ -14,7 +14,7 @@
       <s-cell-intro>请选择商品所在服务区：</s-cell-intro>
       <s-link v-for="item in serviceAreaList"
               :key="item.domainId"
-              :to="`/release/selectServer?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${item.domainId}`">{{item.domainName}}</s-link>
+              :to="`/release/selectServer?gameId=${gameId}&goodsClassId=${goodsClassId}&goodsSubClassId=${goodsSubClassId}&clientId=${clientId}&domainId=${item.domainId}&goodsSubClassName=${goodsSubClassName}`">{{item.domainName}}</s-link>
 
     </s-main>
   </s-app>
@@ -30,7 +30,8 @@
         gameId: null,
         goodsClassId: null,
         goodsSubClassId: null,
-        clientId: null
+        clientId: null,
+        goodsSubClassName: null
       }
     },
     computed: {
@@ -49,6 +50,7 @@
         this.goodsClassId = parseInt(query.goodsClassId);
         this.goodsSubClassId = parseInt(query.goodsSubClassId);
         this.clientId = parseInt(query.clientId);
+        this.goodsSubClassName = query.goodsSubClassName
       },
     },
 
